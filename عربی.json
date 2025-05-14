@@ -1,0 +1,1018 @@
+{
+  "flashcards": [
+    {
+      "id": "maocid89vtdmfx9ep",
+      "front": "قَالَ",
+      "back": "گفت",
+      "category": "معنی کلمات",
+      "difficulty": 1,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 3
+      }
+    },
+    {
+      "id": "maocidjh8wvqqengp",
+      "front": "كَتَبَ",
+      "back": "نوشت",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 3
+      }
+    },
+    {
+      "id": "maocid4d63mrcg8hm",
+      "front": "قَرَأَ",
+      "back": "خواند",
+      "category": "معنی کلمات",
+      "difficulty": 3,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 2
+      }
+    },
+    {
+      "id": "maocid6fq32n8m77",
+      "front": "سَمِعَ",
+      "back": "شنید",
+      "category": "معنی کلمات",
+      "difficulty": 1,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 3
+      }
+    },
+    {
+      "id": "maocidtmn67ptyvmk",
+      "front": "فَهِمَ",
+      "back": "فهمید",
+      "category": "معنی کلمات",
+      "difficulty": 3,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 2
+      }
+    },
+    {
+      "id": "maocidvc6z6cx06w7",
+      "front": "عَلِمَ",
+      "back": "دانست",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 1
+      }
+    },
+    {
+      "id": "maocidcz9hsbvknel",
+      "front": "جَلَسَ",
+      "back": "نشست",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 2
+      }
+    },
+    {
+      "id": "maocidgxu7qn1mdpn",
+      "front": "ذَهَبَ",
+      "back": "رفت",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 1
+      }
+    },
+    {
+      "id": "maocid3o4haie7bga",
+      "front": "خَرَجَ",
+      "back": "خارج شد",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 1
+      }
+    },
+    {
+      "id": "maocidzarketokyf",
+      "front": "دَخَلَ",
+      "back": "داخل شد",
+      "category": "معنی کلمات",
+      "difficulty": 1,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 3
+      }
+    },
+    {
+      "id": "maocidownd4ees5gc",
+      "front": "أَكَلَ",
+      "back": "خورد",
+      "category": "معنی کلمات",
+      "difficulty": 3,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 1
+      }
+    },
+    {
+      "id": "maocidsr574j6cda",
+      "front": "شَرِبَ",
+      "back": "نوشید",
+      "category": "معنی کلمات",
+      "difficulty": 1,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 3
+      }
+    },
+    {
+      "id": "maocidzi7bo6jh1or",
+      "front": "نَامَ",
+      "back": "خوابید",
+      "category": "معنی کلمات",
+      "difficulty": 3,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 1
+      }
+    },
+    {
+      "id": "maociddsuv68k7kxo",
+      "front": "عَمِلَ",
+      "back": "کار کرد",
+      "category": "معنی کلمات",
+      "difficulty": 3,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 3
+      }
+    },
+    {
+      "id": "maocidf1j6776b0c",
+      "front": "وَجَدَ",
+      "back": "یافت",
+      "category": "معنی کلمات",
+      "difficulty": 3,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 2
+      }
+    },
+    {
+      "id": "maocidwhfa5hn3899",
+      "front": "نَظَرَ",
+      "back": "نگاه کرد",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 2
+      }
+    },
+    {
+      "id": "maocidwn95wpieuf",
+      "front": "رَأَى",
+      "back": "دید",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 1
+      }
+    },
+    {
+      "id": "maocideztpbnn1y3h",
+      "front": "فَتَحَ",
+      "back": "باز کرد",
+      "category": "معنی کلمات",
+      "difficulty": 3,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 3
+      }
+    },
+    {
+      "id": "maocidhosfaxqk4vt",
+      "front": "أَخَذَ",
+      "back": "گرفت",
+      "category": "معنی کلمات",
+      "difficulty": 1,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 1
+      }
+    },
+    {
+      "id": "maocidzq0llqnmp2",
+      "front": "حَمَلَ",
+      "back": "حمل کرد",
+      "category": "معنی کلمات",
+      "difficulty": 1,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 2
+      }
+    },
+    {
+      "id": "maocidosliuv4rz98",
+      "front": "وَضَعَ",
+      "back": "گذاشت",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 3
+      }
+    },
+    {
+      "id": "maocidxp6cstqu0np",
+      "front": "بَيْت",
+      "back": "خانه",
+      "category": "معنی کلمات",
+      "difficulty": 3,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 1
+      }
+    },
+    {
+      "id": "maocidzrafpqaqkea",
+      "front": "كِتَاب",
+      "back": "کتاب",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 3
+      }
+    },
+    {
+      "id": "maocidi80cwz447k",
+      "front": "مَدْرَسَة",
+      "back": "مدرسه",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 2
+      }
+    },
+    {
+      "id": "maocid3uzck8mk634",
+      "front": "مَسْجِد",
+      "back": "مسجد",
+      "category": "معنی کلمات",
+      "difficulty": 1,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 2
+      }
+    },
+    {
+      "id": "maocidjv9oe8bvbjr",
+      "front": "طَالِب",
+      "back": "دانشجو",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 1
+      }
+    },
+    {
+      "id": "maocidqrdhrvdrga",
+      "front": "مُعَلِّم",
+      "back": "معلم",
+      "category": "معنی کلمات",
+      "difficulty": 3,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 2
+      }
+    },
+    {
+      "id": "maocid3dbkg0vlmou",
+      "front": "صَدِيق",
+      "back": "دوست",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 3
+      }
+    },
+    {
+      "id": "maocid1p2hpd68ydb",
+      "front": "وَلَد",
+      "back": "پسر",
+      "category": "معنی کلمات",
+      "difficulty": 3,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 1
+      }
+    },
+    {
+      "id": "maocidtpe0fwx7hy9",
+      "front": "بِنْت",
+      "back": "دختر",
+      "category": "معنی کلمات",
+      "difficulty": 3,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 1
+      }
+    },
+    {
+      "id": "maocidsr0x78dic8i",
+      "front": "رَجُل",
+      "back": "مرد",
+      "category": "معنی کلمات",
+      "difficulty": 1,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 3
+      }
+    },
+    {
+      "id": "maocidji1zh6xs0n",
+      "front": "اِمْرَأَة",
+      "back": "زن",
+      "category": "معنی کلمات",
+      "difficulty": 1,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 1
+      }
+    },
+    {
+      "id": "maocid7hhgkhpmxlo",
+      "front": "مَاء",
+      "back": "آب",
+      "category": "معنی کلمات",
+      "difficulty": 3,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 1
+      }
+    },
+    {
+      "id": "maocidssi25jev8c",
+      "front": "طَعَام",
+      "back": "غذا",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 2
+      }
+    },
+    {
+      "id": "maocid6xerxshwhh",
+      "front": "شَمْس",
+      "back": "خورشید",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 1
+      }
+    },
+    {
+      "id": "maocid7hdyzwtd5hi",
+      "front": "قَمَر",
+      "back": "ماه",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 1
+      }
+    },
+    {
+      "id": "maocidb90uzlyz35t",
+      "front": "نَهَار",
+      "back": "روز",
+      "category": "معنی کلمات",
+      "difficulty": 3,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 3
+      }
+    },
+    {
+      "id": "maocidhtbrsusqw6h",
+      "front": "لَيْل",
+      "back": "شب",
+      "category": "معنی کلمات",
+      "difficulty": 1,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 2
+      }
+    },
+    {
+      "id": "maocid6c29v9wp2at",
+      "front": "سَمَاء",
+      "back": "آسمان",
+      "category": "معنی کلمات",
+      "difficulty": 3,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 2
+      }
+    },
+    {
+      "id": "maocidjvdoi0rkhq",
+      "front": "أَرْض",
+      "back": "زمین",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 1
+      }
+    },
+    {
+      "id": "maocidf7f3mgit8gc",
+      "front": "بَحْر",
+      "back": "دریا",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 3
+      }
+    },
+    {
+      "id": "maocid7bnvgx5olh7",
+      "front": "جَبَل",
+      "back": "کوه",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 1
+      }
+    },
+    {
+      "id": "maocidob78vjismzm",
+      "front": "كَبِير",
+      "back": "بزرگ",
+      "category": "معنی کلمات",
+      "difficulty": 3,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 2
+      }
+    },
+    {
+      "id": "maocid7etv8z2yi15",
+      "front": "صَغِير",
+      "back": "کوچک",
+      "category": "معنی کلمات",
+      "difficulty": 1,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 3
+      }
+    },
+    {
+      "id": "maocidko2lb26f7ok",
+      "front": "جَمِيل",
+      "back": "زیبا",
+      "category": "معنی کلمات",
+      "difficulty": 1,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 3
+      }
+    },
+    {
+      "id": "maocidv5293eguzi",
+      "front": "قَبِيح",
+      "back": "زشت",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 2
+      }
+    },
+    {
+      "id": "maocidycnutn6d24",
+      "front": "طَوِيل",
+      "back": "بلند",
+      "category": "معنی کلمات",
+      "difficulty": 1,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 3
+      }
+    },
+    {
+      "id": "maocidjt8zzgbk9cc",
+      "front": "قَصِير",
+      "back": "کوتاه",
+      "category": "معنی کلمات",
+      "difficulty": 3,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 3
+      }
+    },
+    {
+      "id": "maocidvlpxttfknu",
+      "front": "كَثِير",
+      "back": "زیاد",
+      "category": "معنی کلمات",
+      "difficulty": 1,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 2
+      }
+    },
+    {
+      "id": "maocid37x6ylsrsn9",
+      "front": "قَلِيل",
+      "back": "کم",
+      "category": "معنی کلمات",
+      "difficulty": 2,
+      "tags": [],
+      "useFrontMarkdown": false,
+      "useBackMarkdown": false,
+      "createdAt": 1747251532267,
+      "updatedAt": 1747251532267,
+      "studyData": {
+        "reviewCount": 0,
+        "lastReviewDate": null,
+        "nextReviewDate": null,
+        "easeFactor": 2.5,
+        "interval": 0,
+        "difficulty": 3
+      }
+    }
+  ],
+  "settings": {
+    "cardsPerPage": 16,
+    "fontSize": 1,
+    "darkMode": true
+  },
+  "stats": {
+    "sessionsCount": 0,
+    "totalReviews": 0,
+    "lastStudyDate": null,
+    "reviewsToday": 0,
+    "studyHistory": []
+  },
+  "exportDate": 1747251532267,
+  "version": "1.1.0"
+}
