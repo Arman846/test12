@@ -1,0 +1,3757 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>همیار درسی</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Marked (for Markdown) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f7ff',
+                            100: '#e0efff',
+                            200: '#baddff',
+                            300: '#85c5ff',
+                            400: '#4ba3fc',
+                            500: '#2186f1',
+                            600: '#1069e6',
+                            700: '#0f51cc',
+                            800: '#1246a6',
+                            900: '#163e83',
+                            950: '#102a5b',
+                        },
+                        secondary: {
+                            50: '#f3f2ff',
+                            100: '#e9e6ff',
+                            200: '#d5d1ff',
+                            300: '#b5acff',
+                            400: '#8f7dff',
+                            500: '#5D5CDE',
+                            600: '#5134d4',
+                            700: '#4424bb',
+                            800: '#3a209a',
+                            900: '#321e7d',
+                            950: '#1d0f48',
+                        }
+                    },
+                    animation: {
+                        'flip': 'flip 0.6s ease-in-out forwards',
+                        'flip-back': 'flip-back 0.6s ease-in-out forwards',
+                        'fade-in': 'fadeIn 0.3s ease-in-out',
+                        'slide-up': 'slideUp 0.4s ease-out',
+                        'slide-down': 'slideDown 0.3s ease-out',
+                        'slide-right': 'slideRight 0.3s ease-out',
+                        'scale-up': 'scaleUp 0.3s ease-out',
+                        'bounce-in': 'bounceIn 0.5s ease-out',
+                        'progress': 'progress 1s ease-out forwards',
+                        'shake': 'shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both',
+                    },
+                    keyframes: {
+                        flip: {
+                            '0%': { transform: 'rotateY(0deg)' },
+                            '100%': { transform: 'rotateY(180deg)' }
+                        },
+                        'flip-back': {
+                            '0%': { transform: 'rotateY(180deg)' },
+                            '100%': { transform: 'rotateY(0deg)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: 0 },
+                            '100%': { opacity: 1 }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: 0 },
+                            '100%': { transform: 'translateY(0)', opacity: 1 }
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-20px)', opacity: 0 },
+                            '100%': { transform: 'translateY(0)', opacity: 1 }
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(-20px)', opacity: 0 },
+                            '100%': { transform: 'translateX(0)', opacity: 1 }
+                        },
+                        scaleUp: {
+                            '0%': { transform: 'scale(0.8)', opacity: 0 },
+                            '100%': { transform: 'scale(1)', opacity: 1 }
+                        },
+                        bounceIn: {
+                            '0%': { transform: 'scale(0.3)', opacity: 0 },
+                            '50%': { transform: 'scale(1.05)', opacity: 0.8 },
+                            '70%': { transform: 'scale(0.9)', opacity: 1 },
+                            '100%': { transform: 'scale(1)', opacity: 1 }
+                        },
+                        progress: {
+                            '0%': { width: '0%' },
+                            '100%': { width: 'var(--progress-width)' }
+                        },
+                        shake: {
+                            '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+                            '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
+                            '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
+                            '40%, 60%': { transform: 'translate3d(4px, 0, 0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Vazirmatn';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'Vazirmatn';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'Vazirmatn';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        :root {
+            --card-flip-time: 0.6s;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+        }
+        
+        /* Card perspective */
+        .card-container {
+            perspective: 1000px;
+        }
+        
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform var(--card-flip-time) ease;
+            transform-style: preserve-3d;
+        }
+        
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        
+        .card-back {
+            transform: rotateY(180deg);
+        }
+        
+        .card-flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        /* Scrollbar styling */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+        }
+        
+        .dark .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Progress bar animations */
+        .progress-bar-inner {
+            width: 0;
+            animation: progress 1s ease-out forwards;
+        }
+        
+        /* Transition classes */
+        .smooth-fade {
+            transition: all 0.3s ease;
+        }
+        
+        /* Special styling for markdown content */
+        .markdown-content ul {
+            list-style-type: disc;
+            margin-right: 1.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .markdown-content ol {
+            list-style-type: decimal;
+            margin-right: 1.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .markdown-content h1, 
+        .markdown-content h2, 
+        .markdown-content h3 {
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .markdown-content h1 {
+            font-size: 1.5rem;
+        }
+        
+        .markdown-content h2 {
+            font-size: 1.25rem;
+        }
+        
+        .markdown-content h3 {
+            font-size: 1.125rem;
+        }
+        
+        .markdown-content p {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .markdown-content pre {
+            padding: 0.5rem;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 0.25rem;
+            margin: 0.5rem 0;
+            overflow-x: auto;
+        }
+        
+        .dark .markdown-content pre {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .markdown-content code {
+            font-family: monospace;
+            padding: 0.125rem 0.25rem;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 0.25rem;
+        }
+        
+        .dark .markdown-content code {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .markdown-content blockquote {
+            border-right: 3px solid #9ca3af;
+            padding-right: 1rem;
+            margin: 0.5rem 0;
+            color: #6b7280;
+        }
+        
+        .dark .markdown-content blockquote {
+            border-right-color: #6b7280;
+            color: #9ca3af;
+        }
+        
+        /* Floating labels */
+        .floating-label {
+            top: -0.75rem;
+            right: 0.75rem;
+            transition: all 0.2s ease;
+        }
+        
+        /* Tooltip styling */
+        .tooltip {
+            position: relative;
+        }
+        
+        .tooltip-text {
+            visibility: hidden;
+            width: auto;
+            white-space: nowrap;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            right: 50%;
+            transform: translateX(50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+        
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        /* Custom checkbox styling */
+        .custom-checkbox {
+            display: flex;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        
+        .checkmark {
+            height: 22px;
+            width: 22px;
+            background-color: #fff;
+            border: 2px solid #cbd5e0;
+            border-radius: 4px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .dark .checkmark {
+            background-color: #1f2937;
+            border-color: #4b5563;
+        }
+        
+        .custom-checkbox:hover input ~ .checkmark {
+            border-color: #5D5CDE;
+        }
+        
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #5D5CDE;
+            border-color: #5D5CDE;
+        }
+        
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 7px;
+            top: 3px;
+            width: 6px;
+            height: 11px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        
+        /* Tag input styling */
+        .tag-item {
+            display: inline-flex;
+            align-items: center;
+            background-color: #e0efff;
+            color: #1069e6;
+            border-radius: 9999px;
+            padding: 0.25rem 0.75rem;
+            margin-left: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+        
+        .dark .tag-item {
+            background-color: #1e3a8a;
+            color: #93c5fd;
+        }
+        
+        .tag-item .tag-remove {
+            margin-right: 0.5rem;
+            cursor: pointer;
+            color: #1069e6;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .dark .tag-item .tag-remove {
+            color: #93c5fd;
+        }
+        
+        .tag-item .tag-remove:hover {
+            opacity: 1;
+        }
+        
+        /* Media query for smaller screens */
+        @media (max-width: 640px) {
+            .xs-full {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen custom-scrollbar">
+    <!-- Initialize dark mode -->
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+
+    <!-- Main Container -->
+    <div class="container mx-auto px-4 py-6 max-w-7xl">
+        <!-- App Header -->
+        <header class="relative mb-8">
+            <!-- Dark Mode Toggle -->
+            <div class="absolute left-0 top-0">
+                <button id="theme-toggle" class="p-2 rounded-full bg-white dark:bg-gray-800 shadow-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                    <i class="fas fa-sun text-yellow-500 dark:hidden"></i>
+                    <i class="fas fa-moon text-blue-300 hidden dark:block"></i>
+                </button>
+            </div>
+            
+            <!-- Title and Stats -->
+            <div class="text-center">
+                <h1 class="text-3xl font-bold text-primary-700 dark:text-primary-400 mb-2 flex items-center justify-center">
+                    <i class="fas fa-graduation-cap mr-3"></i>
+                    فلش‌کارت پیشرفته
+                </h1>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">ابزاری هوشمند برای یادگیری و مرور بهتر مطالب</p>
+                
+                <!-- Quick Stats -->
+                <div class="flex flex-wrap justify-center gap-3 mt-4">
+                    <div class="bg-white dark:bg-gray-800 shadow rounded-lg px-4 py-2 flex items-center">
+                        <div class="p-2 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-300">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div class="mr-3 text-right">
+                            <div class="text-xs text-gray-500 dark:text-gray-400">کل کارت‌ها</div>
+                            <div class="font-bold tracking-wider" id="total-cards-count">0</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 shadow rounded-lg px-4 py-2 flex items-center">
+                        <div class="p-2 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300">
+                            <i class="fas fa-folder"></i>
+                        </div>
+                        <div class="mr-3 text-right">
+                            <div class="text-xs text-gray-500 dark:text-gray-400">دسته‌ها</div>
+                            <div class="font-bold tracking-wider" id="total-categories-count">0</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 shadow rounded-lg px-4 py-2 flex items-center">
+                        <div class="p-2 rounded-full bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="mr-3 text-right">
+                            <div class="text-xs text-gray-500 dark:text-gray-400">مرور شده امروز</div>
+                            <div class="font-bold tracking-wider" id="reviewed-today-count">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Navigation -->
+        <nav class="bg-white dark:bg-gray-800 rounded-xl shadow-md mb-8 overflow-hidden">
+            <div class="flex flex-wrap">
+                <button class="nav-tab flex-1 py-4 px-4 text-center font-medium text-primary-600 dark:text-primary-400 border-b-2 border-primary-500 bg-primary-50 dark:bg-primary-900/30" data-tab="create">
+                    <i class="fas fa-plus-circle mr-2"></i>
+                    <span class="hidden sm:inline">ایجاد</span>
+                </button>
+                <button class="nav-tab flex-1 py-4 px-4 text-center font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors" data-tab="browse">
+                    <i class="fas fa-th-large mr-2"></i>
+                    <span class="hidden sm:inline">مرور</span>
+                </button>
+                <button class="nav-tab flex-1 py-4 px-4 text-center font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors" data-tab="study">
+                    <i class="fas fa-book-reader mr-2"></i>
+                    <span class="hidden sm:inline">مطالعه</span>
+                </button>
+                <button class="nav-tab flex-1 py-4 px-4 text-center font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors" data-tab="stats">
+                    <i class="fas fa-chart-line mr-2"></i>
+                    <span class="hidden sm:inline">آمار</span>
+                </button>
+                <button class="nav-tab flex-1 py-4 px-4 text-center font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors" data-tab="settings">
+                    <i class="fas fa-cog mr-2"></i>
+                    <span class="hidden sm:inline">تنظیمات</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Alert Container -->
+        <div id="alert-container" class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-md"></div>
+
+        <!-- Create Tab -->
+        <div id="create-tab" class="tab-content animate-fade-in">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Card Creation Form -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                        <h2 class="text-xl font-bold mb-6 text-primary-700 dark:text-primary-400 flex items-center">
+                            <i class="fas fa-plus-circle mr-2"></i>
+                            ایجاد فلش‌کارت جدید
+                        </h2>
+                        
+                        <form id="create-form" class="space-y-6">
+                            <input type="hidden" id="edit-card-id" value="">
+                            
+                            <!-- Card Front -->
+                            <div class="relative">
+                                <label for="card-front" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                    صورت سؤال (روی کارت)
+                                </label>
+                                <textarea 
+                                    id="card-front" 
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 shadow-sm text-base"
+                                    rows="3"
+                                    dir="auto"
+                                    placeholder="سؤال، کلمه یا عبارتی که می‌خواهید یاد بگیرید را وارد کنید..."
+                                    required
+                                ></textarea>
+                                <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                    <span>
+                                        <label class="custom-checkbox mr-1">
+                                            <input type="checkbox" id="front-markdown-toggle">
+                                            <span class="checkmark ml-2"></span>
+                                            <span>فرمت Markdown</span>
+                                        </label>
+                                    </span>
+                                    <span id="front-char-count">0 کاراکتر</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Card Back -->
+                            <div class="relative">
+                                <label for="card-back" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                    پاسخ (پشت کارت)
+                                </label>
+                                <textarea 
+                                    id="card-back" 
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 shadow-sm text-base"
+                                    rows="5"
+                                    dir="auto"
+                                    placeholder="پاسخ سؤال، معنی کلمه یا توضیحات تکمیلی را وارد کنید..."
+                                    required
+                                ></textarea>
+                                <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                    <span>
+                                        <label class="custom-checkbox mr-1">
+                                            <input type="checkbox" id="back-markdown-toggle">
+                                            <span class="checkmark ml-2"></span>
+                                            <span>فرمت Markdown</span>
+                                        </label>
+                                    </span>
+                                    <span id="back-char-count">0 کاراکتر</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Card Properties -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <!-- Category -->
+                                <div>
+                                    <label for="card-category" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                        دسته‌بندی
+                                    </label>
+                                    <input 
+                                        list="categories-list"
+                                        id="card-category" 
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 shadow-sm text-base"
+                                        placeholder="انتخاب یا ایجاد دسته‌بندی جدید"
+                                        dir="auto"
+                                    >
+                                    <datalist id="categories-list"></datalist>
+                                </div>
+                                
+                                <!-- Difficulty -->
+                                <div>
+                                    <label for="card-difficulty" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                        سطح دشواری
+                                    </label>
+                                    <select 
+                                        id="card-difficulty" 
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 shadow-sm text-base"
+                                    >
+                                        <option value="1">ساده</option>
+                                        <option value="2" selected>متوسط</option>
+                                        <option value="3">دشوار</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- Tags -->
+                            <div>
+                                <label for="card-tags" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                    برچسب‌ها (با Enter جدا کنید)
+                                </label>
+                                <div class="relative">
+                                    <input 
+                                        id="card-tags" 
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 shadow-sm text-base"
+                                        placeholder="ریاضی، فیزیک، ..."
+                                        dir="auto"
+                                    >
+                                    <div id="tags-container" class="mt-2 flex flex-wrap"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Form Actions -->
+                            <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 sm:space-x-reverse">
+                                <button 
+                                    type="submit" 
+                                    class="flex-1 py-3 px-4 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50 transition-colors flex justify-center items-center"
+                                >
+                                    <i class="fas fa-save mr-2"></i>
+                                    <span id="save-button-text">ذخیره فلش‌کارت</span>
+                                </button>
+                                <button 
+                                    type="button" 
+                                    id="reset-form-button"
+                                    class="flex-1 py-3 px-4 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors flex justify-center items-center"
+                                >
+                                    <i class="fas fa-undo mr-2"></i>
+                                    پاک کردن فرم
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Card Preview -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 h-full flex flex-col">
+                        <h2 class="text-xl font-bold mb-6 text-primary-700 dark:text-primary-400 flex items-center">
+                            <i class="fas fa-eye mr-2"></i>
+                            پیش‌نمایش کارت
+                        </h2>
+                        
+                        <div class="card-container h-80 mb-4 flex-grow">
+                            <div id="preview-card" class="card-inner h-full">
+                                <!-- Card Front -->
+                                <div class="card-front bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/40 dark:to-primary-900/60 border border-primary-200 dark:border-primary-800 rounded-xl p-6 flex flex-col">
+                                    <div class="flex-grow flex items-center justify-center">
+                                        <div id="preview-front" class="text-center text-lg font-medium text-gray-800 dark:text-gray-100 markdown-content custom-scrollbar overflow-auto p-2">
+                                            پیش‌نمایش صورت سؤال
+                                        </div>
+                                    </div>
+                                    <div class="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
+                                        برای دیدن پاسخ کلیک کنید
+                                    </div>
+                                </div>
+                                
+                                <!-- Card Back -->
+                                <div class="card-back bg-gradient-to-br from-secondary-50 to-secondary-100 dark:from-secondary-900/40 dark:to-secondary-900/60 border border-secondary-200 dark:border-secondary-800 rounded-xl p-6 flex flex-col">
+                                    <div class="flex-grow flex items-center justify-center">
+                                        <div id="preview-back" class="text-center text-lg font-medium text-gray-800 dark:text-gray-100 markdown-content custom-scrollbar overflow-auto p-2">
+                                            پیش‌نمایش پاسخ
+                                        </div>
+                                    </div>
+                                    <div class="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
+                                        برای بازگشت به سؤال کلیک کنید
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button id="flip-preview" class="text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 transition-colors font-medium">
+                                <i class="fas fa-sync-alt mr-1"></i>
+                                برگرداندن کارت
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Browse Tab -->
+        <div id="browse-tab" class="tab-content hidden">
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-6">
+                <div class="flex flex-col md:flex-row justify-between mb-6">
+                    <h2 class="text-xl font-bold mb-4 md:mb-0 text-primary-700 dark:text-primary-400 flex items-center">
+                        <i class="fas fa-th-large mr-2"></i>
+                        مرور فلش‌کارت‌ها
+                    </h2>
+                    
+                    <!-- Search and Filter -->
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <!-- Search -->
+                        <div class="relative">
+                            <input 
+                                type="text" 
+                                id="search-input" 
+                                class="w-full sm:w-60 pl-10 pr-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm"
+                                placeholder="جستجو در فلش‌کارت‌ها..."
+                            >
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-400 dark:text-gray-500"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Filter -->
+                        <div class="flex gap-3">
+                            <select 
+                                id="category-filter" 
+                                class="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm py-2 px-3"
+                            >
+                                <option value="all">همه دسته‌ها</option>
+                            </select>
+                            
+                            <select 
+                                id="sort-filter" 
+                                class="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm py-2 px-3"
+                            >
+                                <option value="newest">جدیدترین</option>
+                                <option value="oldest">قدیمی‌ترین</option>
+                                <option value="az">الفبایی (صعودی)</option>
+                                <option value="za">الفبایی (نزولی)</option>
+                                <option value="hardest">دشوارترین</option>
+                                <option value="easiest">ساده‌ترین</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tags Filter -->
+                <div class="mb-6">
+                    <div class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">فیلتر بر اساس برچسب:</div>
+                    <div id="tag-filters" class="flex flex-wrap gap-2"></div>
+                </div>
+                
+                <!-- No Cards Message -->
+                <div id="no-cards-message" class="hidden text-center py-6">
+                    <div class="text-5xl text-gray-300 dark:text-gray-600 mb-4">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="text-xl font-medium text-gray-600 dark:text-gray-400 mb-2">هیچ فلش‌کارتی یافت نشد</h3>
+                    <p class="text-gray-500 dark:text-gray-500">می‌توانید از قسمت "ایجاد" فلش‌کارت‌های جدید اضافه کنید.</p>
+                </div>
+                
+                <!-- Cards Grid -->
+                <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+                
+                <!-- Pagination -->
+                <div class="flex justify-between items-center mt-6 text-sm">
+                    <div id="pagination-info" class="text-gray-600 dark:text-gray-400">
+                        نمایش <span id="showing-start">0</span> تا <span id="showing-end">0</span> از <span id="total-items">0</span> فلش‌کارت
+                    </div>
+                    <div class="flex gap-2">
+                        <button id="prev-page" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div id="pagination-pages" class="flex"></div>
+                        <button id="next-page" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bulk Actions -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-bold mb-4 text-primary-700 dark:text-primary-400 flex items-center">
+                    <i class="fas fa-tasks mr-2"></i>
+                    عملیات گروهی
+                </h3>
+                
+                <div class="flex flex-wrap gap-3">
+                    <button id="select-all-cards" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-lg transition-colors flex items-center">
+                        <i class="fas fa-check-square mr-2"></i>
+                        انتخاب همه
+                    </button>
+                    <button id="deselect-all-cards" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-lg transition-colors flex items-center">
+                        <i class="fas fa-square mr-2"></i>
+                        لغو انتخاب همه
+                    </button>
+                    <button id="bulk-export" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors flex items-center">
+                        <i class="fas fa-file-export mr-2"></i>
+                        خروجی JSON
+                    </button>
+                    <button id="bulk-delete" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors flex items-center">
+                        <i class="fas fa-trash-alt mr-2"></i>
+                        حذف انتخاب‌شده‌ها
+                    </button>
+                </div>
+                
+                <div class="mt-4">
+                    <label for="import-file" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors flex items-center inline-block cursor-pointer">
+                        <i class="fas fa-file-import mr-2"></i>
+                        وارد کردن از JSON
+                    </label>
+                    <input type="file" id="import-file" accept=".json" class="hidden">
+                </div>
+            </div>
+        </div>
+
+        <!-- Study Tab -->
+        <div id="study-tab" class="tab-content hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Study Options -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                        <h2 class="text-xl font-bold mb-6 text-primary-700 dark:text-primary-400 flex items-center">
+                            <i class="fas fa-book-reader mr-2"></i>
+                            تنظیمات مطالعه
+                        </h2>
+                        
+                        <form id="study-options-form" class="space-y-4">
+                            <!-- Study Mode -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    حالت مطالعه
+                                </label>
+                                <div class="space-y-2">
+                                    <label class="custom-checkbox">
+                                        <input type="radio" name="study-mode" value="all" checked>
+                                        <span class="checkmark ml-2"></span>
+                                        <span class="text-gray-700 dark:text-gray-300">همه کارت‌ها</span>
+                                    </label>
+                                    <label class="custom-checkbox">
+                                        <input type="radio" name="study-mode" value="new">
+                                        <span class="checkmark ml-2"></span>
+                                        <span class="text-gray-700 dark:text-gray-300">کارت‌های جدید</span>
+                                    </label>
+                                    <label class="custom-checkbox">
+                                        <input type="radio" name="study-mode" value="due">
+                                        <span class="checkmark ml-2"></span>
+                                        <span class="text-gray-700 dark:text-gray-300">کارت‌های نیازمند مرور</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <!-- Category Selection -->
+                            <div>
+                                <label for="study-category" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    دسته‌بندی
+                                </label>
+                                <select 
+                                    id="study-category" 
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 shadow-sm text-base"
+                                >
+                                    <option value="all">همه دسته‌ها</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Order -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    ترتیب کارت‌ها
+                                </label>
+                                <div class="space-y-2">
+                                    <label class="custom-checkbox">
+                                        <input type="radio" name="study-order" value="random" checked>
+                                        <span class="checkmark ml-2"></span>
+                                        <span class="text-gray-700 dark:text-gray-300">تصادفی</span>
+                                    </label>
+                                    <label class="custom-checkbox">
+                                        <input type="radio" name="study-order" value="difficulty">
+                                        <span class="checkmark ml-2"></span>
+                                        <span class="text-gray-700 dark:text-gray-300">بر اساس دشواری (دشوارترین اول)</span>
+                                    </label>
+                                    <label class="custom-checkbox">
+                                        <input type="radio" name="study-order" value="newest">
+                                        <span class="checkmark ml-2"></span>
+                                        <span class="text-gray-700 dark:text-gray-300">جدیدترین</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <!-- Card Limit -->
+                            <div>
+                                <label for="card-limit" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    تعداد کارت‌ها (حداکثر)
+                                </label>
+                                <input 
+                                    type="number" 
+                                    id="card-limit" 
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 shadow-sm text-base"
+                                    value="20"
+                                    min="1"
+                                    max="100"
+                                >
+                            </div>
+                            
+                            <!-- Start Button -->
+                            <button 
+                                type="submit" 
+                                class="w-full py-3 px-4 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50 transition-colors flex justify-center items-center"
+                            >
+                                <i class="fas fa-play mr-2"></i>
+                                شروع مطالعه
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Study Area -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 h-full flex flex-col">
+                        <!-- Study Header -->
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-xl font-bold text-primary-700 dark:text-primary-400 flex items-center">
+                                <i class="fas fa-graduation-cap mr-2"></i>
+                                مطالعه
+                            </h2>
+                            
+                            <div id="study-progress-wrapper" class="hidden">
+                                <div class="flex items-center gap-2">
+                                    <div class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                        <span id="current-card-index">0</span>/<span id="total-study-cards">0</span>
+                                    </div>
+                                    <div class="relative w-32 h-2 bg-gray-200 dark:bg-gray-700 rounded-full">
+                                        <div id="study-progress-bar" class="absolute left-0 top-0 h-full bg-primary-500 rounded-full" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- No Cards Message -->
+                        <div id="study-no-cards" class="flex-grow flex flex-col items-center justify-center text-center p-8">
+                            <div class="text-5xl text-gray-300 dark:text-gray-600 mb-4">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h3 class="text-xl font-medium text-gray-600 dark:text-gray-400 mb-2">آماده مطالعه</h3>
+                            <p class="text-gray-500 dark:text-gray-500 mb-6">برای شروع مطالعه، گزینه‌های سمت راست را تنظیم کنید و روی "شروع مطالعه" کلیک کنید.</p>
+                            <p class="text-gray-500 dark:text-gray-500">
+                                <a href="#create-tab" class="text-primary-600 dark:text-primary-400 hover:underline" id="create-cards-link">ایجاد فلش‌کارت جدید</a>
+                            </p>
+                        </div>
+                        
+                        <!-- Study Card Area -->
+                        <div id="study-card-area" class="hidden flex-grow flex flex-col">
+                            <!-- Card Container -->
+                            <div class="card-container flex-grow mb-6">
+                                <div id="study-card" class="card-inner h-full">
+                                    <!-- Card Front -->
+                                    <div class="card-front bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/40 dark:to-primary-900/60 border border-primary-200 dark:border-primary-800 rounded-xl p-6 flex flex-col">
+                                        <div class="flex justify-between items-start mb-4">
+                                            <div class="text-xs bg-primary-200 dark:bg-primary-800 text-primary-900 dark:text-primary-200 px-2 py-1 rounded-full" id="study-card-category">دسته‌بندی</div>
+                                            <div class="flex items-center space-x-reverse space-x-1">
+                                                <span class="text-xs text-primary-600 dark:text-primary-400" id="study-card-difficulty-text">متوسط</span>
+                                                <div class="flex" id="study-card-difficulty-stars"></div>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow flex items-center justify-center">
+                                            <div id="study-card-front" class="text-lg font-medium text-gray-800 dark:text-gray-100 markdown-content custom-scrollbar overflow-auto p-2">
+                                                سؤال
+                                            </div>
+                                        </div>
+                                        <div class="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
+                                            برای دیدن پاسخ کلیک کنید
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Card Back -->
+                                    <div class="card-back bg-gradient-to-br from-secondary-50 to-secondary-100 dark:from-secondary-900/40 dark:to-secondary-900/60 border border-secondary-200 dark:border-secondary-800 rounded-xl p-6 flex flex-col">
+                                        <div class="flex-grow flex items-center justify-center">
+                                            <div id="study-card-back" class="text-lg font-medium text-gray-800 dark:text-gray-100 markdown-content custom-scrollbar overflow-auto p-2">
+                                                پاسخ
+                                            </div>
+                                        </div>
+                                        <div id="rating-buttons" class="grid grid-cols-3 gap-2 mt-4">
+                                            <button data-rating="1" class="rating-btn py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors">
+                                                <i class="fas fa-frown mr-1"></i>
+                                                سخت بود
+                                            </button>
+                                            <button data-rating="2" class="rating-btn py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg transition-colors">
+                                                <i class="fas fa-meh mr-1"></i>
+                                                متوسط
+                                            </button>
+                                            <button data-rating="3" class="rating-btn py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors">
+                                                <i class="fas fa-smile mr-1"></i>
+                                                آسان بود
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Study Controls -->
+                            <div class="flex justify-between items-center">
+                                <button id="flip-study-card" class="text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 transition-colors font-medium">
+                                    <i class="fas fa-sync-alt mr-1"></i>
+                                    برگرداندن کارت
+                                </button>
+                                
+                                <div class="flex gap-3">
+                                    <button id="edit-study-card" class="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors">
+                                        <i class="fas fa-edit mr-1"></i>
+                                        ویرایش
+                                    </button>
+                                    <button id="skip-card" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-md transition-colors">
+                                        <i class="fas fa-forward mr-1"></i>
+                                        رد کردن
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Study Completed -->
+                        <div id="study-completed" class="hidden flex-grow flex flex-col items-center justify-center text-center p-8">
+                            <div class="text-5xl text-green-500 mb-4">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-2">مطالعه تکمیل شد!</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">شما تمام کارت‌های این جلسه را مرور کردید.</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-lg mb-6">
+                                <div class="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                                    <div class="text-2xl font-bold text-primary-600 dark:text-primary-400" id="cards-studied-count">0</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400">کارت مرور شده</div>
+                                </div>
+                                <div class="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                                    <div class="text-2xl font-bold text-green-600 dark:text-green-400" id="cards-easy-count">0</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400">پاسخ‌های درست</div>
+                                </div>
+                                <div class="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                                    <div class="text-2xl font-bold text-red-600 dark:text-red-400" id="cards-hard-count">0</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400">نیاز به تکرار</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-wrap justify-center gap-3">
+                                <button id="restart-study" class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors flex items-center">
+                                    <i class="fas fa-redo mr-2"></i>
+                                    مطالعه مجدد
+                                </button>
+                                <button id="study-difficult-cards" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors flex items-center">
+                                    <i class="fas fa-book-reader mr-2"></i>
+                                    مرور کارت‌های دشوار
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Tab -->
+        <div id="stats-tab" class="tab-content hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Summary Stats -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                        <h2 class="text-xl font-bold mb-6 text-primary-700 dark:text-primary-400 flex items-center">
+                            <i class="fas fa-chart-pie mr-2"></i>
+                            خلاصه آمار
+                        </h2>
+                        
+                        <div class="space-y-6">
+                            <!-- Total Cards -->
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-300 ml-4">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-500 dark:text-gray-400">کل فلش‌کارت‌ها</div>
+                                    <div class="text-2xl font-bold text-gray-800 dark:text-gray-200" id="stats-total-cards">0</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Categories -->
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 ml-4">
+                                    <i class="fas fa-folder"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-500 dark:text-gray-400">تعداد دسته‌بندی‌ها</div>
+                                    <div class="text-2xl font-bold text-gray-800 dark:text-gray-200" id="stats-categories">0</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Total Tags -->
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 ml-4">
+                                    <i class="fas fa-tags"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-500 dark:text-gray-400">تعداد برچسب‌ها</div>
+                                    <div class="text-2xl font-bold text-gray-800 dark:text-gray-200" id="stats-tags">0</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Study Sessions -->
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 ml-4">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-500 dark:text-gray-400">جلسات مطالعه</div>
+                                    <div class="text-2xl font-bold text-gray-800 dark:text-gray-200" id="stats-sessions">0</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Total Reviews -->
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 ml-4">
+                                    <i class="fas fa-sync-alt"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-500 dark:text-gray-400">کل مرورها</div>
+                                    <div class="text-2xl font-bold text-gray-800 dark:text-gray-200" id="stats-reviews">0</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Category Distribution -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                        <h2 class="text-xl font-bold mb-6 text-primary-700 dark:text-primary-400 flex items-center">
+                            <i class="fas fa-chart-bar mr-2"></i>
+                            توزیع کارت‌ها بر اساس دسته‌بندی
+                        </h2>
+                        
+                        <div id="category-chart-container" class="h-80"></div>
+                        
+                        <div id="no-stats-message" class="hidden text-center py-10">
+                            <div class="text-5xl text-gray-300 dark:text-gray-600 mb-4">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 class="text-xl font-medium text-gray-600 dark:text-gray-400 mb-2">آمار کافی وجود ندارد</h3>
+                            <p class="text-gray-500 dark:text-gray-500">
+                                با ایجاد و مطالعه بیشتر فلش‌کارت‌ها، آمار و نمودارهای بیشتری در اینجا نمایش داده خواهد شد.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Most Difficult Cards -->
+                <div class="lg:col-span-3">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                        <h2 class="text-xl font-bold mb-6 text-primary-700 dark:text-primary-400 flex items-center">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>
+                            دشوارترین کارت‌ها (نیازمند تکرار بیشتر)
+                        </h2>
+                        
+                        <div id="difficult-cards-container" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+                        
+                        <div id="no-difficult-cards" class="hidden text-center py-10">
+                            <div class="text-5xl text-gray-300 dark:text-gray-600 mb-4">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h3 class="text-xl font-medium text-gray-600 dark:text-gray-400 mb-2">هیچ کارت دشواری یافت نشد</h3>
+                            <p class="text-gray-500 dark:text-gray-500">
+                                در حال حاضر، همه کارت‌های شما در وضعیت خوبی قرار دارند. با مطالعه بیشتر، کارت‌های نیازمند تکرار بیشتر در این قسمت نمایش داده خواهند شد.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="settings-tab" class="tab-content hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Display Settings -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                    <h2 class="text-xl font-bold mb-6 text-primary-700 dark:text-primary-400 flex items-center">
+                        <i class="fas fa-sliders-h mr-2"></i>
+                        تنظیمات نمایش
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <!-- Dark Mode -->
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="font-medium text-gray-800 dark:text-gray-200">حالت تاریک</div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">تغییر بین حالت روشن و تاریک</div>
+                            </div>
+                            <div class="relative">
+                                <label class="flex items-center cursor-pointer">
+                                    <div class="relative">
+                                        <input type="checkbox" id="dark-mode-toggle" class="sr-only">
+                                        <div class="w-14 h-7 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                                        <div id="dark-mode-dot" class="absolute w-5 h-5 bg-white rounded-full transition transform right-1 top-1 dark:translate-x-7 dark:bg-blue-400"></div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Cards per Page -->
+                        <div>
+                            <div class="font-medium text-gray-800 dark:text-gray-200 mb-2">تعداد کارت‌ها در هر صفحه</div>
+                            <select id="cards-per-page" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 shadow-sm text-base">
+                                <option value="8">8 کارت</option>
+                                <option value="12" selected>12 کارت</option>
+                                <option value="16">16 کارت</option>
+                                <option value="24">24 کارت</option>
+                                <option value="36">36 کارت</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Animation Speed -->
+                        <div>
+                            <div class="font-medium text-gray-800 dark:text-gray-200 mb-2">سرعت انیمیشن‌ها</div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-sm text-gray-500 dark:text-gray-400">آهسته</span>
+                                <input type="range" min="1" max="10" value="6" id="animation-speed" class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer">
+                                <span class="text-sm text-gray-500 dark:text-gray-400">سریع</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Font Size -->
+                        <div>
+                            <div class="font-medium text-gray-800 dark:text-gray-200 mb-2">اندازه متن</div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-xs text-gray-500 dark:text-gray-400">کوچک</span>
+                                <input type="range" min="1" max="5" value="3" id="font-size" class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer">
+                                <span class="text-xl text-gray-500 dark:text-gray-400">بزرگ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data Management -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                    <h2 class="text-xl font-bold mb-6 text-primary-700 dark:text-primary-400 flex items-center">
+                        <i class="fas fa-database mr-2"></i>
+                        مدیریت داده‌ها
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <!-- Export All Data -->
+                        <div>
+                            <div class="font-medium text-gray-800 dark:text-gray-200 mb-2">
+                                پشتیبان‌گیری از همه داده‌ها
+                            </div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                                تمام اطلاعات فلش‌کارت‌ها، تنظیمات و آمار را در یک فایل JSON خروجی بگیرید.
+                            </p>
+                            <button id="export-all-data" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors flex items-center">
+                                <i class="fas fa-download mr-2"></i>
+                                خروجی کامل
+                            </button>
+                        </div>
+                        
+                        <!-- Import Data -->
+                        <div>
+                            <div class="font-medium text-gray-800 dark:text-gray-200 mb-2">
+                                بازیابی از فایل پشتیبان
+                            </div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                                داده‌های خود را از یک فایل JSON بازیابی کنید.
+                            </p>
+                            <label for="import-all-file" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors flex items-center inline-block cursor-pointer">
+                                <i class="fas fa-upload mr-2"></i>
+                                بازیابی از فایل
+                            </label>
+                            <input type="file" id="import-all-file" accept=".json" class="hidden">
+                        </div>
+                        
+                        <!-- Reset Settings -->
+                        <div>
+                            <div class="font-medium text-gray-800 dark:text-gray-200 mb-2">
+                                بازنشانی تنظیمات
+                            </div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                                بازگرداندن تمام تنظیمات به حالت پیش‌فرض.
+                            </p>
+                            <button id="reset-settings" class="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg transition-colors flex items-center">
+                                <i class="fas fa-undo mr-2"></i>
+                                بازنشانی تنظیمات
+                            </button>
+                        </div>
+                        
+                        <!-- Reset All Data -->
+                        <div>
+                            <div class="font-medium text-gray-800 dark:text-gray-200 mb-2">
+                                حذف تمام داده‌ها
+                            </div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                                هشدار: این عملیات تمام فلش‌کارت‌ها، تنظیمات و آمار را حذف می‌کند و قابل بازگشت نیست.
+                            </p>
+                            <button id="reset-all-data" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors flex items-center">
+                                <i class="fas fa-trash-alt mr-2"></i>
+                                حذف همه داده‌ها
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- About -->
+                <div class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                    <h2 class="text-xl font-bold mb-4 text-primary-700 dark:text-primary-400 flex items-center">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        درباره
+                    </h2>
+                    
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        فلش‌کارت پیشرفته، یک اپلیکیشن تحت وب برای ایجاد و مطالعه فلش‌کارت‌های آموزشی است. این برنامه به شما کمک می‌کند تا مطالب درسی خود را به صورت کارآمد یاد بگیرید و مرور کنید.
+                    </p>
+                    
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        تمام داده‌های شما به صورت محلی در مرورگر ذخیره می‌شوند و از سیستم تکرار فاصله‌دار برای بهینه‌سازی یادگیری استفاده می‌شود.
+                    </p>
+                    
+                    <div class="flex items-center justify-center mt-6">
+                        <div class="text-sm text-gray-500 dark:text-gray-400">
+                            نسخه ۱.۰.۰
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Detail Modal -->
+    <div id="card-detail-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col animate-scale-up mx-4">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 p-4">
+                <h3 class="text-lg font-bold text-gray-800 dark:text-gray-200">جزئیات فلش‌کارت</h3>
+                <button id="close-modal" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="flex-grow overflow-y-auto p-6 custom-scrollbar">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Card Preview -->
+                    <div class="md:col-span-1">
+                        <h4 class="text-md font-medium text-gray-700 dark:text-gray-300 mb-3">پیش‌نمایش کارت</h4>
+                        
+                        <div class="card-container h-64 mb-4">
+                            <div id="modal-card" class="card-inner h-full">
+                                <!-- Card Front -->
+                                <div class="card-front bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/40 dark:to-primary-900/60 border border-primary-200 dark:border-primary-800 rounded-xl p-4 flex flex-col">
+                                    <div class="flex-grow flex items-center justify-center">
+                                        <div id="modal-card-front" class="text-center text-lg font-medium text-gray-800 dark:text-gray-100 markdown-content custom-scrollbar overflow-auto p-2">
+                                            پیش‌نمایش صورت سؤال
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Card Back -->
+                                <div class="card-back bg-gradient-to-br from-secondary-50 to-secondary-100 dark:from-secondary-900/40 dark:to-secondary-900/60 border border-secondary-200 dark:border-secondary-800 rounded-xl p-4 flex flex-col">
+                                    <div class="flex-grow flex items-center justify-center">
+                                        <div id="modal-card-back" class="text-center text-lg font-medium text-gray-800 dark:text-gray-100 markdown-content custom-scrollbar overflow-auto p-2">
+                                            پیش‌نمایش پاسخ
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button id="flip-modal-card" class="text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 transition-colors font-medium">
+                                <i class="fas fa-sync-alt mr-1"></i>
+                                برگرداندن کارت
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Card Details -->
+                    <div class="md:col-span-1">
+                        <h4 class="text-md font-medium text-gray-700 dark:text-gray-300 mb-3">اطلاعات کارت</h4>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">دسته‌بندی</div>
+                                <div id="modal-category" class="font-medium text-gray-800 dark:text-gray-200">-</div>
+                            </div>
+                            
+                            <div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">برچسب‌ها</div>
+                                <div id="modal-tags" class="flex flex-wrap gap-1 mt-1"></div>
+                            </div>
+                            
+                            <div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">سطح دشواری</div>
+                                <div class="flex items-center mt-1" id="modal-difficulty"></div>
+                            </div>
+                            
+                            <div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">تاریخ ایجاد</div>
+                                <div id="modal-created" class="font-medium text-gray-800 dark:text-gray-200">-</div>
+                            </div>
+                            
+                            <div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">آخرین مرور</div>
+                                <div id="modal-last-review" class="font-medium text-gray-800 dark:text-gray-200">-</div>
+                            </div>
+                            
+                            <div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">تعداد مرورها</div>
+                                <div id="modal-review-count" class="font-medium text-gray-800 dark:text-gray-200">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="border-t border-gray-200 dark:border-gray-700 p-4 flex justify-between">
+                <div>
+                    <button id="modal-delete-card" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors flex items-center">
+                        <i class="fas fa-trash-alt mr-2"></i>
+                        حذف
+                    </button>
+                </div>
+                <div>
+                    <button id="modal-edit-card" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors flex items-center">
+                        <i class="fas fa-edit mr-2"></i>
+                        ویرایش
+                    </button>
+                    <button id="modal-study-card" class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors flex items-center mr-2">
+                        <i class="fas fa-book-reader mr-2"></i>
+                        مطالعه
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Script -->
+    <script>
+        // Utility Functions
+        const Utils = {
+            generateId: () => {
+                return Date.now().toString(36) + Math.random().toString(36).substring(2);
+            },
+            
+            formatDate: (timestamp) => {
+                if (!timestamp) return '-';
+                const date = new Date(timestamp);
+                return new Intl.DateTimeFormat('fa-IR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                }).format(date);
+            },
+            
+            timeSince: (timestamp) => {
+                if (!timestamp) return '-';
+                
+                const seconds = Math.floor((Date.now() - timestamp) / 1000);
+                let interval = seconds / 31536000;
+                
+                if (interval > 1) {
+                    return Math.floor(interval) + ' سال پیش';
+                }
+                interval = seconds / 2592000;
+                if (interval > 1) {
+                    return Math.floor(interval) + ' ماه پیش';
+                }
+                interval = seconds / 86400;
+                if (interval > 1) {
+                    return Math.floor(interval) + ' روز پیش';
+                }
+                interval = seconds / 3600;
+                if (interval > 1) {
+                    return Math.floor(interval) + ' ساعت پیش';
+                }
+                interval = seconds / 60;
+                if (interval > 1) {
+                    return Math.floor(interval) + ' دقیقه پیش';
+                }
+                return Math.floor(seconds) + ' ثانیه پیش';
+            },
+            
+            debounce: (func, wait) => {
+                let timeout;
+                return function(...args) {
+                    const context = this;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(context, args), wait);
+                };
+            },
+            
+            showAlert: (message, type = 'success', duration = 3000) => {
+                const alertContainer = document.getElementById('alert-container');
+                
+                // Create alert element
+                const alert = document.createElement('div');
+                alert.className = `p-4 mb-4 rounded-lg shadow-lg animate-fade-in ${
+                    type === 'success' 
+                        ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
+                        : type === 'warning'
+                            ? 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200'
+                            : 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
+                }`;
+                
+                // Alert content
+                alert.innerHTML = `
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 pl-3">
+                            <i class="fas ${
+                                type === 'success' ? 'fa-check-circle' : 
+                                type === 'warning' ? 'fa-exclamation-triangle' : 
+                                'fa-times-circle'
+                            }"></i>
+                        </div>
+                        <div class="mr-2">${message}</div>
+                        <button class="mr-auto pr-3 text-lg font-semibold close-alert">×</button>
+                    </div>
+                `;
+                
+                // Add to container
+                alertContainer.appendChild(alert);
+                
+                // Add click event to close button
+                alert.querySelector('.close-alert').addEventListener('click', () => {
+                    alert.classList.add('animate-fadeOut');
+                    setTimeout(() => {
+                        alertContainer.removeChild(alert);
+                    }, 300);
+                });
+                
+                // Auto remove after duration
+                setTimeout(() => {
+                    if (alert.parentNode === alertContainer) {
+                        alert.classList.add('animate-fadeOut');
+                        setTimeout(() => {
+                            if (alert.parentNode === alertContainer) {
+                                alertContainer.removeChild(alert);
+                            }
+                        }, 300);
+                    }
+                }, duration);
+            },
+            
+            confirmDialog: (message) => {
+                return confirm(message);
+            }
+        };
+        
+        // App State & Data Management
+        const AppState = {
+            flashcards: [],
+            settings: {
+                cardsPerPage: 12,
+                animationSpeed: 6,
+                fontSize: 3,
+                darkMode: null // Will be set based on system preference
+            },
+            stats: {
+                sessionsCount: 0,
+                totalReviews: 0,
+                lastStudyDate: null,
+                reviewsToday: 0,
+                studyHistory: [] // Array of study sessions
+            },
+            
+            selectedTags: [],
+            currentEditingCardId: null,
+            currentPage: 1,
+            currentTab: 'create',
+            
+            // Study state
+            studyCards: [],
+            currentStudyCardIndex: 0,
+            studyStats: {
+                cardsStudied: 0,
+                easyCards: 0,
+                hardCards: 0,
+                difficultCardIds: []
+            },
+            
+            init: function() {
+                this.loadData();
+                this.initDarkMode();
+            },
+            
+            loadData: function() {
+                // Load flashcards
+                const savedFlashcards = localStorage.getItem('flashcards');
+                if (savedFlashcards) {
+                    try {
+                        this.flashcards = JSON.parse(savedFlashcards);
+                    } catch (e) {
+                        console.error('Error loading flashcards:', e);
+                        this.flashcards = [];
+                    }
+                }
+                
+                // Load settings
+                const savedSettings = localStorage.getItem('fc_settings');
+                if (savedSettings) {
+                    try {
+                        this.settings = {...this.settings, ...JSON.parse(savedSettings)};
+                    } catch (e) {
+                        console.error('Error loading settings:', e);
+                    }
+                }
+                
+                // Load stats
+                const savedStats = localStorage.getItem('fc_stats');
+                if (savedStats) {
+                    try {
+                        this.stats = {...this.stats, ...JSON.parse(savedStats)};
+                    } catch (e) {
+                        console.error('Error loading stats:', e);
+                    }
+                }
+                
+                // Update daily stats
+                this.updateDailyStats();
+            },
+            
+            saveFlashcards: function() {
+                localStorage.setItem('flashcards', JSON.stringify(this.flashcards));
+                UI.updateStatsCounters();
+            },
+            
+            saveSettings: function() {
+                localStorage.setItem('fc_settings', JSON.stringify(this.settings));
+            },
+            
+            saveStats: function() {
+                localStorage.setItem('fc_stats', JSON.stringify(this.stats));
+            },
+            
+            addFlashcard: function(card) {
+                // Generate a unique ID if not provided
+                if (!card.id) {
+                    card.id = Utils.generateId();
+                }
+                
+                // Set creation date if not provided
+                if (!card.createdAt) {
+                    card.createdAt = Date.now();
+                }
+                
+                // Initialize study data if not provided
+                if (!card.studyData) {
+                    card.studyData = {
+                        reviewCount: 0,
+                        lastReviewDate: null,
+                        nextReviewDate: null,
+                        easeFactor: 2.5, // Initial ease factor for SM-2 algorithm
+                        interval: 0, // Days until next review
+                        difficulty: card.difficulty || 2
+                    };
+                }
+                
+                // Add the card
+                this.flashcards.push(card);
+                this.saveFlashcards();
+                
+                return card;
+            },
+            
+            updateFlashcard: function(updatedCard) {
+                const index = this.flashcards.findIndex(card => card.id === updatedCard.id);
+                
+                if (index !== -1) {
+                    // Preserve study data
+                    const studyData = this.flashcards[index].studyData;
+                    
+                    // Update the card
+                    this.flashcards[index] = {
+                        ...updatedCard,
+                        studyData: studyData,
+                        updatedAt: Date.now()
+                    };
+                    
+                    this.saveFlashcards();
+                    return true;
+                }
+                
+                return false;
+            },
+            
+            deleteFlashcard: function(cardId) {
+                const initialLength = this.flashcards.length;
+                this.flashcards = this.flashcards.filter(card => card.id !== cardId);
+                
+                if (this.flashcards.length < initialLength) {
+                    this.saveFlashcards();
+                    return true;
+                }
+                
+                return false;
+            },
+            
+            deleteMultipleFlashcards: function(cardIds) {
+                const initialLength = this.flashcards.length;
+                this.flashcards = this.flashcards.filter(card => !cardIds.includes(card.id));
+                
+                if (this.flashcards.length < initialLength) {
+                    this.saveFlashcards();
+                    return initialLength - this.flashcards.length;
+                }
+                
+                return 0;
+            },
+            
+            getFlashcardById: function(id) {
+                return this.flashcards.find(card => card.id === id);
+            },
+            
+            initDarkMode: function() {
+                // Set dark mode based on saved preference or system preference
+                if (this.settings.darkMode === null) {
+                    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                        document.documentElement.classList.add('dark');
+                        this.settings.darkMode = true;
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        this.settings.darkMode = false;
+                    }
+                } else {
+                    if (this.settings.darkMode) {
+                        document.documentElement.classList.add('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                    }
+                }
+                
+                // Update toggle state
+                const darkModeToggle = document.getElementById('dark-mode-toggle');
+                if (darkModeToggle) {
+                    darkModeToggle.checked = this.settings.darkMode;
+                }
+            },
+            
+            toggleDarkMode: function() {
+                this.settings.darkMode = !this.settings.darkMode;
+                
+                if (this.settings.darkMode) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+                
+                this.saveSettings();
+            },
+            
+            updateDailyStats: function() {
+                const today = new Date().setHours(0, 0, 0, 0);
+                const lastStudyDay = this.stats.lastStudyDate 
+                    ? new Date(this.stats.lastStudyDate).setHours(0, 0, 0, 0)
+                    : null;
+                
+                // Reset daily counter if it's a new day
+                if (lastStudyDay !== today) {
+                    this.stats.reviewsToday = 0;
+                }
+                
+                this.saveStats();
+            },
+            
+            recordCardReview: function(cardId, rating) {
+                const card = this.getFlashcardById(cardId);
+                
+                if (!card) return false;
+                
+                const now = Date.now();
+                
+                // Update card study data using spaced repetition algorithm (SM-2)
+                if (!card.studyData) {
+                    card.studyData = {
+                        reviewCount: 0,
+                        lastReviewDate: null,
+                        nextReviewDate: null,
+                        easeFactor: 2.5,
+                        interval: 0,
+                        difficulty: card.difficulty || 2
+                    };
+                }
+                
+                // Increment review count
+                card.studyData.reviewCount++;
+                card.studyData.lastReviewDate = now;
+                
+                // Calculate new interval and ease factor based on SM-2 algorithm
+                const oldEaseFactor = card.studyData.easeFactor;
+                const oldInterval = card.studyData.interval;
+                
+                // Convert rating from 1-3 to 0-5 scale for SM-2
+                // 1 (Hard) => 2, 2 (Medium) => 3, 3 (Easy) => 5
+                const sm2Rating = rating === 1 ? 2 : (rating === 2 ? 3 : 5);
+                
+                let newInterval, newEaseFactor;
+                
+                if (sm2Rating < 3) {
+                    // If failed, reset interval to 0
+                    newInterval = 0;
+                } else {
+                    // Calculate new interval
+                    if (oldInterval === 0) {
+                        newInterval = 1;
+                    } else if (oldInterval === 1) {
+                        newInterval = 3;
+                    } else {
+                        newInterval = Math.ceil(oldInterval * oldEaseFactor);
+                    }
+                    
+                    // Adjust ease factor
+                    newEaseFactor = oldEaseFactor + (0.1 - (5 - sm2Rating) * (0.08 + (5 - sm2Rating) * 0.02));
+                    
+                    // Keep ease factor within bounds
+                    newEaseFactor = Math.max(1.3, newEaseFactor);
+                }
+                
+                // Update card study data
+                card.studyData.interval = newInterval;
+                card.studyData.easeFactor = sm2Rating >= 3 ? newEaseFactor : oldEaseFactor;
+                
+                // Set next review date
+                const nextReviewDate = new Date();
+                nextReviewDate.setDate(nextReviewDate.getDate() + newInterval);
+                card.studyData.nextReviewDate = nextReviewDate.getTime();
+                
+                // Update difficulty based on rating (1=hard, 2=medium, 3=easy)
+                if (rating === 1) {
+                    card.studyData.difficulty = Math.min(3, card.studyData.difficulty + 0.1);
+                } else if (rating === 3) {
+                    card.studyData.difficulty = Math.max(1, card.studyData.difficulty - 0.1);
+                }
+                
+                // Update global stats
+                this.stats.totalReviews++;
+                this.stats.reviewsToday++;
+                this.stats.lastStudyDate = now;
+                
+                // Save changes
+                this.saveFlashcards();
+                this.saveStats();
+                
+                return {
+                    interval: newInterval,
+                    nextReview: nextReviewDate
+                };
+            },
+            
+            getCardsDueToday: function() {
+                const now = Date.now();
+                return this.flashcards.filter(card => {
+                    return !card.studyData || 
+                           !card.studyData.nextReviewDate || 
+                           card.studyData.nextReviewDate <= now;
+                });
+            },
+            
+            getNewCards: function() {
+                return this.flashcards.filter(card => {
+                    return !card.studyData || 
+                           !card.studyData.reviewCount || 
+                           card.studyData.reviewCount === 0;
+                });
+            },
+            
+            getDifficultCards: function(limit = 5) {
+                // Get cards that have been reviewed at least once
+                const reviewedCards = this.flashcards.filter(card => 
+                    card.studyData && 
+                    card.studyData.reviewCount > 0
+                );
+                
+                // Sort by difficulty (highest first)
+                const sortedCards = reviewedCards.sort((a, b) => 
+                    (b.studyData?.difficulty || 0) - (a.studyData?.difficulty || 0)
+                );
+                
+                return sortedCards.slice(0, limit);
+            },
+            
+            getAllCategories: function() {
+                const categories = this.flashcards.map(card => card.category).filter(Boolean);
+                return [...new Set(categories)].sort();
+            },
+            
+            getAllTags: function() {
+                const allTags = this.flashcards.reduce((tags, card) => {
+                    if (card.tags && Array.isArray(card.tags)) {
+                        return [...tags, ...card.tags];
+                    }
+                    return tags;
+                }, []);
+                
+                return [...new Set(allTags)].sort();
+            },
+            
+            exportAllData: function() {
+                const data = {
+                    flashcards: this.flashcards,
+                    settings: this.settings,
+                    stats: this.stats,
+                    exportDate: Date.now(),
+                    version: '1.0.0'
+                };
+                
+                return JSON.stringify(data, null, 2);
+            },
+            
+            importAllData: function(jsonData) {
+                try {
+                    const data = JSON.parse(jsonData);
+                    
+                    if (data.flashcards && Array.isArray(data.flashcards)) {
+                        this.flashcards = data.flashcards;
+                    }
+                    
+                    if (data.settings) {
+                        this.settings = {...this.settings, ...data.settings};
+                    }
+                    
+                    if (data.stats) {
+                        this.stats = {...this.stats, ...data.stats};
+                    }
+                    
+                    // Save all imported data
+                    this.saveFlashcards();
+                    this.saveSettings();
+                    this.saveStats();
+                    
+                    return {
+                        success: true,
+                        cardsCount: this.flashcards.length
+                    };
+                } catch (e) {
+                    console.error('Error importing data:', e);
+                    return {
+                        success: false,
+                        error: e.message
+                    };
+                }
+            },
+            
+            resetAllData: function() {
+                this.flashcards = [];
+                this.stats = {
+                    sessionsCount: 0,
+                    totalReviews: 0,
+                    lastStudyDate: null,
+                    reviewsToday: 0,
+                    studyHistory: []
+                };
+                
+                localStorage.removeItem('flashcards');
+                localStorage.removeItem('fc_stats');
+                
+                // Keep settings
+                this.saveFlashcards();
+                this.saveStats();
+            },
+            
+            resetSettings: function() {
+                this.settings = {
+                    cardsPerPage: 12,
+                    animationSpeed: 6,
+                    fontSize: 3,
+                    darkMode: this.settings.darkMode // Preserve dark mode setting
+                };
+                
+                this.saveSettings();
+            }
+        };
+
+        // UI Controller
+        const UI = {
+            // DOM elements cache
+            elements: {},
+            
+            // Current state
+            isDragging: false,
+            currentCardId: null,
+            cardFlipTimeoutId: null,
+            selectedCardIds: new Set(),
+            tags: [],
+            
+            init: function() {
+                this.cacheElements();
+                this.setUpEventListeners();
+                this.setupTabNavigation();
+                this.updateUI();
+                
+                // Initialize create form tags input
+                this.initTagsInput();
+                
+                // Initialize preview card
+                this.updatePreviewCard();
+            },
+            
+            cacheElements: function() {
+                // Tabs
+                this.elements.tabs = document.querySelectorAll('.nav-tab');
+                this.elements.tabContents = document.querySelectorAll('.tab-content');
+                
+                // Create form
+                this.elements.createForm = document.getElementById('create-form');
+                this.elements.cardFront = document.getElementById('card-front');
+                this.elements.cardBack = document.getElementById('card-back');
+                this.elements.cardCategory = document.getElementById('card-category');
+                this.elements.cardDifficulty = document.getElementById('card-difficulty');
+                this.elements.cardTags = document.getElementById('card-tags');
+                this.elements.tagsContainer = document.getElementById('tags-container');
+                this.elements.resetFormButton = document.getElementById('reset-form-button');
+                this.elements.editCardId = document.getElementById('edit-card-id');
+                this.elements.saveButtonText = document.getElementById('save-button-text');
+                
+                // Preview card
+                this.elements.previewFront = document.getElementById('preview-front');
+                this.elements.previewBack = document.getElementById('preview-back');
+                this.elements.previewCard = document.getElementById('preview-card');
+                this.elements.flipPreviewButton = document.getElementById('flip-preview');
+                
+                // Card browsing
+                this.elements.cardsGrid = document.getElementById('cards-grid');
+                this.elements.categoryFilter = document.getElementById('category-filter');
+                this.elements.sortFilter = document.getElementById('sort-filter');
+                this.elements.searchInput = document.getElementById('search-input');
+                this.elements.tagFilters = document.getElementById('tag-filters');
+                this.elements.noCardsMessage = document.getElementById('no-cards-message');
+                
+                // Pagination
+                this.elements.prevPageButton = document.getElementById('prev-page');
+                this.elements.nextPageButton = document.getElementById('next-page');
+                this.elements.paginationPages = document.getElementById('pagination-pages');
+                this.elements.paginationInfo = document.getElementById('pagination-info');
+                this.elements.showingStart = document.getElementById('showing-start');
+                this.elements.showingEnd = document.getElementById('showing-end');
+                this.elements.totalItems = document.getElementById('total-items');
+                
+                // Bulk actions
+                this.elements.selectAllButton = document.getElementById('select-all-cards');
+                this.elements.deselectAllButton = document.getElementById('deselect-all-cards');
+                this.elements.bulkExportButton = document.getElementById('bulk-export');
+                this.elements.bulkDeleteButton = document.getElementById('bulk-delete');
+                this.elements.importFileInput = document.getElementById('import-file');
+                
+                // Study tab
+                this.elements.studyOptionsForm = document.getElementById('study-options-form');
+                this.elements.studyCategory = document.getElementById('study-category');
+                this.elements.cardLimit = document.getElementById('card-limit');
+                this.elements.studyNoCards = document.getElementById('study-no-cards');
+                this.elements.studyCardArea = document.getElementById('study-card-area');
+                this.elements.studyProgressWrapper = document.getElementById('study-progress-wrapper');
+                this.elements.studyCard = document.getElementById('study-card');
+                this.elements.studyCardFront = document.getElementById('study-card-front');
+                this.elements.studyCardBack = document.getElementById('study-card-back');
+                this.elements.studyCardCategory = document.getElementById('study-card-category');
+                this.elements.studyCardDifficultyText = document.getElementById('study-card-difficulty-text');
+                this.elements.studyCardDifficultyStars = document.getElementById('study-card-difficulty-stars');
+                this.elements.currentCardIndex = document.getElementById('current-card-index');
+                this.elements.totalStudyCards = document.getElementById('total-study-cards');
+                this.elements.studyProgressBar = document.getElementById('study-progress-bar');
+                this.elements.flipStudyCardButton = document.getElementById('flip-study-card');
+                this.elements.skipCardButton = document.getElementById('skip-card');
+                this.elements.editStudyCardButton = document.getElementById('edit-study-card');
+                this.elements.ratingButtons = document.querySelectorAll('.rating-btn');
+                this.elements.studyCompleted = document.getElementById('study-completed');
+                this.elements.cardsStudiedCount = document.getElementById('cards-studied-count');
+                this.elements.cardsEasyCount = document.getElementById('cards-easy-count');
+                this.elements.cardsHardCount = document.getElementById('cards-hard-count');
+                this.elements.restartStudyButton = document.getElementById('restart-study');
+                this.elements.studyDifficultCardsButton = document.getElementById('study-difficult-cards');
+                this.elements.createCardsLink = document.getElementById('create-cards-link');
+                
+                // Stats tab
+                this.elements.statsTotalCards = document.getElementById('stats-total-cards');
+                this.elements.statsCategories = document.getElementById('stats-categories');
+                this.elements.statsTags = document.getElementById('stats-tags');
+                this.elements.statsSessions = document.getElementById('stats-sessions');
+                this.elements.statsReviews = document.getElementById('stats-reviews');
+                this.elements.categoryChartContainer = document.getElementById('category-chart-container');
+                this.elements.noStatsMessage = document.getElementById('no-stats-message');
+                this.elements.difficultCardsContainer = document.getElementById('difficult-cards-container');
+                this.elements.noDifficultCards = document.getElementById('no-difficult-cards');
+                
+                // Settings tab
+                this.elements.darkModeToggle = document.getElementById('dark-mode-toggle');
+                this.elements.cardsPerPage = document.getElementById('cards-per-page');
+                this.elements.animationSpeed = document.getElementById('animation-speed');
+                this.elements.fontSize = document.getElementById('font-size');
+                this.elements.exportAllDataButton = document.getElementById('export-all-data');
+                this.elements.importAllFileInput = document.getElementById('import-all-file');
+                this.elements.resetSettingsButton = document.getElementById('reset-settings');
+                this.elements.resetAllDataButton = document.getElementById('reset-all-data');
+                
+                // Card detail modal
+                this.elements.cardDetailModal = document.getElementById('card-detail-modal');
+                this.elements.closeModalButton = document.getElementById('close-modal');
+                this.elements.modalCard = document.getElementById('modal-card');
+                this.elements.modalCardFront = document.getElementById('modal-card-front');
+                this.elements.modalCardBack = document.getElementById('modal-card-back');
+                this.elements.flipModalCardButton = document.getElementById('flip-modal-card');
+                this.elements.modalCategory = document.getElementById('modal-category');
+                this.elements.modalTags = document.getElementById('modal-tags');
+                this.elements.modalDifficulty = document.getElementById('modal-difficulty');
+                this.elements.modalCreated = document.getElementById('modal-created');
+                this.elements.modalLastReview = document.getElementById('modal-last-review');
+                this.elements.modalReviewCount = document.getElementById('modal-review-count');
+                this.elements.modalDeleteCardButton = document.getElementById('modal-delete-card');
+                this.elements.modalEditCardButton = document.getElementById('modal-edit-card');
+                this.elements.modalStudyCardButton = document.getElementById('modal-study-card');
+                
+                // Markdown toggles
+                this.elements.frontMarkdownToggle = document.getElementById('front-markdown-toggle');
+                this.elements.backMarkdownToggle = document.getElementById('back-markdown-toggle');
+                
+                // Front/back character counters
+                this.elements.frontCharCount = document.getElementById('front-char-count');
+                this.elements.backCharCount = document.getElementById('back-char-count');
+                
+                // Stats counters
+                this.elements.totalCardsCount = document.getElementById('total-cards-count');
+                this.elements.totalCategoriesCount = document.getElementById('total-categories-count');
+                this.elements.reviewedTodayCount = document.getElementById('reviewed-today-count');
+                
+                // Theme toggle
+                this.elements.themeToggle = document.getElementById('theme-toggle');
+            },
+            
+            setUpEventListeners: function() {
+                // Tab navigation
+                this.elements.tabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        this.changeTab(tab.dataset.tab);
+                    });
+                });
+                
+                // Create form events
+                this.elements.createForm.addEventListener('submit', this.handleCreateFormSubmit.bind(this));
+                this.elements.resetFormButton.addEventListener('click', this.resetCreateForm.bind(this));
+                
+                this.elements.cardFront.addEventListener('input', this.updatePreviewCard.bind(this));
+                this.elements.cardBack.addEventListener('input', this.updatePreviewCard.bind(this));
+                this.elements.cardFront.addEventListener('input', this.updateCharCount.bind(this, 'front'));
+                this.elements.cardBack.addEventListener('input', this.updateCharCount.bind(this, 'back'));
+                
+                this.elements.frontMarkdownToggle.addEventListener('change', this.updatePreviewCard.bind(this));
+                this.elements.backMarkdownToggle.addEventListener('change', this.updatePreviewCard.bind(this));
+                
+                // Preview card events
+                this.elements.flipPreviewButton.addEventListener('click', this.flipPreviewCard.bind(this));
+                this.elements.previewCard.addEventListener('click', this.flipPreviewCard.bind(this));
+                
+                // Browse filters
+                this.elements.categoryFilter.addEventListener('change', this.filterCards.bind(this));
+                this.elements.sortFilter.addEventListener('change', this.filterCards.bind(this));
+                this.elements.searchInput.addEventListener('input', Utils.debounce(this.filterCards.bind(this), 300));
+                
+                // Pagination
+                this.elements.prevPageButton.addEventListener('click', this.goToPrevPage.bind(this));
+                this.elements.nextPageButton.addEventListener('click', this.goToNextPage.bind(this));
+                
+                // Bulk actions
+                this.elements.selectAllButton.addEventListener('click', this.selectAllCards.bind(this));
+                this.elements.deselectAllButton.addEventListener('click', this.deselectAllCards.bind(this));
+                this.elements.bulkExportButton.addEventListener('click', this.exportSelectedCards.bind(this));
+                this.elements.bulkDeleteButton.addEventListener('click', this.deleteSelectedCards.bind(this));
+                this.elements.importFileInput.addEventListener('change', this.handleImportFile.bind(this));
+                
+                // Study options
+                this.elements.studyOptionsForm.addEventListener('submit', this.startStudySession.bind(this));
+                this.elements.flipStudyCardButton.addEventListener('click', this.flipStudyCard.bind(this));
+                this.elements.studyCard.addEventListener('click', this.flipStudyCard.bind(this));
+                this.elements.skipCardButton.addEventListener('click', this.nextStudyCard.bind(this));
+                this.elements.editStudyCardButton.addEventListener('click', this.editCurrentStudyCard.bind(this));
+                this.elements.ratingButtons.forEach(button => {
+                    button.addEventListener('click', this.rateStudyCard.bind(this, parseInt(button.dataset.rating)));
+                });
+                this.elements.restartStudyButton.addEventListener('click', this.restartStudySession.bind(this));
+                this.elements.studyDifficultCardsButton.addEventListener('click', this.studyDifficultCards.bind(this));
+                this.elements.createCardsLink.addEventListener('click', () => this.changeTab('create'));
+                
+                // Settings
+                this.elements.darkModeToggle.addEventListener('change', this.toggleDarkMode.bind(this));
+                this.elements.cardsPerPage.addEventListener('change', this.updateCardsPerPage.bind(this));
+                this.elements.animationSpeed.addEventListener('input', this.updateAnimationSpeed.bind(this));
+                this.elements.fontSize.addEventListener('input', this.updateFontSize.bind(this));
+                this.elements.exportAllDataButton.addEventListener('click', this.exportAllData.bind(this));
+                this.elements.importAllFileInput.addEventListener('change', this.importAllData.bind(this));
+                this.elements.resetSettingsButton.addEventListener('click', this.resetSettings.bind(this));
+                this.elements.resetAllDataButton.addEventListener('click', this.resetAllData.bind(this));
+                
+                // Modal
+                this.elements.closeModalButton.addEventListener('click', this.closeCardDetailModal.bind(this));
+                this.elements.flipModalCardButton.addEventListener('click', this.flipModalCard.bind(this));
+                this.elements.modalCard.addEventListener('click', this.flipModalCard.bind(this));
+                this.elements.modalDeleteCardButton.addEventListener('click', this.deleteCardFromModal.bind(this));
+                this.elements.modalEditCardButton.addEventListener('click', this.editCardFromModal.bind(this));
+                this.elements.modalStudyCardButton.addEventListener('click', this.studyCardFromModal.bind(this));
+                
+                // Theme toggle button
+                this.elements.themeToggle.addEventListener('click', this.toggleDarkMode.bind(this));
+                
+                // Click outside modal to close
+                window.addEventListener('click', (e) => {
+                    if (e.target === this.elements.cardDetailModal) {
+                        this.closeCardDetailModal();
+                    }
+                });
+            },
+            
+            setupTabNavigation: function() {
+                // Setup create-cards-link to change to create tab
+                const createCardsLinks = document.querySelectorAll('[href="#create-tab"]');
+                createCardsLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.changeTab('create');
+                    });
+                });
+            },
+            
+            changeTab: function(tabId) {
+                // Update active tab
+                this.elements.tabs.forEach(tab => {
+                    if (tab.dataset.tab === tabId) {
+                        tab.classList.add('text-primary-600', 'dark:text-primary-400', 'border-b-2', 'border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/30');
+                        tab.classList.remove('text-gray-600', 'dark:text-gray-300', 'hover:bg-gray-50', 'dark:hover:bg-gray-700/50');
+                    } else {
+                        tab.classList.remove('text-primary-600', 'dark:text-primary-400', 'border-b-2', 'border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/30');
+                        tab.classList.add('text-gray-600', 'dark:text-gray-300', 'hover:bg-gray-50', 'dark:hover:bg-gray-700/50');
+                    }
+                });
+                
+                // Show active tab content
+                this.elements.tabContents.forEach(content => {
+                    if (content.id === `${tabId}-tab`) {
+                        content.classList.remove('hidden');
+                    } else {
+                        content.classList.add('hidden');
+                    }
+                });
+                
+                // Update current tab in state
+                AppState.currentTab = tabId;
+                
+                // Special handling for specific tabs
+                if (tabId === 'browse') {
+                    this.refreshCardGrid();
+                } else if (tabId === 'stats') {
+                    this.refreshStats();
+                } else if (tabId === 'study') {
+                    this.refreshStudyOptions();
+                }
+            },
+            
+            updateUI: function() {
+                // Update category options
+                this.updateCategoryOptions();
+                
+                // Update settings UI
+                this.updateSettingsUI();
+                
+                // Update stats counters
+                this.updateStatsCounters();
+                
+                // Set cards per page from settings
+                this.elements.cardsPerPage.value = AppState.settings.cardsPerPage.toString();
+                
+                // Update animation speed based on settings
+                this.updateAnimationSpeedCSS();
+                
+                // Update font size based on settings
+                this.updateFontSizeCSS();
+            },
+            
+            updateCategoryOptions: function() {
+                const categories = AppState.getAllCategories();
+                
+                // Update all category select elements
+                const categorySelects = [
+                    this.elements.categoryFilter,
+                    this.elements.studyCategory
+                ];
+                
+                // Remove existing options except "All"
+                categorySelects.forEach(select => {
+                    while (select.options.length > 1) {
+                        select.remove(1);
+                    }
+                    
+                    // Add category options
+                    categories.forEach(category => {
+                        const option = document.createElement('option');
+                        option.value = category;
+                        option.textContent = category;
+                        select.appendChild(option);
+                    });
+                });
+                
+                // Update datalist for category input
+                const categoriesList = document.getElementById('categories-list');
+                categoriesList.innerHTML = '';
+                
+                categories.forEach(category => {
+                    const option = document.createElement('option');
+                    option.value = category;
+                    categoriesList.appendChild(option);
+                });
+            },
+            
+            updateSettingsUI: function() {
+                // Dark mode toggle
+                this.elements.darkModeToggle.checked = AppState.settings.darkMode;
+                
+                // Animation speed slider
+                this.elements.animationSpeed.value = AppState.settings.animationSpeed;
+                
+                // Font size slider
+                this.elements.fontSize.value = AppState.settings.fontSize;
+                
+                // Cards per page select
+                this.elements.cardsPerPage.value = AppState.settings.cardsPerPage.toString();
+            },
+            
+            updateStatsCounters: function() {
+                const totalCards = AppState.flashcards.length;
+                const totalCategories = AppState.getAllCategories().length;
+                const totalTags = AppState.getAllTags().length;
+                const reviewsToday = AppState.stats.reviewsToday;
+                
+                // Update header stats
+                this.elements.totalCardsCount.textContent = totalCards.toString();
+                this.elements.totalCategoriesCount.textContent = totalCategories.toString();
+                this.elements.reviewedTodayCount.textContent = reviewsToday.toString();
+                
+                // Update stats tab
+                if (this.elements.statsTotalCards) {
+                    this.elements.statsTotalCards.textContent = totalCards.toString();
+                    this.elements.statsCategories.textContent = totalCategories.toString();
+                    this.elements.statsTags.textContent = totalTags.toString();
+                    this.elements.statsSessions.textContent = AppState.stats.sessionsCount.toString();
+                    this.elements.statsReviews.textContent = AppState.stats.totalReviews.toString();
+                }
+            },
+            
+            initTagsInput: function() {
+                // Store tags in memory
+                this.tags = [];
+                
+                // Handle input for tags
+                this.elements.cardTags.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === '،' || e.key === ',') {
+                        e.preventDefault();
+                        
+                        const tagValue = this.elements.cardTags.value.trim();
+                        
+                        if (tagValue && !this.tags.includes(tagValue)) {
+                            this.tags.push(tagValue);
+                            this.renderTags();
+                            this.elements.cardTags.value = '';
+                        }
+                    }
+                });
+                
+                // Initial render
+                this.renderTags();
+            },
+            
+            renderTags: function() {
+                this.elements.tagsContainer.innerHTML = '';
+                
+                this.tags.forEach((tag, index) => {
+                    const tagElement = document.createElement('div');
+                    tagElement.className = 'tag-item';
+                    tagElement.innerHTML = `
+                        ${tag}
+                        <span class="tag-remove" data-index="${index}">×</span>
+                    `;
+                    
+                    this.elements.tagsContainer.appendChild(tagElement);
+                });
+                
+                // Add remove event to tag remove buttons
+                const removeButtons = document.querySelectorAll('.tag-remove');
+                removeButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const index = parseInt(button.dataset.index);
+                        this.tags.splice(index, 1);
+                        this.renderTags();
+                    });
+                });
+            },
+            
+            updatePreviewCard: function() {
+                const frontContent = this.elements.cardFront.value.trim();
+                const backContent = this.elements.cardBack.value.trim();
+                const useFrontMarkdown = this.elements.frontMarkdownToggle.checked;
+                const useBackMarkdown = this.elements.backMarkdownToggle.checked;
+                
+                // Update preview content
+                if (frontContent) {
+                    if (useFrontMarkdown) {
+                        this.elements.previewFront.innerHTML = marked.parse(frontContent);
+                    } else {
+                        this.elements.previewFront.textContent = frontContent;
+                    }
+                } else {
+                    this.elements.previewFront.textContent = 'پیش‌نمایش صورت سؤال';
+                }
+                
+                if (backContent) {
+                    if (useBackMarkdown) {
+                        this.elements.previewBack.innerHTML = marked.parse(backContent);
+                    } else {
+                        this.elements.previewBack.textContent = backContent;
+                    }
+                } else {
+                    this.elements.previewBack.textContent = 'پیش‌نمایش پاسخ';
+                }
+            },
+            
+            updateCharCount: function(type) {
+                const element = type === 'front' ? this.elements.cardFront : this.elements.cardBack;
+                const countElement = type === 'front' ? this.elements.frontCharCount : this.elements.backCharCount;
+                
+                const count = element.value.length;
+                countElement.textContent = `${count} کاراکتر`;
+            },
+            
+            flipPreviewCard: function() {
+                this.elements.previewCard.parentElement.classList.toggle('card-flipped');
+            },
+            
+            flipStudyCard: function() {
+                this.elements.studyCard.parentElement.classList.toggle('card-flipped');
+            },
+            
+            flipModalCard: function() {
+                this.elements.modalCard.parentElement.classList.toggle('card-flipped');
+            },
+            
+            handleCreateFormSubmit: function(e) {
+                e.preventDefault();
+                
+                const frontContent = this.elements.cardFront.value.trim();
+                const backContent = this.elements.cardBack.value.trim();
+                const category = this.elements.cardCategory.value.trim();
+                const difficulty = parseInt(this.elements.cardDifficulty.value);
+                const editCardId = this.elements.editCardId.value;
+                const useFrontMarkdown = this.elements.frontMarkdownToggle.checked;
+                const useBackMarkdown = this.elements.backMarkdownToggle.checked;
+                
+                // Validation
+                if (!frontContent || !backContent) {
+                    Utils.showAlert('لطفاً متن روی کارت و پشت کارت را وارد کنید.', 'error');
+                    return;
+                }
+                
+                // Create card object
+                const card = {
+                    id: editCardId || Utils.generateId(),
+                    front: frontContent,
+                    back: backContent,
+                    category: category,
+                    difficulty: difficulty,
+                    tags: [...this.tags],
+                    useFrontMarkdown: useFrontMarkdown,
+                    useBackMarkdown: useBackMarkdown,
+                    createdAt: Date.now(),
+                    updatedAt: Date.now()
+                };
+                
+                if (editCardId) {
+                    // Update existing card
+                    AppState.updateFlashcard(card);
+                    Utils.showAlert('فلش‌کارت با موفقیت ویرایش شد.', 'success');
+                } else {
+                    // Add new card
+                    AppState.addFlashcard(card);
+                    Utils.showAlert('فلش‌کارت جدید با موفقیت ایجاد شد.', 'success');
+                }
+                
+                // Reset form and update UI
+                this.resetCreateForm();
+                this.updateCategoryOptions();
+                
+                // If we're on browse tab, refresh cards
+                if (AppState.currentTab === 'browse') {
+                    this.refreshCardGrid();
+                } else if (AppState.currentTab === 'stats') {
+                    this.refreshStats();
+                }
+            },
+            
+            resetCreateForm: function() {
+                this.elements.createForm.reset();
+                this.elements.editCardId.value = '';
+                this.elements.saveButtonText.textContent = 'ذخیره فلش‌کارت';
+                this.tags = [];
+                this.renderTags();
+                this.updatePreviewCard();
+                this.updateCharCount('front');
+                this.updateCharCount('back');
+                
+                // If preview is flipped, flip it back
+                if (this.elements.previewCard.parentElement.classList.contains('card-flipped')) {
+                    this.flipPreviewCard();
+                }
+            },
+            
+            refreshCardGrid: function() {
+                // Filter cards
+                this.filterCards();
+            },
+            
+            filterCards: function() {
+                const categoryFilter = this.elements.categoryFilter.value;
+                const sortFilter = this.elements.sortFilter.value;
+                const searchQuery = this.elements.searchInput.value.trim().toLowerCase();
+                
+                // Reset page to 1 when filters change
+                AppState.currentPage = 1;
+                
+                // Filter cards
+                let filteredCards = [...AppState.flashcards];
+                
+                // Apply category filter
+                if (categoryFilter !== 'all') {
+                    filteredCards = filteredCards.filter(card => card.category === categoryFilter);
+                }
+                
+                // Apply tag filters
+                if (AppState.selectedTags.length > 0) {
+                    filteredCards = filteredCards.filter(card => {
+                        if (!card.tags || !Array.isArray(card.tags)) return false;
+                        return AppState.selectedTags.every(tag => card.tags.includes(tag));
+                    });
+                }
+                
+                // Apply search query
+                if (searchQuery) {
+                    filteredCards = filteredCards.filter(card => {
+                        const frontContent = (card.front || '').toLowerCase();
+                        const backContent = (card.back || '').toLowerCase();
+                        const category = (card.category || '').toLowerCase();
+                        const tags = (card.tags || []).map(t => t.toLowerCase());
+                        
+                        return frontContent.includes(searchQuery) || 
+                               backContent.includes(searchQuery) || 
+                               category.includes(searchQuery) ||
+                               tags.some(tag => tag.includes(searchQuery));
+                    });
+                }
+                
+                // Apply sorting
+                switch (sortFilter) {
+                    case 'newest':
+                        filteredCards.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+                        break;
+                    case 'oldest':
+                        filteredCards.sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
+                        break;
+                    case 'az':
+                        filteredCards.sort((a, b) => (a.front || '').localeCompare(b.front || ''));
+                        break;
+                    case 'za':
+                        filteredCards.sort((a, b) => (b.front || '').localeCompare(a.front || ''));
+                        break;
+                    case 'hardest':
+                        filteredCards.sort((a, b) => (b.difficulty || 2) - (a.difficulty || 2));
+                        break;
+                    case 'easiest':
+                        filteredCards.sort((a, b) => (a.difficulty || 2) - (b.difficulty || 2));
+                        break;
+                }
+                
+                // Render cards grid
+                this.renderCardGrid(filteredCards);
+                
+                // Update tag filters
+                this.updateTagFilters();
+            },
+            
+            updateTagFilters: function() {
+                // Get all tags
+                const allTags = AppState.getAllTags();
+                
+                // Clear tag filters
+                this.elements.tagFilters.innerHTML = '';
+                
+                // Add tag filters
+                allTags.forEach(tag => {
+                    const isSelected = AppState.selectedTags.includes(tag);
+                    
+                    const tagElement = document.createElement('button');
+                    tagElement.className = `px-3 py-1 rounded-full text-sm transition-colors ${
+                        isSelected 
+                            ? 'bg-primary-500 text-white hover:bg-primary-600' 
+                            : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                    }`;
+                    tagElement.textContent = tag;
+                    tagElement.dataset.tag = tag;
+                    
+                    tagElement.addEventListener('click', () => {
+                        if (isSelected) {
+                            // Remove tag from selection
+                            AppState.selectedTags = AppState.selectedTags.filter(t => t !== tag);
+                        } else {
+                            // Add tag to selection
+                            AppState.selectedTags.push(tag);
+                        }
+                        
+                        // Re-filter cards
+                        this.filterCards();
+                    });
+                    
+                    this.elements.tagFilters.appendChild(tagElement);
+                });
+                
+                // If there are no tags, add a message
+                if (allTags.length === 0) {
+                    this.elements.tagFilters.innerHTML = '<span class="text-sm text-gray-500 dark:text-gray-400">هیچ برچسبی یافت نشد</span>';
+                }
+            },
+            
+            renderCardGrid: function(cards) {
+                const cardsPerPage = AppState.settings.cardsPerPage;
+                const startIndex = (AppState.currentPage - 1) * cardsPerPage;
+                const endIndex = startIndex + cardsPerPage;
+                const pageCards = cards.slice(startIndex, endIndex);
+                
+                // Clear grid
+                this.elements.cardsGrid.innerHTML = '';
+                
+                // Show/hide no cards message
+                if (cards.length === 0) {
+                    this.elements.noCardsMessage.classList.remove('hidden');
+                } else {
+                    this.elements.noCardsMessage.classList.add('hidden');
+                }
+                
+                // Render cards
+                pageCards.forEach(card => {
+                    const isSelected = this.selectedCardIds.has(card.id);
+                    
+                    const cardElement = document.createElement('div');
+                    cardElement.className = `card-container animate-fade-in relative group bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all ${isSelected ? 'ring-2 ring-primary-500' : ''}`;
+                    cardElement.dataset.id = card.id;
+                    
+                    // Difficulty indicator
+                    const difficultyClass = card.difficulty === 3 
+                        ? 'bg-red-500' 
+                        : card.difficulty === 1 
+                            ? 'bg-green-500' 
+                            : 'bg-yellow-500';
+                    
+                    // Card stats
+                    const reviewCount = card.studyData?.reviewCount || 0;
+                    const reviewCountClass = reviewCount > 0 
+                        ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200' 
+                        : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400';
+                    
+                    cardElement.innerHTML = `
+                        <div class="absolute top-2 right-2 z-10">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" class="card-checkbox" ${isSelected ? 'checked' : ''}>
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="absolute top-2 left-2 z-10">
+                            <div class="flex items-center">
+                                <div class="${difficultyClass} w-3 h-3 rounded-full mr-1" title="سطح دشواری"></div>
+                                <div class="${reviewCountClass} text-xs px-2 py-0.5 rounded-full" title="تعداد مرورها">
+                                    <i class="fas fa-sync-alt text-xs"></i> ${reviewCount}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-inner h-40">
+                            <div class="card-front bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/40 dark:to-primary-900/60 border border-primary-200 dark:border-primary-800 p-4 h-full flex flex-col">
+                                <div class="flex-grow overflow-hidden">
+                                    <div class="card-front-content text-gray-800 dark:text-gray-100 markdown-content custom-scrollbar overflow-auto max-h-24">
+                                        ${card.useFrontMarkdown ? marked.parse(card.front) : card.front}
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between text-xs mt-2">
+                                    ${card.category ? `<div class="bg-primary-200 dark:bg-primary-800 text-primary-900 dark:text-primary-200 px-2 py-0.5 rounded-full">${card.category}</div>` : '<div></div>'}
+                                    <div class="text-gray-500 dark:text-gray-400 text-left">کلیک کنید</div>
+                                </div>
+                            </div>
+                            <div class="card-back bg-gradient-to-br from-secondary-50 to-secondary-100 dark:from-secondary-900/40 dark:to-secondary-900/60 border border-secondary-200 dark:border-secondary-800 p-4 h-full flex flex-col">
+                                <div class="flex-grow overflow-hidden">
+                                    <div class="card-back-content text-gray-800 dark:text-gray-100 markdown-content custom-scrollbar overflow-auto max-h-24">
+                                        ${card.useBackMarkdown ? marked.parse(card.back) : card.back}
+                                    </div>
+                                </div>
+                                <div class="mt-2 text-xs text-gray-500 dark:text-gray-400 text-left">
+                                    کلیک کنید
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-t border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                            <button class="edit-card text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors text-sm">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="view-card text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 transition-colors text-sm">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="delete-card text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 transition-colors text-sm">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    `;
+                    
+                    // Add card to grid
+                    this.elements.cardsGrid.appendChild(cardElement);
+                    
+                    // Add event listeners
+                    const cardInner = cardElement.querySelector('.card-inner');
+                    const cardFront = cardElement.querySelector('.card-front');
+                    const cardBack = cardElement.querySelector('.card-back');
+                    
+                    // Flip card when clicked
+                    cardFront.addEventListener('click', (e) => {
+                        if (!this.isDragging) {
+                            cardElement.classList.add('card-flipped');
+                        }
+                    });
+                    
+                    cardBack.addEventListener('click', (e) => {
+                        if (!this.isDragging) {
+                            cardElement.classList.remove('card-flipped');
+                        }
+                    });
+                    
+                    // Edit button
+                    const editButton = cardElement.querySelector('.edit-card');
+                    editButton.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.editCard(card.id);
+                    });
+                    
+                    // View button
+                    const viewButton = cardElement.querySelector('.view-card');
+                    viewButton.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.viewCardDetails(card.id);
+                    });
+                    
+                    // Delete button
+                    const deleteButton = cardElement.querySelector('.delete-card');
+                    deleteButton.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.deleteCard(card.id);
+                    });
+                    
+                    // Checkbox
+                    const checkbox = cardElement.querySelector('.card-checkbox');
+                    checkbox.addEventListener('change', (e) => {
+                        e.stopPropagation();
+                        
+                        if (checkbox.checked) {
+                            this.selectedCardIds.add(card.id);
+                            cardElement.classList.add('ring-2', 'ring-primary-500');
+                        } else {
+                            this.selectedCardIds.delete(card.id);
+                            cardElement.classList.remove('ring-2', 'ring-primary-500');
+                        }
+                    });
+                });
+                
+                // Update pagination
+                this.updatePagination(cards.length, startIndex, endIndex);
+            },
+            
+            updatePagination: function(totalItems, startIndex, endIndex) {
+                const cardsPerPage = AppState.settings.cardsPerPage;
+                const totalPages = Math.ceil(totalItems / cardsPerPage);
+                
+                // Update pagination info
+                this.elements.showingStart.textContent = totalItems > 0 ? (startIndex + 1).toString() : '0';
+                this.elements.showingEnd.textContent = Math.min(endIndex, totalItems).toString();
+                this.elements.totalItems.textContent = totalItems.toString();
+                
+                // Update pagination buttons
+                this.elements.prevPageButton.disabled = AppState.currentPage <= 1;
+                this.elements.nextPageButton.disabled = AppState.currentPage >= totalPages;
+                
+                // Update pagination pages
+                this.elements.paginationPages.innerHTML = '';
+                
+                // Show at most 5 page buttons
+                let startPage = Math.max(1, AppState.currentPage - 2);
+                let endPage = Math.min(totalPages, startPage + 4);
+                
+                if (endPage - startPage < 4 && totalPages > 4) {
+                    startPage = Math.max(1, endPage - 4);
+                }
+                
+                for (let i = startPage; i <= endPage; i++) {
+                    const pageButton = document.createElement('button');
+                    pageButton.className = `px-3 py-1 mx-0.5 rounded-md ${
+                        i === AppState.currentPage
+                            ? 'bg-primary-600 text-white'
+                            : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300'
+                    } transition-colors`;
+                    pageButton.textContent = i.toString();
+                    
+                    pageButton.addEventListener('click', () => {
+                        AppState.currentPage = i;
+                        this.filterCards();
+                    });
+                    
+                    this.elements.paginationPages.appendChild(pageButton);
+                }
+            },
+            
+            goToPrevPage: function() {
+                if (AppState.currentPage > 1) {
+                    AppState.currentPage--;
+                    this.filterCards();
+                }
+            },
+            
+            goToNextPage: function() {
+                const cardsPerPage = AppState.settings.cardsPerPage;
+                const totalPages = Math.ceil(AppState.flashcards.length / cardsPerPage);
+                
+                if (AppState.currentPage < totalPages) {
+                    AppState.currentPage++;
+                    this.filterCards();
+                }
+            },
+            
+            selectAllCards: function() {
+                // Get all visible cards
+                const visibleCardIds = Array.from(this.elements.cardsGrid.querySelectorAll('.card-container'))
+                    .map(card => card.dataset.id);
+                
+                // Select all visible cards
+                visibleCardIds.forEach(id => {
+                    this.selectedCardIds.add(id);
+                });
+                
+                // Update checkboxes
+                const checkboxes = this.elements.cardsGrid.querySelectorAll('.card-checkbox');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = true;
+                    checkbox.closest('.card-container').classList.add('ring-2', 'ring-primary-500');
+                });
+                
+                Utils.showAlert(`${visibleCardIds.length} کارت انتخاب شدند.`, 'success');
+            },
+            
+            deselectAllCards: function() {
+                // Get all visible cards
+                const visibleCardIds = Array.from(this.elements.cardsGrid.querySelectorAll('.card-container'))
+                    .map(card => card.dataset.id);
+                
+                // Deselect all visible cards
+                visibleCardIds.forEach(id => {
+                    this.selectedCardIds.delete(id);
+                });
+                
+                // Update checkboxes
+                const checkboxes = this.elements.cardsGrid.querySelectorAll('.card-checkbox');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                    checkbox.closest('.card-container').classList.remove('ring-2', 'ring-primary-500');
+                });
+                
+                Utils.showAlert('انتخاب همه کارت‌ها لغو شد.', 'success');
+            },
+            
+            exportSelectedCards: function() {
+                const selectedIds = Array.from(this.selectedCardIds);
+                
+                if (selectedIds.length === 0) {
+                    Utils.showAlert('لطفاً حداقل یک کارت را انتخاب کنید.', 'error');
+                    return;
+                }
+                
+                // Get selected cards
+                const selectedCards = AppState.flashcards.filter(card => selectedIds.includes(card.id));
+                
+                // Create export data
+                const exportData = JSON.stringify(selectedCards, null, 2);
+                
+                // Create download link
+                const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(exportData);
+                const exportFileName = `flashcards_export_${selectedCards.length}_${new Date().toISOString().slice(0, 10)}.json`;
+                
+                const linkElement = document.createElement('a');
+                linkElement.setAttribute('href', dataUri);
+                linkElement.setAttribute('download', exportFileName);
+                linkElement.click();
+                
+                Utils.showAlert(`${selectedCards.length} کارت با موفقیت خروجی گرفته شد.`, 'success');
+            },
+            
+            deleteSelectedCards: function() {
+                const selectedIds = Array.from(this.selectedCardIds);
+                
+                if (selectedIds.length === 0) {
+                    Utils.showAlert('لطفاً حداقل یک کارت را انتخاب کنید.', 'error');
+                    return;
+                }
+                
+                const confirmDelete = Utils.confirmDialog(`آیا از حذف ${selectedIds.length} کارت انتخاب شده اطمینان دارید؟ این عمل قابل بازگشت نیست.`);
+                
+                if (confirmDelete) {
+                    const deletedCount = AppState.deleteMultipleFlashcards(selectedIds);
+                    
+                    // Clear selection
+                    this.selectedCardIds = new Set();
+                    
+                    // Refresh card grid
+                    this.refreshCardGrid();
+                    
+                    // Update categories
+                    this.updateCategoryOptions();
+                    
+                    Utils.showAlert(`${deletedCount} کارت با موفقیت حذف شدند.`, 'success');
+                }
+            },
+            
+            handleImportFile: function(e) {
+                const file = e.target.files[0];
+                
+                if (!file) return;
+                
+                const reader = new FileReader();
+                
+                reader.onload = (event) => {
+                    try {
+                        const importedData = JSON.parse(event.target.result);
+                        
+                        // Validate data
+                        if (!Array.isArray(importedData)) {
+                            Utils.showAlert('فرمت فایل نامعتبر است. فایل باید یک آرایه از کارت‌ها باشد.', 'error');
+                            return;
+                        }
+                        
+                        const validCards = importedData.filter(card => {
+                            return card && card.front && card.back;
+                        });
+                        
+                        if (validCards.length === 0) {
+                            Utils.showAlert('هیچ کارت معتبری در فایل یافت نشد.', 'error');
+                            return;
+                        }
+                        
+                        const importConfirm = Utils.confirmDialog(
+                            `${validCards.length} کارت معتبر یافت شد. آیا می‌خواهید آن‌ها را وارد کنید؟\n\n` +
+                            `توجه: اگر کارت‌های تکراری وجود داشته باشند، آن‌ها به‌روزرسانی نخواهند شد.`
+                        );
+                        
+                        if (importConfirm) {
+                            // Generate new IDs for imported cards to avoid conflicts
+                            const cardsToImport = validCards.map(card => ({
+                                ...card,
+                                id: Utils.generateId(),
+                                createdAt: Date.now(),
+                                updatedAt: Date.now()
+                            }));
+                            
+                            // Add cards to state
+                            cardsToImport.forEach(card => {
+                                AppState.addFlashcard(card);
+                            });
+                            
+                            // Update UI
+                            this.updateCategoryOptions();
+                            this.refreshCardGrid();
+                            
+                            Utils.showAlert(`${cardsToImport.length} کارت با موفقیت وارد شدند.`, 'success');
+                        }
+                    } catch (error) {
+                        console.error('Import error:', error);
+                        Utils.showAlert(`خطا در وارد کردن فایل: ${error.message}`, 'error');
+                    }
+                };
+                
+                reader.readAsText(file);
+                
+                // Reset file input
+                e.target.value = '';
+            },
+            
+            editCard: function(cardId) {
+                const card = AppState.getFlashcardById(cardId);
+                
+                if (!card) {
+                    Utils.showAlert('کارت مورد نظر یافت نشد.', 'error');
+                    return;
+                }
+                
+                // Switch to create tab
+                this.changeTab('create');
+                
+                // Fill form with card data
+                this.elements.cardFront.value = card.front;
+                this.elements.cardBack.value = card.back;
+                this.elements.cardCategory.value = card.category || '';
+                this.elements.cardDifficulty.value = card.difficulty || 2;
+                this.elements.editCardId.value = card.id;
+                this.elements.saveButtonText.textContent = 'ویرایش فلش‌کارت';
+                this.elements.frontMarkdownToggle.checked = card.useFrontMarkdown || false;
+                this.elements.backMarkdownToggle.checked = card.useBackMarkdown || false;
+                
+                // Set tags
+                this.tags = [...(card.tags || [])];
+                this.renderTags();
+                
+                // Update preview
+                this.updatePreviewCard();
+                
+                // Update character count
+                this.updateCharCount('front');
+                this.updateCharCount('back');
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            },
+            
+            deleteCard: function(cardId) {
+                const confirmDelete = Utils.confirmDialog('آیا از حذف این کارت اطمینان دارید؟ این عمل قابل بازگشت نیست.');
+                
+                if (confirmDelete) {
+                    const deleted = AppState.deleteFlashcard(cardId);
+                    
+                    if (deleted) {
+                        // Remove from selected cards if selected
+                        this.selectedCardIds.delete(cardId);
+                        
+                        // Refresh card grid
+                        this.refreshCardGrid();
+                        
+                        // Update categories
+                        this.updateCategoryOptions();
+                        
+                        Utils.showAlert('کارت با موفقیت حذف شد.', 'success');
+                    } else {
+                        Utils.showAlert('کارت مورد نظر یافت نشد.', 'error');
+                    }
+                }
+            },
+            
+            viewCardDetails: function(cardId) {
+                const card = AppState.getFlashcardById(cardId);
+                
+                if (!card) {
+                    Utils.showAlert('کارت مورد نظر یافت نشد.', 'error');
+                    return;
+                }
+                
+                // Set current card ID
+                this.currentCardId = cardId;
+                
+                // Update modal content
+                this.elements.modalCardFront.innerHTML = card.useFrontMarkdown 
+                    ? marked.parse(card.front) 
+                    : card.front;
+                
+                this.elements.modalCardBack.innerHTML = card.useBackMarkdown
+                    ? marked.parse(card.back)
+                    : card.back;
+                
+                this.elements.modalCategory.textContent = card.category || '-';
+                
+                // Clear tags container
+                this.elements.modalTags.innerHTML = '';
+                
+                // Add tags
+                if (card.tags && card.tags.length > 0) {
+                    card.tags.forEach(tag => {
+                        const tagElement = document.createElement('span');
+                        tagElement.className = 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full';
+                        tagElement.textContent = tag;
+                        this.elements.modalTags.appendChild(tagElement);
+                    });
+                } else {
+                    this.elements.modalTags.innerHTML = '<span class="text-gray-500 dark:text-gray-400">-</span>';
+                }
+                
+                // Difficulty
+                this.elements.modalDifficulty.innerHTML = '';
+                
+                const difficultyLevel = card.difficulty || 2;
+                for (let i = 1; i <= 3; i++) {
+                    const starElement = document.createElement('i');
+                    starElement.className = `fas fa-star text-${i <= difficultyLevel ? 'yellow' : 'gray'}-400 mr-1`;
+                    this.elements.modalDifficulty.appendChild(starElement);
+                }
+                
+                const difficultyText = document.createElement('span');
+                difficultyText.className = 'text-sm text-gray-600 dark:text-gray-400 mr-2';
+                difficultyText.textContent = difficultyLevel === 3 
+                    ? 'دشوار' 
+                    : difficultyLevel === 1 
+                        ? 'ساده' 
+                        : 'متوسط';
+                this.elements.modalDifficulty.appendChild(difficultyText);
+                
+                // Dates and stats
+                this.elements.modalCreated.textContent = Utils.formatDate(card.createdAt);
+                this.elements.modalLastReview.textContent = card.studyData?.lastReviewDate 
+                    ? Utils.formatDate(card.studyData.lastReviewDate) 
+                    : 'هنوز مرور نشده';
+                
+                this.elements.modalReviewCount.textContent = card.studyData?.reviewCount || 0;
+                
+                // Reset card flip state
+                if (this.elements.modalCard.parentElement.classList.contains('card-flipped')) {
+                    this.flipModalCard();
+                }
+                
+                // Show modal
+                this.elements.cardDetailModal.classList.remove('hidden');
+            },
+            
+            closeCardDetailModal: function() {
+                this.elements.cardDetailModal.classList.add('hidden');
+                this.currentCardId = null;
+            },
+            
+            deleteCardFromModal: function() {
+                if (!this.currentCardId) return;
+                
+                const confirmDelete = Utils.confirmDialog('آیا از حذف این کارت اطمینان دارید؟ این عمل قابل بازگشت نیست.');
+                
+                if (confirmDelete) {
+                    const deleted = AppState.deleteFlashcard(this.currentCardId);
+                    
+                    if (deleted) {
+                        // Close modal
+                        this.closeCardDetailModal();
+                        
+                        // Remove from selected cards if selected
+                        this.selectedCardIds.delete(this.currentCardId);
+                        
+                        // Refresh card grid if on browse tab
+                        if (AppState.currentTab === 'browse') {
+                            this.refreshCardGrid();
+                        }
+                        
+                        // Update categories
+                        this.updateCategoryOptions();
+                        
+                        Utils.showAlert('کارت با موفقیت حذف شد.', 'success');
+                    } else {
+                        Utils.showAlert('کارت مورد نظر یافت نشد.', 'error');
+                    }
+                }
+            },
+            
+            editCardFromModal: function() {
+                if (!this.currentCardId) return;
+                
+                // Close modal
+                this.closeCardDetailModal();
+                
+                // Edit card
+                this.editCard(this.currentCardId);
+            },
+            
+            studyCardFromModal: function() {
+                if (!this.currentCardId) return;
+                
+                // Close modal
+                this.closeCardDetailModal();
+                
+                // Switch to study tab
+                this.changeTab('study');
+                
+                // Start study session with just this card
+                this.startStudySessionWithCards([this.currentCardId]);
+            },
+            
+            refreshStudyOptions: function() {
+                // Update available categories
+                this.updateCategoryOptions();
+                
+                // Update cards due count
+                const dueCards = AppState.getCardsDueToday();
+                const newCards = AppState.getNewCards();
+                
+                // Set max value for card limit
+                this.elements.cardLimit.max = AppState.flashcards.length;
+                
+                // Update radio button labels with counts
+                const radioLabels = this.elements.studyOptionsForm.querySelectorAll('label');
+                radioLabels.forEach(label => {
+                    const radio = label.querySelector('input[type="radio"]');
+                    if (radio) {
+                        if (radio.value === 'due') {
+                            label.querySelector('span:last-child').textContent = `کارت‌های نیازمند مرور (${dueCards.length})`;
+                        } else if (radio.value === 'new') {
+                            label.querySelector('span:last-child').textContent = `کارت‌های جدید (${newCards.length})`;
+                        } else if (radio.value === 'all') {
+                            label.querySelector('span:last-child').textContent = `همه کارت‌ها (${AppState.flashcards.length})`;
+                        }
+                    }
+                });
+            },
+            
+            startStudySession: function(e) {
+                e.preventDefault();
+                
+                // Get study options
+                const studyMode = document.querySelector('input[name="study-mode"]:checked').value;
+                const studyCategory = this.elements.studyCategory.value;
+                const studyOrder = document.querySelector('input[name="study-order"]:checked').value;
+                const cardLimit = parseInt(this.elements.cardLimit.value);
+                
+                // Filter cards based on options
+                let cardsToStudy = [];
+                
+                if (studyMode === 'all') {
+                    cardsToStudy = [...AppState.flashcards];
+                } else if (studyMode === 'due') {
+                    cardsToStudy = AppState.getCardsDueToday();
+                } else if (studyMode === 'new') {
+                    cardsToStudy = AppState.getNewCards();
+                }
+                
+                // Filter by category
+                if (studyCategory !== 'all') {
+                    cardsToStudy = cardsToStudy.filter(card => card.category === studyCategory);
+                }
+                
+                // Apply limit
+                if (cardLimit && cardLimit > 0 && cardLimit < cardsToStudy.length) {
+                    cardsToStudy = cardsToStudy.slice(0, cardLimit);
+                }
+                
+                // Check if there are cards to study
+                if (cardsToStudy.length === 0) {
+                    Utils.showAlert('هیچ کارتی برای مطالعه یافت نشد. لطفاً فیلترهای خود را تغییر دهید یا کارت‌های جدید ایجاد کنید.', 'warning');
+                    return;
+                }
+                
+                // Sort cards
+                if (studyOrder === 'random') {
+                    // Shuffle cards
+                    for (let i = cardsToStudy.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [cardsToStudy[i], cardsToStudy[j]] = [cardsToStudy[j], cardsToStudy[i]];
+                    }
+                } else if (studyOrder === 'difficulty') {
+                    // Sort by difficulty (hardest first)
+                    cardsToStudy.sort((a, b) => (b.difficulty || 2) - (a.difficulty || 2));
+                } else if (studyOrder === 'newest') {
+                    // Sort by creation date (newest first)
+                    cardsToStudy.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+                }
+                
+                // Start study session
+                this.startStudySessionWithCards(cardsToStudy.map(card => card.id));
+                
+                // Increment session count
+                AppState.stats.sessionsCount++;
+                AppState.saveStats();
+            },
+            
+            startStudySessionWithCards: function(cardIds) {
+                // Set study cards
+                AppState.studyCards = cardIds;
+                AppState.currentStudyCardIndex = 0;
+                
+                // Reset study stats
+                AppState.studyStats = {
+                    cardsStudied: 0,
+                    easyCards: 0,
+                    hardCards: 0,
+                    difficultCardIds: []
+                };
+                
+                // Show study card area
+                this.elements.studyNoCards.classList.add('hidden');
+                this.elements.studyCardArea.classList.remove('hidden');
+                this.elements.studyCompleted.classList.add('hidden');
+                this.elements.studyProgressWrapper.classList.remove('hidden');
+                
+                // Update progress indicator
+                this.elements.currentCardIndex.textContent = '1';
+                this.elements.totalStudyCards.textContent = cardIds.length.toString();
+                this.elements.studyProgressBar.style.width = `${(1 / cardIds.length) * 100}%`;
+                
+                // Load first card
+                this.loadStudyCard();
+            },
+            
+            loadStudyCard: function() {
+                // Get current card
+                if (AppState.currentStudyCardIndex >= AppState.studyCards.length) {
+                    // No more cards, show completion screen
+                    this.showStudyCompletion();
+                    return;
+                }
+                
+                const cardId = AppState.studyCards[AppState.currentStudyCardIndex];
+                const card = AppState.getFlashcardById(cardId);
+                
+                if (!card) {
+                    // Card not found, move to next
+                    AppState.currentStudyCardIndex++;
+                    this.loadStudyCard();
+                    return;
+                }
+                
+                // Reset card flip state
+                if (this.elements.studyCard.parentElement.classList.contains('card-flipped')) {
+                    this.flipStudyCard();
+                }
+                
+                // Update card content
+                this.elements.studyCardFront.innerHTML = card.useFrontMarkdown 
+                    ? marked.parse(card.front) 
+                    : card.front;
+                
+                this.elements.studyCardBack.innerHTML = card.useBackMarkdown
+                    ? marked.parse(card.back)
+                    : card.back;
+                
+                // Update category
+                this.elements.studyCardCategory.textContent = card.category || 'بدون دسته‌بندی';
+                
+                // Update difficulty
+                const difficulty = card.difficulty || 2;
+                this.elements.studyCardDifficultyText.textContent = 
+                    difficulty === 3 ? 'دشوار' : 
+                    difficulty === 1 ? 'ساده' : 
+                    'متوسط';
+                
+                // Update difficulty stars
+                this.elements.studyCardDifficultyStars.innerHTML = '';
+                for (let i = 1; i <= 3; i++) {
+                    const star = document.createElement('i');
+                    star.className = `fas fa-star text-xs ${i <= difficulty ? 'text-yellow-400' : 'text-gray-400'} mr-0.5`;
+                    this.elements.studyCardDifficultyStars.appendChild(star);
+                }
+                
+                // Update progress
+                const currentIndex = AppState.currentStudyCardIndex + 1;
+                const totalCards = AppState.studyCards.length;
+                
+                this.elements.currentCardIndex.textContent = currentIndex.toString();
+                this.elements.totalStudyCards.textContent = totalCards.toString();
+                this.elements.studyProgressBar.style.width = `${(currentIndex / totalCards) * 100}%`;
+            },
+            
+            nextStudyCard: function() {
+                // Move to next card
+                AppState.currentStudyCardIndex++;
+                
+                // Load next card
+                this.loadStudyCard();
+            },
+            
+            rateStudyCard: function(rating) {
+                const cardId = AppState.studyCards[AppState.currentStudyCardIndex];
+                
+                // Record card review
+                AppState.recordCardReview(cardId, rating);
+                
+                // Update study stats
+                AppState.studyStats.cardsStudied++;
+                
+                if (rating === 3) {
+                    AppState.studyStats.easyCards++;
+                } else if (rating === 1) {
+                    AppState.studyStats.hardCards++;
+                    AppState.studyStats.difficultCardIds.push(cardId);
+                }
+                
+                // Move to next card
+                this.nextStudyCard();
+            },
+            
+            editCurrentStudyCard: function() {
+                const cardId = AppState.studyCards[AppState.currentStudyCardIndex];
+                
+                // Edit card
+                this.editCard(cardId);
+            },
+            
+            showStudyCompletion: function() {
+                // Hide study card area
+                this.elements.studyCardArea.classList.add('hidden');
+                
+                // Show completion screen
+                this.elements.studyCompleted.classList.remove('hidden');
+                
+                // Update stats
+                this.elements.cardsStudiedCount.textContent = AppState.studyStats.cardsStudied.toString();
+                this.elements.cardsEasyCount.textContent = AppState.studyStats.easyCards.toString();
+                this.elements.cardsHardCount.textContent = AppState.studyStats.hardCards.toString();
+                
+                // Disable difficult cards button if none
+                this.elements.studyDifficultCardsButton.disabled = AppState.studyStats.difficultCardIds.length === 0;
+                
+                // Save study session to history
+                const sessionData = {
+                    date: Date.now(),
+                    cardsStudied: AppState.studyStats.cardsStudied,
+                    easyCards: AppState.studyStats.easyCards,
+                    hardCards: AppState.studyStats.hardCards
+                };
+                
+                AppState.stats.studyHistory.push(sessionData);
+                AppState.saveStats();
+                
+                // Update stats counters
+                this.updateStatsCounters();
+            },
+            
+            restartStudySession: function() {
+                // Restart with the same cards
+                this.startStudySessionWithCards([...AppState.studyCards]);
+            },
+            
+            studyDifficultCards: function() {
+                // Start new session with difficult cards
+                if (AppState.studyStats.difficultCardIds.length > 0) {
+                    this.startStudySessionWithCards([...AppState.studyStats.difficultCardIds]);
+                } else {
+                    Utils.showAlert('هیچ کارت دشواری برای مرور وجود ندارد.', 'warning');
+                }
+            },
+            
+            refreshStats: function() {
+                // Update basic stats
+                this.updateStatsCounters();
+                
+                // Check if there are enough cards for stats
+                if (AppState.flashcards.length === 0) {
+                    this.elements.noStatsMessage.classList.remove('hidden');
+                    this.elements.categoryChartContainer.classList.add('hidden');
+                    this.elements.noDifficultCards.classList.remove('hidden');
+                    this.elements.difficultCardsContainer.classList.add('hidden');
+                    return;
+                }
+                
+                // Show stats containers
+                this.elements.noStatsMessage.classList.add('hidden');
+                this.elements.categoryChartContainer.classList.remove('hidden');
+                
+                // Get category distribution
+                const categories = AppState.getAllCategories();
+                const categoryDistribution = [];
+                
+                // Count cards per category
+                categories.forEach(category => {
+                    const count = AppState.flashcards.filter(card => card.category === category).length;
+                    categoryDistribution.push({ category, count });
+                });
+                
+                // Add uncategorized
+                const uncategorizedCount = AppState.flashcards.filter(card => !card.category).length;
+                if (uncategorizedCount > 0) {
+                    categoryDistribution.push({ category: 'بدون دسته‌بندی', count: uncategorizedCount });
+                }
+                
+                // Sort by count (descending)
+                categoryDistribution.sort((a, b) => b.count - a.count);
+                
+                // Create chart
+                // This is a simplified bar chart for demo purposes
+                this.elements.categoryChartContainer.innerHTML = '';
+                
+                const chartElement = document.createElement('div');
+                chartElement.className = 'flex flex-col space-y-2';
+                
+                // Find max count for scaling
+                const maxCount = Math.max(...categoryDistribution.map(item => item.count));
+                
+                // Create bars for each category
+                categoryDistribution.forEach(item => {
+                    const percentage = Math.round((item.count / maxCount) * 100);
+                    
+                    const barContainer = document.createElement('div');
+                    barContainer.className = 'flex items-center';
+                    
+                    const label = document.createElement('div');
+                    label.className = 'w-1/4 text-sm text-gray-700 dark:text-gray-300';
+                    label.textContent = item.category;
+                    
+                    const barWrapper = document.createElement('div');
+                    barWrapper.className = 'w-3/4 bg-gray-200 dark:bg-gray-700 rounded-full h-4 mr-4';
+                    
+                    const bar = document.createElement('div');
+                    bar.className = 'bg-primary-500 h-4 rounded-full flex items-center justify-end px-2';
+                    bar.style.width = `${percentage}%`;
+                    
+                    const count = document.createElement('div');
+                    count.className = 'text-xs text-white font-bold';
+                    
+                    if (percentage > 15) {
+                        count.textContent = item.count.toString();
+                        bar.appendChild(count);
+                    } else {
+                        count.className = 'text-xs text-gray-700 dark:text-gray-300 font-bold mr-2';
+                        count.textContent = item.count.toString();
+                        barWrapper.appendChild(bar);
+                        barWrapper.appendChild(count);
+                    }
+                    
+                    barContainer.appendChild(label);
+                    barContainer.appendChild(barWrapper);
+                    chartElement.appendChild(barContainer);
+                });
+                
+                this.elements.categoryChartContainer.appendChild(chartElement);
+                
+                // Show difficult cards
+                const difficultCards = AppState.getDifficultCards(6);
+                
+                if (difficultCards.length === 0) {
+                    this.elements.noDifficultCards.classList.remove('hidden');
+                    this.elements.difficultCardsContainer.classList.add('hidden');
+                } else {
+                    this.elements.noDifficultCards.classList.add('hidden');
+                    this.elements.difficultCardsContainer.classList.remove('hidden');
+                    
+                    // Clear container
+                    this.elements.difficultCardsContainer.innerHTML = '';
+                    
+                    // Add cards
+                    difficultCards.forEach(card => {
+                        const cardElement = document.createElement('div');
+                        cardElement.className = 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow';
+                        
+                        // Create difficulty stars
+                        const difficulty = card.difficulty || 2;
+                        let difficultyStars = '';
+                        for (let i = 1; i <= 3; i++) {
+                            difficultyStars += `<i class="fas fa-star ${i <= difficulty ? 'text-yellow-400' : 'text-gray-400'} mr-0.5"></i>`;
+                        }
+                        
+                        cardElement.innerHTML = `
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="text-xs ${card.category ? 'bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200' : 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200'} px-2 py-0.5 rounded-full">
+                                    ${card.category || 'بدون دسته‌بندی'}
+                                </div>
+                                <div class="flex items-center">
+                                    ${difficultyStars}
+                                </div>
+                            </div>
+                            <div class="text-sm font-medium text-gray-800 dark:text-gray-200 mb-2 line-clamp-2 h-10 overflow-hidden">
+                                ${card.useFrontMarkdown ? marked.parse(card.front) : card.front}
+                            </div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                                آخرین مرور: ${card.studyData?.lastReviewDate ? Utils.timeSince(card.studyData.lastReviewDate) : 'هنوز مرور نشده'}
+                            </div>
+                            <div class="mt-3">
+                                <button class="study-difficult-card text-sm px-3 py-1 bg-primary-600 hover:bg-primary-700 text-white rounded transition-colors" data-id="${card.id}">
+                                    مطالعه
+                                </button>
+                            </div>
+                        `;
+                        
+                        // Add to container
+                        this.elements.difficultCardsContainer.appendChild(cardElement);
+                        
+                        // Add event listener
+                        const studyButton = cardElement.querySelector('.study-difficult-card');
+                        studyButton.addEventListener('click', () => {
+                            this.changeTab('study');
+                            this.startStudySessionWithCards([card.id]);
+                        });
+                    });
+                }
+            },
+            
+            toggleDarkMode: function() {
+                AppState.toggleDarkMode();
+                
+                // Update toggle in settings
+                if (this.elements.darkModeToggle) {
+                    this.elements.darkModeToggle.checked = AppState.settings.darkMode;
+                }
+            },
+            
+            updateCardsPerPage: function() {
+                const cardsPerPage = parseInt(this.elements.cardsPerPage.value);
+                AppState.settings.cardsPerPage = cardsPerPage;
+                AppState.saveSettings();
+                
+                // Refresh cards grid if on browse tab
+                if (AppState.currentTab === 'browse') {
+                    this.refreshCardGrid();
+                }
+            },
+            
+            updateAnimationSpeed: function() {
+                const speed = parseInt(this.elements.animationSpeed.value);
+                AppState.settings.animationSpeed = speed;
+                AppState.saveSettings();
+                
+                // Update CSS variable
+                this.updateAnimationSpeedCSS();
+            },
+            
+            updateAnimationSpeedCSS: function() {
+                const speed = AppState.settings.animationSpeed;
+                const timeInSeconds = 1 - (speed - 1) * 0.08; // 1s at 1, 0.28s at 10
+                document.documentElement.style.setProperty('--card-flip-time', `${timeInSeconds}s`);
+            },
+            
+            updateFontSize: function() {
+                const size = parseInt(this.elements.fontSize.value);
+                AppState.settings.fontSize = size;
+                AppState.saveSettings();
+                
+                // Update CSS
+                this.updateFontSizeCSS();
+            },
+            
+            updateFontSizeCSS: function() {
+                const size = AppState.settings.fontSize;
+                const fontSizeMap = {
+                    1: '0.875rem',
+                    2: '0.9375rem',
+                    3: '1rem',
+                    4: '1.0625rem',
+                    5: '1.125rem'
+                };
+                
+                document.documentElement.style.setProperty('--base-font-size', fontSizeMap[size]);
+                
+                // Apply the font size to the body
+                document.body.style.fontSize = fontSizeMap[size];
+            },
+            
+            exportAllData: function() {
+                const exportData = AppState.exportAllData();
+                
+                // Create download link
+                const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(exportData);
+                const exportFileName = `flashcards_full_backup_${new Date().toISOString().slice(0, 10)}.json`;
+                
+                const linkElement = document.createElement('a');
+                linkElement.setAttribute('href', dataUri);
+                linkElement.setAttribute('download', exportFileName);
+                linkElement.click();
+                
+                Utils.showAlert('همه داده‌ها با موفقیت خروجی گرفته شدند.', 'success');
+            },
+            
+            importAllData: function(e) {
+                const file = e.target.files[0];
+                
+                if (!file) return;
+                
+                const reader = new FileReader();
+                
+                reader.onload = (event) => {
+                    try {
+                        const importConfirm = Utils.confirmDialog(
+                            'آیا می‌خواهید تمام داده‌های فعلی را با محتوای این فایل جایگزین کنید؟\n\n' +
+                            'هشدار: این عمل تمام فلش‌کارت‌ها، تنظیمات و آمار فعلی را پاک می‌کند.'
+                        );
+                        
+                        if (importConfirm) {
+                            const result = AppState.importAllData(event.target.result);
+                            
+                            if (result.success) {
+                                // Update UI
+                                this.updateUI();
+                                
+                                // Refresh current tab
+                                this.changeTab(AppState.currentTab);
+                                
+                                Utils.showAlert(`داده‌ها با موفقیت بازیابی شدند. ${result.cardsCount} کارت بازیابی شد.`, 'success');
+                            } else {
+                                Utils.showAlert(`خطا در بازیابی داده‌ها: ${result.error}`, 'error');
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Import error:', error);
+                        Utils.showAlert(`خطا در بازیابی داده‌ها: ${error.message}`, 'error');
+                    }
+                };
+                
+                reader.readAsText(file);
+                
+                // Reset file input
+                e.target.value = '';
+            },
+            
+            resetSettings: function() {
+                const confirmReset = Utils.confirmDialog('آیا از بازنشانی تنظیمات به حالت پیش‌فرض اطمینان دارید؟');
+                
+                if (confirmReset) {
+                    AppState.resetSettings();
+                    
+                    // Update UI
+                    this.updateSettingsUI();
+                    this.updateAnimationSpeedCSS();
+                    this.updateFontSizeCSS();
+                    
+                    // Refresh current tab
+                    this.changeTab(AppState.currentTab);
+                    
+                    Utils.showAlert('تنظیمات با موفقیت بازنشانی شدند.', 'success');
+                }
+            },
+            
+            resetAllData: function() {
+                const confirmReset = Utils.confirmDialog(
+                    'آیا از حذف تمام داده‌ها اطمینان دارید؟\n\n' +
+                    'هشدار: این عمل تمام فلش‌کارت‌ها، آمار و سابقه مطالعه را حذف می‌کند و قابل بازگشت نیست.'
+                );
+                
+                if (confirmReset) {
+                    // Double confirm
+                    const doubleConfirm = Utils.confirmDialog(
+                        'این عملیات تمام کارت‌ها و سوابق شما را حذف می‌کند. آیا واقعاً مطمئن هستید؟'
+                    );
+                    
+                    if (doubleConfirm) {
+                        AppState.resetAllData();
+                        
+                        // Update UI
+                        this.updateUI();
+                        
+                        // Reset selected cards
+                        this.selectedCardIds = new Set();
+                        
+                        // Reset study state
+                        AppState.studyCards = [];
+                        AppState.currentStudyCardIndex = 0;
+                        
+                        // Refresh current tab
+                        this.changeTab(AppState.currentTab);
+                        
+                        Utils.showAlert('تمام داده‌ها با موفقیت حذف شدند.', 'success');
+                    }
+                }
+            }
+        };
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            AppState.init();
+            UI.init();
+        });
+    </script>
+</body>
+</html>
