@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مکمل همیار درسی</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f3f3ff',
+                            100: '#e6e6ff',
+                            200: '#d2d2ff',
+                            300: '#b0afff',
+                            400: '#8785ff',
+                            500: '#6562ff',
+                            600: '#5D5CDE', // رنگ اصلی
+                            700: '#3d3bc9',
+                            800: '#3030a7',
+                            900: '#2b2d86',
+                            950: '#1a1a45',
+                        }
+                    },
+                    fontFamily: {
+                        'vazir': ['Vazir', 'sans-serif']
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir-Bold.woff2') format('woff2');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
+        * {
+            font-family: 'Vazir', system-ui, sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+        input, textarea, select {
+            text-align: right;
+        }
+        /* کلاس برای مخفی کردن اسکرول‌بار در مرورگرهای مختلف */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen transition-colors duration-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+        <!-- هدر -->
+        <header class="mb-8">
+            <div class="flex flex-col sm:flex-row justify-between items-center">
+                <h1 class="text-2xl sm:text-3xl font-bold text-primary-600 mb-4 sm:mb-0 text-center sm:text-right">تبدیل به فایل JSON</h1>
+                <button id="toggleDarkMode" class="bg-gray-200 dark:bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 dark:hidden">
+                        <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hidden dark:block text-yellow-300">
+                        <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- بخش اصلی -->
+        <main class="grid grid-cols-1 gap-6">
+            <!-- بخش 1: آپلود فایل JSON -->
+            <section class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 border border-gray-200 dark:border-gray-700">
+                <h2 class="text-lg font-bold mb-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-primary-600" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    آپلود و تبدیل فایل JSON
+                </h2>
+                <div class="mb-4">
+                    <div class="flex flex-col space-y-3">
+                        <label for="jsonFileInput" class="text-sm font-medium text-gray-700 dark:text-gray-300">انتخاب فایل JSON:</label>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <input type="file" id="jsonFileInput" accept=".json" class="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            <button id="convertJsonToTextBtn" class="bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800">
+                                تبدیل به متن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="jsonConversionResult" class="hidden mt-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600">
+                    <h3 class="font-bold text-green-600 dark:text-green-400 mb-3">نتیجه تبدیل:</h3>
+                    <div class="flex flex-col space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600 dark:text-gray-400">متن‌ها با فرمت "متن اول | متن دوم" در هر خط</span>
+                            <button id="copyTextResult" class="bg-green-600 hover:bg-green-700 text-white text-sm py-1.5 px-3 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-green-500">
+                                کپی متن
+                            </button>
+                        </div>
+                        <textarea id="textOutput" rows="5" readonly class="w-full p-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500"></textarea>
+                        <div class="flex justify-end">
+                            <button id="addConvertedItems" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                افزودن موارد به لیست
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- بخش 2: افزودن موارد -->
+            <section class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 border border-gray-200 dark:border-gray-700">
+                <h2 class="text-lg font-bold mb-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-primary-600" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+                    </svg>
+                    افزودن مورد جدید
+                </h2>
+                <div class="mb-4">
+                    <div class="flex flex-col sm:flex-row items-end gap-3">
+                        <div class="w-full sm:w-2/5">
+                            <label for="frontInput" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">متن اول (front):</label>
+                            <input type="text" id="frontInput" class="w-full p-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-base focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="متن اول را وارد کنید">
+                        </div>
+                        <div class="w-full sm:w-2/5">
+                            <label for="backInput" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">متن دوم (back):</label>
+                            <input type="text" id="backInput" class="w-full p-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-base focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="متن دوم را وارد کنید">
+                        </div>
+                        <button id="addItemBtn" class="w-full sm:w-1/5 bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            افزودن
+                        </button>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                        برای افزودن سریع، پس از پر کردن فیلد اول کلید Enter را فشار دهید تا به فیلد دوم بروید، سپس Enter را فشار دهید تا مورد اضافه شود.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-md font-bold mb-3 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-primary-600" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z" />
+                            <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z" />
+                        </svg>
+                        افزودن گروهی
+                    </h3>
+                    <div class="mb-3">
+                        <textarea id="bulkInput" rows="4" class="w-full p-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-base focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="هر خط شامل متن اول و متن دوم جدا شده با خط عمودی (|) باشد:&#10;متن اول | متن دوم&#10;سلام | Hello"></textarea>
+                    </div>
+                    <div class="flex justify-end">
+                        <button id="addBulkBtn" class="bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            افزودن گروهی
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- بخش 3: لیست موارد -->
+            <section class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 border border-gray-200 dark:border-gray-700">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3">
+                    <h2 class="text-lg font-bold flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-primary-600" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+                        </svg>
+                        لیست موارد (<span id="itemCount">0</span>)
+                    </h2>
+                    <div class="flex gap-2 w-full sm:w-auto">
+                        <button id="clearAllBtn" class="hidden w-full sm:w-auto bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-red-500">
+                            حذف همه
+                        </button>
+                        <button id="downloadJson" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-green-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                            دانلود فایل JSON
+                        </button>
+                    </div>
+                </div>
+                <div id="itemList" class="space-y-2 max-h-[400px] overflow-y-auto pr-1 scrollbar-hide"></div>
+                <div id="emptyMessage" class="text-center py-8 bg-gray-50 dark:bg-gray-700 rounded-lg mt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-gray-400 dark:text-gray-500 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                    </svg>
+                    <p class="text-gray-600 dark:text-gray-400">هنوز موردی اضافه نشده است. لطفاً از فرم بالا برای افزودن استفاده کنید.</p>
+                </div>
+            </section>
+
+            <!-- بخش 4: راهنمای استفاده از سایت -->
+            <section class="bg-indigo-50 dark:bg-indigo-900/20 rounded-xl p-5 border border-indigo-200 dark:border-indigo-800">
+                <h2 class="text-lg font-bold mb-3 flex items-center text-indigo-800 dark:text-indigo-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                    </svg>
+                    راهنمای استفاده از سایت
+                </h2>
+                <div class="space-y-4 text-indigo-800 dark:text-indigo-300">
+                    <div>
+                        <h3 class="font-bold mb-1 text-sm">آپلود و تبدیل فایل JSON:</h3>
+                        <p class="text-sm mr-4">فایل JSON موجود را آپلود کرده و با کلیک روی دکمه "تبدیل به متن"، محتوای آن را به فرمت متنی تبدیل کنید. سپس می‌توانید متن را کپی کرده یا مستقیماً به لیست اضافه کنید.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-1 text-sm">افزودن مورد جدید:</h3>
+                        <p class="text-sm mr-4">متن اول و دوم را در فیلدهای مربوطه وارد کرده و روی دکمه "افزودن" کلیک کنید. همچنین می‌توانید بعد از پر کردن فیلد اول، با کلید Enter به فیلد دوم بروید و پس از تکمیل، مجدداً Enter را فشار دهید تا مورد اضافه شود.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-1 text-sm">افزودن گروهی:</h3>
+                        <p class="text-sm mr-4">برای افزودن چندین مورد همزمان، متن‌ها را با فرمت "متن اول | متن دوم" در هر خط وارد کرده و سپس روی دکمه "افزودن گروهی" کلیک کنید.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-1 text-sm">مدیریت موارد:</h3>
+                        <p class="text-sm mr-4">برای هر مورد در لیست، امکان ویرایش و حذف وجود دارد. همچنین می‌توانید با دکمه "حذف همه" تمام موارد را یکجا حذف کنید.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-1 text-sm">دانلود فایل JSON:</h3>
+                        <p class="text-sm mr-4">پس از افزودن موارد، با کلیک روی دکمه "دانلود فایل JSON" می‌توانید یک فایل JSON با فرمت مناسب دانلود کنید.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- مودال ویرایش -->
+    <div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl max-w-md w-full mx-auto shadow-xl">
+            <h3 class="text-lg font-bold mb-4">ویرایش مورد</h3>
+            <div class="space-y-4">
+                <div>
+                    <label for="editFrontInput" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">متن اول (front):</label>
+                    <input type="text" id="editFrontInput" class="w-full p-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-base focus:outline-none focus:ring-2 focus:ring-primary-500">
+                </div>
+                <div>
+                    <label for="editBackInput" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">متن دوم (back):</label>
+                    <input type="text" id="editBackInput" class="w-full p-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-base focus:outline-none focus:ring-2 focus:ring-primary-500">
+                </div>
+            </div>
+            <div class="flex justify-end gap-3 mt-6">
+                <button id="cancelEdit" class="bg-gray-300 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium py-2 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500">
+                    انصراف
+                </button>
+                <button id="saveEdit" class="bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    ذخیره
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نوتیفیکیشن -->
+    <div id="notification" class="fixed bottom-4 right-4 bg-green-500 text-white p-3 rounded-lg shadow-lg transform translate-y-16 opacity-0 transition-all duration-300 flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg>
+        <span id="notificationText">عملیات با موفقیت انجام شد</span>
+    </div>
+
+    <script>
+        // متغیرهای کلی
+        let items = [];
+        let editingIndex = -1;
+
+        // نمایش نوتیفیکیشن
+        function showNotification(message, isSuccess = true) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            // تنظیم رنگ بر اساس نوع پیام
+            if (isSuccess) {
+                notification.classList.remove('bg-red-500');
+                notification.classList.add('bg-green-500');
+            } else {
+                notification.classList.remove('bg-green-500');
+                notification.classList.add('bg-red-500');
+            }
+            
+            notificationText.textContent = message;
+            
+            // نمایش نوتیفیکیشن
+            notification.classList.remove('translate-y-16', 'opacity-0');
+            notification.classList.add('translate-y-0', 'opacity-100');
+            
+            // مخفی کردن بعد از 3 ثانیه
+            setTimeout(() => {
+                notification.classList.remove('translate-y-0', 'opacity-100');
+                notification.classList.add('translate-y-16', 'opacity-0');
+            }, 3000);
+        }
+
+        // نمایش تعداد آیتم‌ها
+        function updateItemCount() {
+            document.getElementById('itemCount').textContent = items.length;
+            if (items.length > 0) {
+                document.getElementById('emptyMessage').classList.add('hidden');
+                document.getElementById('clearAllBtn').classList.remove('hidden');
+            } else {
+                document.getElementById('emptyMessage').classList.remove('hidden');
+                document.getElementById('clearAllBtn').classList.add('hidden');
+            }
+        }
+
+        // تابع برای نمایش لیست آیتم‌ها
+        function renderItemList() {
+            const itemList = document.getElementById('itemList');
+            itemList.innerHTML = '';
+            
+            items.forEach((item, index) => {
+                const itemCard = document.createElement('div');
+                itemCard.className = 'bg-gray-50 dark:bg-gray-700 p-3.5 rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border border-gray-200 dark:border-gray-600 hover:border-primary-300 dark:hover:border-primary-700 transition-colors';
+                itemCard.innerHTML = `
+                    <div class="flex-1 w-full sm:w-auto">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+                            <span class="font-bold text-primary-700 dark:text-primary-300 text-sm whitespace-nowrap">${index + 1}.</span>
+                            <div class="flex-1 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 w-full">
+                                <div class="flex-1 break-words">${item.front}</div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400 hidden sm:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                                <div class="flex-1 break-words">${item.back}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 w-full sm:w-auto">
+                        <button class="edit-btn flex-1 sm:flex-none bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-lg transition-colors flex items-center justify-center" data-index="${index}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-10 10a2 2 0 01-1.414.586H4a1 1 0 01-1-1v-1a2 2 0 01.586-1.414l10-10z" />
+                            </svg>
+                            <span class="mr-1 text-sm hidden sm:inline">ویرایش</span>
+                        </button>
+                        <button class="delete-btn flex-1 sm:flex-none bg-red-500 hover:bg-red-600 text-white p-2 rounded-lg transition-colors flex items-center justify-center" data-index="${index}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                            </svg>
+                            <span class="mr-1 text-sm hidden sm:inline">حذف</span>
+                        </button>
+                    </div>
+                `;
+                itemList.appendChild(itemCard);
+            });
+
+            // اضافه کردن رویدادهای دکمه‌های ویرایش و حذف
+            document.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.dataset.index);
+                    openEditModal(index);
+                });
+            });
+
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.dataset.index);
+                    deleteItem(index);
+                });
+            });
+
+            updateItemCount();
+        }
+
+        // تابع برای افزودن آیتم جدید
+        function addItem() {
+            const front = document.getElementById('frontInput').value.trim();
+            const back = document.getElementById('backInput').value.trim();
+
+            if (!front || !back) {
+                showNotification('لطفاً هر دو فیلد را پر کنید.', false);
+                return;
+            }
+
+            items.push({
+                front: front,
+                back: back
+            });
+
+            // پاک کردن فرم
+            document.getElementById('frontInput').value = '';
+            document.getElementById('backInput').value = '';
+            document.getElementById('frontInput').focus();
+            
+            // به‌روزرسانی لیست
+            renderItemList();
+            showNotification('مورد جدید با موفقیت اضافه شد.');
+        }
+
+        // تابع برای افزودن گروهی
+        function addBulkItems() {
+            const bulkText = document.getElementById('bulkInput').value.trim();
+            
+            if (!bulkText) {
+                showNotification('لطفاً متن را وارد کنید.', false);
+                return;
+            }
+
+            const lines = bulkText.split('\n');
+            let addedCount = 0;
+
+            lines.forEach(line => {
+                line = line.trim();
+                if (!line) return;
+                
+                const parts = line.split('|');
+                if (parts.length !== 2) return;
+                
+                const front = parts[0].trim();
+                const back = parts[1].trim();
+                
+                if (!front || !back) return;
+                
+                items.push({
+                    front: front,
+                    back: back
+                });
+                
+                addedCount++;
+            });
+
+            if (addedCount > 0) {
+                // پاک کردن فرم
+                document.getElementById('bulkInput').value = '';
+                
+                // به‌روزرسانی لیست
+                renderItemList();
+                
+                showNotification(`${addedCount} مورد با موفقیت اضافه شد.`);
+            } else {
+                showNotification('هیچ موردی برای افزودن یافت نشد. لطفاً از فرمت صحیح استفاده کنید (متن اول | متن دوم).', false);
+            }
+        }
+
+        // تابع برای حذف آیتم
+        function deleteItem(index) {
+            if (confirm('آیا از حذف این مورد مطمئن هستید؟')) {
+                items.splice(index, 1);
+                renderItemList();
+                showNotification('مورد با موفقیت حذف شد.');
+            }
+        }
+
+        // تابع برای باز کردن مودال ویرایش
+        function openEditModal(index) {
+            editingIndex = index;
+            const item = items[index];
+            
+            document.getElementById('editFrontInput').value = item.front;
+            document.getElementById('editBackInput').value = item.back;
+            
+            document.getElementById('editModal').classList.remove('hidden');
+            document.getElementById('editModal').classList.add('flex');
+            document.getElementById('editFrontInput').focus();
+        }
+
+        // تابع برای بستن مودال ویرایش
+        function closeEditModal() {
+            document.getElementById('editModal').classList.add('hidden');
+            document.getElementById('editModal').classList.remove('flex');
+            editingIndex = -1;
+        }
+
+        // تابع برای ذخیره تغییرات ویرایش
+        function saveEdit() {
+            if (editingIndex < 0) return;
+            
+            const front = document.getElementById('editFrontInput').value.trim();
+            const back = document.getElementById('editBackInput').value.trim();
+
+            if (!front || !back) {
+                showNotification('لطفاً هر دو فیلد را پر کنید.', false);
+                return;
+            }
+
+            items[editingIndex] = {
+                front: front,
+                back: back
+            };
+
+            closeEditModal();
+            renderItemList();
+            showNotification('تغییرات با موفقیت ذخیره شد.');
+        }
+
+        // تابع برای حذف همه آیتم‌ها
+        function clearAll() {
+            if (confirm('آیا از حذف تمام موارد مطمئن هستید؟')) {
+                items = [];
+                renderItemList();
+                showNotification('همه موارد با موفقیت حذف شدند.');
+            }
+        }
+
+        // تابع برای تولید شناسه منحصر به فرد
+        function generateId() {
+            return 'maoc' + Math.random().toString(36).substring(2, 15);
+        }
+
+        // تابع برای تولید زمان فعلی به میلی‌ثانیه
+        function getCurrentTime() {
+            return new Date().getTime();
+        }
+
+        // تابع برای تبدیل JSON به متن
+        function convertJsonToText(jsonData) {
+            let textResult = '';
+            
+            if (jsonData && jsonData.flashcards && Array.isArray(jsonData.flashcards)) {
+                jsonData.flashcards.forEach(card => {
+                    textResult += `${card.front} | ${card.back}\n`;
+                });
+            }
+            
+            return textResult.trim();
+        }
+
+        // تابع برای پردازش فایل JSON آپلود شده
+        function processJsonFile(file) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                try {
+                    const jsonData = JSON.parse(e.target.result);
+                    const textResult = convertJsonToText(jsonData);
+                    
+                    if (textResult) {
+                        document.getElementById('textOutput').value = textResult;
+                        document.getElementById('jsonConversionResult').classList.remove('hidden');
+                        showNotification('فایل JSON با موفقیت به متن تبدیل شد.');
+                    } else {
+                        showNotification('فایل JSON معتبر نیست یا ساختار مورد نظر را ندارد.', false);
+                    }
+                } catch (error) {
+                    showNotification('خطا در تجزیه فایل JSON: ' + error.message, false);
+                }
+            };
+            
+            reader.readAsText(file);
+        }
+
+        // تابع برای افزودن موارد تبدیل شده به لیست
+        function addConvertedItems() {
+            const textOutput = document.getElementById('textOutput').value.trim();
+            
+            if (!textOutput) {
+                showNotification('هیچ متنی برای افزودن وجود ندارد.', false);
+                return;
+            }
+            
+            const lines = textOutput.split('\n');
+            let addedCount = 0;
+            
+            lines.forEach(line => {
+                line = line.trim();
+                if (!line) return;
+                
+                const parts = line.split('|');
+                if (parts.length !== 2) return;
+                
+                const front = parts[0].trim();
+                const back = parts[1].trim();
+                
+                if (!front || !back) return;
+                
+                items.push({
+                    front: front,
+                    back: back
+                });
+                
+                addedCount++;
+            });
+            
+            if (addedCount > 0) {
+                renderItemList();
+                showNotification(`${addedCount} مورد با موفقیت به لیست اضافه شد.`);
+                document.getElementById('jsonConversionResult').classList.add('hidden');
+            } else {
+                showNotification('هیچ موردی برای افزودن یافت نشد.', false);
+            }
+        }
+
+        // تابع برای کپی کردن متن تبدیل شده
+        function copyTextResult() {
+            const textOutput = document.getElementById('textOutput');
+            textOutput.select();
+            document.execCommand('copy');
+            
+            showNotification('متن با موفقیت کپی شد.');
+        }
+
+        // تابع برای دانلود فایل JSON
+        function downloadJson() {
+            if (items.length === 0) {
+                showNotification('لطفاً ابتدا حداقل یک مورد اضافه کنید.', false);
+                return;
+            }
+
+            const currentTime = getCurrentTime();
+            
+            let jsonData = {
+                "flashcards": items.map(item => ({
+                    "id": generateId(),
+                    "front": item.front,
+                    "back": item.back,
+                    "category": "معنی کلمات",
+                    "difficulty": 2,
+                    "tags": [],
+                    "useFrontMarkdown": false,
+                    "useBackMarkdown": false,
+                    "createdAt": currentTime,
+                    "updatedAt": currentTime,
+                    "studyData": {
+                        "reviewCount": 0,
+                        "lastReviewDate": null,
+                        "nextReviewDate": null,
+                        "easeFactor": 2.5,
+                        "interval": 0,
+                        "difficulty": 2
+                    }
+                })),
+                "settings": {
+                    "cardsPerPage": 16,
+                    "fontSize": 1,
+                    "darkMode": true
+                },
+                "stats": {
+                    "sessionsCount": 0,
+                    "totalReviews": 0,
+                    "lastStudyDate": null,
+                    "reviewsToday": 0,
+                    "studyHistory": []
+                },
+                "exportDate": currentTime,
+                "version": "1.1.0"
+            };
+
+            const jsonText = JSON.stringify(jsonData, null, 2);
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(jsonText);
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", "flashcards_" + currentTime + ".json");
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+            
+            showNotification('فایل JSON با موفقیت دانلود شد.');
+        }
+
+        // تغییر حالت تاریک/روشن
+        function setDarkMode(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+
+        // اضافه کردن رویدادها به دکمه‌ها
+        document.addEventListener('DOMContentLoaded', function() {
+            // رویداد افزودن آیتم
+            document.getElementById('addItemBtn').addEventListener('click', addItem);
+
+            // رویداد افزودن با کلید Enter
+            document.getElementById('frontInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    document.getElementById('backInput').focus();
+                }
+            });
+            
+            document.getElementById('backInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addItem();
+                }
+            });
+
+            // رویداد افزودن گروهی
+            document.getElementById('addBulkBtn').addEventListener('click', addBulkItems);
+
+            // رویداد دانلود JSON
+            document.getElementById('downloadJson').addEventListener('click', downloadJson);
+
+            // رویداد حذف همه
+            document.getElementById('clearAllBtn').addEventListener('click', clearAll);
+
+            // رویدادهای مودال ویرایش
+            document.getElementById('cancelEdit').addEventListener('click', closeEditModal);
+            document.getElementById('saveEdit').addEventListener('click', saveEdit);
+            document.getElementById('editModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeEditModal();
+                }
+            });
+            // کلید ESC برای بستن مودال
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !document.getElementById('editModal').classList.contains('hidden')) {
+                    closeEditModal();
+                }
+            });
+
+            // رویداد آپلود فایل JSON
+            document.getElementById('jsonFileInput').addEventListener('change', function(e) {
+                if (this.files && this.files[0]) {
+                    processJsonFile(this.files[0]);
+                }
+            });
+
+            // رویداد تبدیل JSON به متن
+            document.getElementById('convertJsonToTextBtn').addEventListener('click', function() {
+                const fileInput = document.getElementById('jsonFileInput');
+                if (fileInput.files && fileInput.files[0]) {
+                    processJsonFile(fileInput.files[0]);
+                } else {
+                    showNotification('لطفاً ابتدا یک فایل JSON انتخاب کنید.', false);
+                }
+            });
+
+            // رویداد کپی کردن متن تبدیل شده
+            document.getElementById('copyTextResult').addEventListener('click', copyTextResult);
+
+            // رویداد افزودن موارد تبدیل شده به لیست
+            document.getElementById('addConvertedItems').addEventListener('click', addConvertedItems);
+
+            // تغییر دستی حالت تاریک/روشن
+            document.getElementById('toggleDarkMode').addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+
+            // بررسی تنظیمات سیستم برای حالت تاریک
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                setDarkMode(true);
+            }
+            
+            // گوش دادن به تغییرات سیستم
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+                setDarkMode(event.matches);
+            });
+
+            // نمایش لیست خالی در ابتدا
+            renderItemList();
+        });
+    </script>
+</body>
+</html>
