@@ -1,0 +1,2002 @@
+[
+  {
+    "name": "برنج سفید",
+    "calories": 130,
+    "protein": 2.7,
+    "carbs": 28,
+    "fat": 0.3,
+    "fiber": 0.4
+  },
+  {
+    "name": "نان سنگک",
+    "calories": 290,
+    "protein": 10,
+    "carbs": 59,
+    "fat": 1,
+    "fiber": 3
+  },
+  {
+    "name": "نان لواش",
+    "calories": 280,
+    "protein": 9,
+    "carbs": 58,
+    "fat": 1,
+    "fiber": 2.5
+  },
+  {
+    "name": "تخم مرغ",
+    "calories": 155,
+    "protein": 13,
+    "carbs": 1.1,
+    "fat": 11,
+    "fiber": 0
+  },
+  {
+    "name": "مرغ پخته",
+    "calories": 165,
+    "protein": 31,
+    "carbs": 0,
+    "fat": 3.6,
+    "fiber": 0
+  },
+  {
+    "name": "گوشت گوساله",
+    "calories": 250,
+    "protein": 26,
+    "carbs": 0,
+    "fat": 17,
+    "fiber": 0
+  },
+  {
+    "name": "خورشت قورمه سبزی",
+    "calories": 170,
+    "protein": 10,
+    "carbs": 6,
+    "fat": 12,
+    "fiber": 2
+  },
+  {
+    "name": "خورشت قیمه",
+    "calories": 350,
+    "protein": 15,
+    "carbs": 30,
+    "fat": 20,
+    "fiber": 4
+  },
+  {
+    "name": "زرشک پلو با مرغ",
+    "calories": 450,
+    "protein": 25,
+    "carbs": 60,
+    "fat": 15,
+    "fiber": 2
+  },
+  {
+    "name": "آبگوشت",
+    "calories": 320,
+    "protein": 20,
+    "carbs": 25,
+    "fat": 16,
+    "fiber": 5
+  },
+  {
+    "name": "کتلت گوشت",
+    "calories": 300,
+    "protein": 15,
+    "carbs": 15,
+    "fat": 20,
+    "fiber": 2
+  },
+  {
+    "name": "کوکو سبزی",
+    "calories": 180,
+    "protein": 8,
+    "carbs": 10,
+    "fat": 12,
+    "fiber": 1.5
+  },
+  {
+    "name": "ماکارونی با گوشت",
+    "calories": 220,
+    "protein": 12,
+    "carbs": 28,
+    "fat": 8,
+    "fiber": 2
+  },
+  {
+    "name": "عدسی",
+    "calories": 110,
+    "protein": 9,
+    "carbs": 20,
+    "fat": 0.4,
+    "fiber": 8
+  },
+  {
+    "name": "لوبیا چیتی پخته",
+    "calories": 127,
+    "protein": 8.7,
+    "carbs": 22.8,
+    "fat": 0.5,
+    "fiber": 6.4
+  },
+  {
+    "name": "عدس پلو",
+    "calories": 250,
+    "protein": 10,
+    "carbs": 35,
+    "fat": 7,
+    "fiber": 5
+  },
+  {
+    "name": "لوبیا پلو",
+    "calories": 270,
+    "protein": 12,
+    "carbs": 40,
+    "fat": 8,
+    "fiber": 4
+  },
+  {
+    "name": "ته‌چین مرغ",
+    "calories": 300,
+    "protein": 20,
+    "carbs": 35,
+    "fat": 12,
+    "fiber": 1
+  },
+  {
+    "name": "کوفته تبریزی",
+    "calories": 330,
+    "protein": 18,
+    "carbs": 20,
+    "fat": 18,
+    "fiber": 3
+  },
+  {
+    "name": "خوراک لوبیا",
+    "calories": 140,
+    "protein": 9,
+    "carbs": 25,
+    "fat": 2,
+    "fiber": 7
+  },
+  {
+    "name": "سوپ جو",
+    "calories": 85,
+    "protein": 3,
+    "carbs": 12,
+    "fat": 3,
+    "fiber": 1.5
+  },
+  {
+    "name": "سوپ مرغ",
+    "calories": 95,
+    "protein": 6,
+    "carbs": 8,
+    "fat": 4,
+    "fiber": 1
+  },
+  {
+    "name": "آش رشته",
+    "calories": 150,
+    "protein": 6,
+    "carbs": 20,
+    "fat": 6,
+    "fiber": 3
+  },
+  {
+    "name": "آش شله قلمکار",
+    "calories": 160,
+    "protein": 7,
+    "carbs": 22,
+    "fat": 5,
+    "fiber": 4
+  },
+  {
+    "name": "آش دوغ",
+    "calories": 80,
+    "protein": 4,
+    "carbs": 10,
+    "fat": 2,
+    "fiber": 1
+  },
+  {
+    "name": "فلافل",
+    "calories": 330,
+    "protein": 13,
+    "carbs": 31,
+    "fat": 18,
+    "fiber": 5
+  },
+  {
+    "name": "سمبوسه",
+    "calories": 290,
+    "protein": 10,
+    "carbs": 30,
+    "fat": 15,
+    "fiber": 2.5
+  },
+  {
+    "name": "کله‌پاچه",
+    "calories": 400,
+    "protein": 20,
+    "carbs": 0,
+    "fat": 35,
+    "fiber": 0
+  },
+  {
+    "name": "سوسیس سرخ‌شده",
+    "calories": 320,
+    "protein": 12,
+    "carbs": 5,
+    "fat": 28,
+    "fiber": 0
+  },
+  {
+    "name": "کالباس مرغ",
+    "calories": 250,
+    "protein": 13,
+    "carbs": 2,
+    "fat": 20,
+    "fiber": 0
+  },
+  {
+    "name": "سالاد الویه",
+    "calories": 220,
+    "protein": 8,
+    "carbs": 12,
+    "fat": 15,
+    "fiber": 1.5
+  },
+  {
+    "name": "سالاد فصل",
+    "calories": 35,
+    "protein": 1,
+    "carbs": 7,
+    "fat": 0.2,
+    "fiber": 2
+  },
+  {
+    "name": "سالاد شیرازی",
+    "calories": 45,
+    "protein": 1,
+    "carbs": 8,
+    "fat": 0.3,
+    "fiber": 1.5
+  },
+  {
+    "name": "کاهو با لیمو",
+    "calories": 20,
+    "protein": 1.2,
+    "carbs": 3,
+    "fat": 0.1,
+    "fiber": 1
+  },
+  {
+    "name": "گوجه‌فرنگی",
+    "calories": 18,
+    "protein": 0.9,
+    "carbs": 3.9,
+    "fat": 0.2,
+    "fiber": 1.2
+  },
+  {
+    "name": "خیار",
+    "calories": 15,
+    "protein": 0.7,
+    "carbs": 3.6,
+    "fat": 0.1,
+    "fiber": 0.5
+  },
+  {
+    "name": "سیب",
+    "calories": 52,
+    "protein": 0.3,
+    "carbs": 14,
+    "fat": 0.2,
+    "fiber": 2.4
+  },
+  {
+    "name": "موز",
+    "calories": 89,
+    "protein": 1.1,
+    "carbs": 23,
+    "fat": 0.3,
+    "fiber": 2.6
+  },
+  {
+    "name": "پرتقال",
+    "calories": 47,
+    "protein": 0.9,
+    "carbs": 12,
+    "fat": 0.1,
+    "fiber": 2.4
+  },
+  {
+    "name": "هندوانه",
+    "calories": 30,
+    "protein": 0.6,
+    "carbs": 8,
+    "fat": 0.2,
+    "fiber": 0.4
+  },
+  {
+    "name": "طالبی",
+    "calories": 34,
+    "protein": 0.8,
+    "carbs": 8,
+    "fat": 0.2,
+    "fiber": 0.9
+  },
+  {
+    "name": "انار",
+    "calories": 83,
+    "protein": 1.7,
+    "carbs": 19,
+    "fat": 1.2,
+    "fiber": 4
+  },
+  {
+    "name": "خرما",
+    "calories": 277,
+    "protein": 1.8,
+    "carbs": 75,
+    "fat": 0.2,
+    "fiber": 6.7
+  },
+  {
+    "name": "گردو",
+    "calories": 654,
+    "protein": 15,
+    "carbs": 14,
+    "fat": 65,
+    "fiber": 6.7
+  },
+  {
+    "name": "بادام",
+    "calories": 579,
+    "protein": 21,
+    "carbs": 22,
+    "fat": 49,
+    "fiber": 12.5
+  },
+  {
+    "name": "پسته",
+    "calories": 560,
+    "protein": 20,
+    "carbs": 28,
+    "fat": 45,
+    "fiber": 10
+  },
+  {
+    "name": "فندق",
+    "calories": 628,
+    "protein": 15,
+    "carbs": 17,
+    "fat": 61,
+    "fiber": 9.7
+  },
+  {
+    "name": "زیتون",
+    "calories": 115,
+    "protein": 0.8,
+    "carbs": 6,
+    "fat": 11,
+    "fiber": 3.3
+  },
+  {
+    "name": "روغن زیتون",
+    "calories": 884,
+    "protein": 0,
+    "carbs": 0,
+    "fat": 100,
+    "fiber": 0
+  },
+  {
+    "name": "کره",
+    "calories": 717,
+    "protein": 0.9,
+    "carbs": 0.1,
+    "fat": 81,
+    "fiber": 0
+  },
+  {
+    "name": "خامه صبحانه",
+    "calories": 340,
+    "protein": 2,
+    "carbs": 3,
+    "fat": 35,
+    "fiber": 0
+  },
+  {
+    "name": "شیر کم‌چرب",
+    "calories": 42,
+    "protein": 3.4,
+    "carbs": 5,
+    "fat": 1,
+    "fiber": 0
+  },
+  {
+    "name": "شیر پرچرب",
+    "calories": 60,
+    "protein": 3.2,
+    "carbs": 5,
+    "fat": 3.5,
+    "fiber": 0
+  },
+  {
+    "name": "ماست کم‌چرب",
+    "calories": 56,
+    "protein": 5,
+    "carbs": 4,
+    "fat": 2,
+    "fiber": 0
+  },
+  {
+    "name": "ماست پرچرب",
+    "calories": 80,
+    "protein": 5,
+    "carbs": 4,
+    "fat": 4.5,
+    "fiber": 0
+  },
+  {
+    "name": "پنیر سفید",
+    "calories": 264,
+    "protein": 14,
+    "carbs": 2.2,
+    "fat": 21,
+    "fiber": 0
+  },
+  {
+    "name": "پنیر لیقوان",
+    "calories": 280,
+    "protein": 15,
+    "carbs": 1.5,
+    "fat": 22,
+    "fiber": 0
+  },
+  {
+    "name": "بستنی وانیلی",
+    "calories": 207,
+    "protein": 3.5,
+    "carbs": 24,
+    "fat": 11,
+    "fiber": 0.5
+  },
+  {
+    "name": "شله‌زرد",
+    "calories": 140,
+    "protein": 2,
+    "carbs": 30,
+    "fat": 3,
+    "fiber": 0.5
+  },
+  {
+    "name": "فرنی",
+    "calories": 120,
+    "protein": 3,
+    "carbs": 20,
+    "fat": 3,
+    "fiber": 0
+  },
+  {
+    "name": "کاچی",
+    "calories": 250,
+    "protein": 3,
+    "carbs": 35,
+    "fat": 10,
+    "fiber": 1
+  },
+  {
+    "name": "حلیم گندم",
+    "calories": 150,
+    "protein": 6,
+    "carbs": 25,
+    "fat": 3,
+    "fiber": 2
+  },
+  {
+    "name": "نان تست",
+    "calories": 265,
+    "protein": 9,
+    "carbs": 49,
+    "fat": 3.5,
+    "fiber": 2.7
+  },
+  {
+    "name": "نان بربری",
+    "calories": 280,
+    "protein": 9,
+    "carbs": 56,
+    "fat": 1,
+    "fiber": 3
+  },
+  {
+    "name": "کباب کوبیده",
+    "calories": 290,
+    "protein": 18,
+    "carbs": 1,
+    "fat": 25,
+    "fiber": 0
+  },
+  {
+    "name": "کباب برگ",
+    "calories": 250,
+    "protein": 22,
+    "carbs": 0,
+    "fat": 18,
+    "fiber": 0
+  },
+  {
+    "name": "جوجه کباب",
+    "calories": 200,
+    "protein": 23,
+    "carbs": 1,
+    "fat": 12,
+    "fiber": 0
+  },
+  {
+    "name": "ماهی قزل‌آلا",
+    "calories": 190,
+    "protein": 20,
+    "carbs": 0,
+    "fat": 12,
+    "fiber": 0
+  },
+  {
+    "name": "ماهی سالمون",
+    "calories": 208,
+    "protein": 20,
+    "carbs": 0,
+    "fat": 13,
+    "fiber": 0
+  },
+  {
+    "name": "تن ماهی",
+    "calories": 180,
+    "protein": 25,
+    "carbs": 0,
+    "fat": 8,
+    "fiber": 0
+  },
+  {
+    "name": "خوراک دل و جگر",
+    "calories": 250,
+    "protein": 18,
+    "carbs": 2,
+    "fat": 20,
+    "fiber": 0
+  },
+  {
+    "name": "فست‌فود پیتزا پپرونی",
+    "calories": 270,
+    "protein": 12,
+    "carbs": 26,
+    "fat": 14,
+    "fiber": 2
+  },
+  {
+    "name": "پیتزا مخلوط",
+    "calories": 290,
+    "protein": 13,
+    "carbs": 28,
+    "fat": 16,
+    "fiber": 2.5
+  },
+  {
+    "name": "برگر گوشت",
+    "calories": 280,
+    "protein": 15,
+    "carbs": 26,
+    "fat": 14,
+    "fiber": 1.5
+  },
+  {
+    "name": "ناگت مرغ",
+    "calories": 270,
+    "protein": 13,
+    "carbs": 20,
+    "fat": 16,
+    "fiber": 1
+  },
+  {
+    "name": "سیب‌زمینی سرخ‌شده",
+    "calories": 312,
+    "protein": 3.4,
+    "carbs": 41,
+    "fat": 15,
+    "fiber": 3.8
+  },
+  {
+    "name": "چیپس سیب‌زمینی",
+    "calories": 536,
+    "protein": 7,
+    "carbs": 52,
+    "fat": 34,
+    "fiber": 4
+  },
+  {
+    "name": "پفک",
+    "calories": 560,
+    "protein": 7,
+    "carbs": 55,
+    "fat": 35,
+    "fiber": 2
+  },
+  {
+    "name": "شکلات تخته‌ای",
+    "calories": 546,
+    "protein": 5,
+    "carbs": 60,
+    "fat": 31,
+    "fiber": 3
+  },
+  {
+    "name": "بیسکوییت",
+    "calories": 480,
+    "protein": 6,
+    "carbs": 65,
+    "fat": 20,
+    "fiber": 2
+  },
+  {
+    "name": "کیک یزدی",
+    "calories": 410,
+    "protein": 5,
+    "carbs": 50,
+    "fat": 20,
+    "fiber": 1
+  },
+  {
+    "name": "خرمالو",
+    "calories": 70,
+    "protein": 0.6,
+    "carbs": 18,
+    "fat": 0.2,
+    "fiber": 3.6
+  },
+  {
+    "name": "انگور",
+    "calories": 67,
+    "protein": 0.6,
+    "carbs": 17,
+    "fat": 0.2,
+    "fiber": 0.9
+  },
+  {
+    "name": "توت‌فرنگی",
+    "calories": 32,
+    "protein": 0.7,
+    "carbs": 7.7,
+    "fat": 0.3,
+    "fiber": 2
+  },
+  {
+    "name": "آلو بخارا",
+    "calories": 240,
+    "protein": 2.2,
+    "carbs": 64,
+    "fat": 0.4,
+    "fiber": 7
+  },
+  {
+    "name": "کشمش",
+    "calories": 299,
+    "protein": 3.1,
+    "carbs": 79,
+    "fat": 0.5,
+    "fiber": 3.7
+  },
+  {
+    "name": "لواشک",
+    "calories": 260,
+    "protein": 1,
+    "carbs": 65,
+    "fat": 0.2,
+    "fiber": 2
+  },
+  {
+    "name": "ژله",
+    "calories": 70,
+    "protein": 1,
+    "carbs": 17,
+    "fat": 0,
+    "fiber": 0
+  },
+  {
+    "name": "نوشابه",
+    "calories": 42,
+    "protein": 0,
+    "carbs": 11,
+    "fat": 0,
+    "fiber": 0
+  },
+  {
+    "name": "دلستر",
+    "calories": 46,
+    "protein": 0.2,
+    "carbs": 11,
+    "fat": 0,
+    "fiber": 0
+  },
+  {
+    "name": "آب پرتقال طبیعی",
+    "calories": 45,
+    "protein": 0.7,
+    "carbs": 10,
+    "fat": 0.1,
+    "fiber": 0.2
+  },
+  {
+    "name": "چای بدون قند",
+    "calories": 0,
+    "protein": 0,
+    "carbs": 0,
+    "fat": 0,
+    "fiber": 0
+  },
+  {
+    "name": "قهوه بدون شکر",
+    "calories": 2,
+    "protein": 0.3,
+    "carbs": 0,
+    "fat": 0,
+    "fiber": 0
+  },
+  {
+    "name": "شربت سکنجبین",
+    "calories": 150,
+    "protein": 0,
+    "carbs": 38,
+    "fat": 0,
+    "fiber": 0
+  },
+  {
+    "name": "حلوا ارده",
+    "calories": 560,
+    "protein": 12,
+    "carbs": 30,
+    "fat": 40,
+    "fiber": 4
+  },
+  {
+    "name": "ارده خالص",
+    "calories": 595,
+    "protein": 17,
+    "carbs": 21,
+    "fat": 50,
+    "fiber": 5
+  },
+  {
+    "name": "عسل",
+    "calories": 304,
+    "protein": 0.3,
+    "carbs": 82,
+    "fat": 0,
+    "fiber": 0.2
+  },
+  {
+    "name": "مربای توت",
+    "calories": 278,
+    "protein": 0.3,
+    "carbs": 73,
+    "fat": 0,
+    "fiber": 1
+  },
+  {
+    "name": "کره بادام‌زمینی",
+    "calories": 588,
+    "protein": 25,
+    "carbs": 20,
+    "fat": 50,
+    "fiber": 6
+  },
+  {
+    "name": "حلوا",
+    "calories": 450,
+    "protein": 5,
+    "carbs": 60,
+    "fat": 20,
+    "fiber": 1.5
+  },
+  {
+    "name": "کشک",
+    "calories": 105,
+    "protein": 12,
+    "carbs": 10,
+    "fat": 3,
+    "fiber": 0
+  },
+  {
+    "name": "آش کشک",
+    "calories": 160,
+    "protein": 7,
+    "carbs": 18,
+    "fat": 6,
+    "fiber": 3
+  },
+  {
+    "name": "لوبیا سبز پخته",
+    "calories": 35,
+    "protein": 2,
+    "carbs": 8,
+    "fat": 0.1,
+    "fiber": 3
+  },
+  {
+    "name": "نخود آب‌پز",
+    "calories": 164,
+    "protein": 9,
+    "carbs": 27,
+    "fat": 2.6,
+    "fiber": 7.6
+  },
+  {
+    "name": "عدس خام",
+    "calories": 352,
+    "protein": 25,
+    "carbs": 60,
+    "fat": 1,
+    "fiber": 31
+  },
+  {
+    "name": "برنج قهوه‌ای",
+    "calories": 112,
+    "protein": 2.6,
+    "carbs": 23,
+    "fat": 0.9,
+    "fiber": 1.8
+  },
+  {
+    "name": "بلغور گندم",
+    "calories": 342,
+    "protein": 12,
+    "carbs": 76,
+    "fat": 1.3,
+    "fiber": 12
+  },
+  {
+    "name": "جو پرک",
+    "calories": 389,
+    "protein": 17,
+    "carbs": 66,
+    "fat": 6.9,
+    "fiber": 10
+  },
+  {
+    "name": "ذرت پخته",
+    "calories": 96,
+    "protein": 3.4,
+    "carbs": 21,
+    "fat": 1.5,
+    "fiber": 2.7
+  },
+  {
+    "name": "ذرت بوداده (پاپ‌کورن)",
+    "calories": 387,
+    "protein": 13,
+    "carbs": 78,
+    "fat": 4.5,
+    "fiber": 15
+  },
+  {
+    "name": "آب نارنج طبیعی",
+    "calories": 17,
+    "protein": 0.3,
+    "carbs": 4,
+    "fat": 0.1,
+    "fiber": 0.3
+  },
+  {
+    "name": "کشمش سبز",
+    "calories": 320,
+    "protein": 2.8,
+    "carbs": 79,
+    "fat": 0.5,
+    "fiber": 3
+  },
+  {
+    "name": "شیره انگور",
+    "calories": 293,
+    "protein": 0.8,
+    "carbs": 75,
+    "fat": 0.1,
+    "fiber": 1
+  },
+  {
+    "name": "شیره خرما",
+    "calories": 300,
+    "protein": 1,
+    "carbs": 73,
+    "fat": 0.1,
+    "fiber": 1.5
+  },
+  {
+    "name": "انگور سیاه",
+    "calories": 69,
+    "protein": 0.7,
+    "carbs": 17,
+    "fat": 0.2,
+    "fiber": 1
+  },
+  {
+    "name": "زردآلو خشک",
+    "calories": 241,
+    "protein": 3.4,
+    "carbs": 63,
+    "fat": 0.5,
+    "fiber": 7
+  },
+  {
+    "name": "انجیر خشک",
+    "calories": 249,
+    "protein": 3.3,
+    "carbs": 64,
+    "fat": 0.9,
+    "fiber": 9.8
+  },
+  {
+    "name": "سیب‌زمینی پخته",
+    "calories": 87,
+    "protein": 1.9,
+    "carbs": 20,
+    "fat": 0.1,
+    "fiber": 1.8
+  },
+  {
+    "name": "سیب‌زمینی آب‌پز",
+    "calories": 77,
+    "protein": 2,
+    "carbs": 17,
+    "fat": 0.1,
+    "fiber": 2.2
+  },
+  {
+    "name": "پوره سیب‌زمینی",
+    "calories": 110,
+    "protein": 2,
+    "carbs": 15,
+    "fat": 4.5,
+    "fiber": 1.3
+  },
+  {
+    "name": "کدو سبز پخته",
+    "calories": 17,
+    "protein": 1.2,
+    "carbs": 3.1,
+    "fat": 0.3,
+    "fiber": 1
+  },
+  {
+    "name": "بادمجان کبابی",
+    "calories": 25,
+    "protein": 1,
+    "carbs": 5.8,
+    "fat": 0.1,
+    "fiber": 3
+  },
+  {
+    "name": "بادمجان سرخ‌شده",
+    "calories": 150,
+    "protein": 1.2,
+    "carbs": 7,
+    "fat": 13,
+    "fiber": 2.5
+  },
+  {
+    "name": "خوراک بادمجان",
+    "calories": 120,
+    "protein": 2,
+    "carbs": 10,
+    "fat": 8,
+    "fiber": 3
+  },
+  {
+    "name": "خوراک قارچ",
+    "calories": 90,
+    "protein": 5,
+    "carbs": 4,
+    "fat": 6,
+    "fiber": 1.5
+  },
+  {
+    "name": "قارچ خام",
+    "calories": 22,
+    "protein": 3.1,
+    "carbs": 3.3,
+    "fat": 0.3,
+    "fiber": 1
+  },
+  {
+    "name": "سبزی خوردن",
+    "calories": 30,
+    "protein": 2.5,
+    "carbs": 5.5,
+    "fat": 0.5,
+    "fiber": 3.2
+  },
+  {
+    "name": "اسفناج پخته",
+    "calories": 23,
+    "protein": 3,
+    "carbs": 3.8,
+    "fat": 0.3,
+    "fiber": 2.2
+  },
+  {
+    "name": "نعناع تازه",
+    "calories": 44,
+    "protein": 3.7,
+    "carbs": 8,
+    "fat": 0.7,
+    "fiber": 2.8
+  },
+  {
+    "name": "ریحان",
+    "calories": 23,
+    "protein": 3.2,
+    "carbs": 2.7,
+    "fat": 0.6,
+    "fiber": 1.6
+  },
+  {
+    "name": "پیاز خام",
+    "calories": 40,
+    "protein": 1.1,
+    "carbs": 9.3,
+    "fat": 0.1,
+    "fiber": 1.7
+  },
+  {
+    "name": "پیاز سرخ‌شده",
+    "calories": 258,
+    "protein": 1.6,
+    "carbs": 23,
+    "fat": 18,
+    "fiber": 1.3
+  },
+  {
+    "name": "سیر خام",
+    "calories": 149,
+    "protein": 6.4,
+    "carbs": 33,
+    "fat": 0.5,
+    "fiber": 2.1
+  },
+  {
+    "name": "سیر داغ",
+    "calories": 270,
+    "protein": 5,
+    "carbs": 20,
+    "fat": 20,
+    "fiber": 1
+  },
+  {
+    "name": "زعفران خشک",
+    "calories": 310,
+    "protein": 11,
+    "carbs": 65,
+    "fat": 6,
+    "fiber": 3.9
+  },
+  {
+    "name": "سماق",
+    "calories": 105,
+    "protein": 2.3,
+    "carbs": 22,
+    "fat": 1.5,
+    "fiber": 4.7
+  },
+  {
+    "name": "رب گوجه‌فرنگی",
+    "calories": 82,
+    "protein": 4.3,
+    "carbs": 19,
+    "fat": 0.5,
+    "fiber": 3
+  },
+  {
+    "name": "سس گوجه",
+    "calories": 85,
+    "protein": 2,
+    "carbs": 20,
+    "fat": 0.3,
+    "fiber": 1.8
+  },
+  {
+    "name": "سس مایونز",
+    "calories": 680,
+    "protein": 1,
+    "carbs": 1.2,
+    "fat": 75,
+    "fiber": 0
+  },
+  {
+    "name": "سس کچاپ",
+    "calories": 90,
+    "protein": 1,
+    "carbs": 23,
+    "fat": 0.2,
+    "fiber": 0.5
+  },
+  {
+    "name": "ترشی مخلوط",
+    "calories": 60,
+    "protein": 1,
+    "carbs": 10,
+    "fat": 0.2,
+    "fiber": 2.5
+  },
+  {
+    "name": "خیارشور",
+    "calories": 12,
+    "protein": 0.5,
+    "carbs": 2.5,
+    "fat": 0,
+    "fiber": 1
+  },
+  {
+    "name": "مربای هویج",
+    "calories": 260,
+    "protein": 0.5,
+    "carbs": 66,
+    "fat": 0.1,
+    "fiber": 1
+  },
+  {
+    "name": "مربای آلبالو",
+    "calories": 270,
+    "protein": 0.3,
+    "carbs": 68,
+    "fat": 0.1,
+    "fiber": 0.9
+  },
+  {
+    "name": "حلوا شکری",
+    "calories": 540,
+    "protein": 12,
+    "carbs": 30,
+    "fat": 40,
+    "fiber": 3
+  },
+  {
+    "name": "باسلوق",
+    "calories": 360,
+    "protein": 0.8,
+    "carbs": 90,
+    "fat": 0.5,
+    "fiber": 0.5
+  },
+  {
+    "name": "زولبیا",
+    "calories": 450,
+    "protein": 3,
+    "carbs": 70,
+    "fat": 20,
+    "fiber": 0.5
+  },
+  {
+    "name": "بامیه",
+    "calories": 440,
+    "protein": 2.5,
+    "carbs": 65,
+    "fat": 18,
+    "fiber": 0.6
+  },
+  {
+    "name": "شیرینی نخودچی",
+    "calories": 510,
+    "protein": 10,
+    "carbs": 45,
+    "fat": 30,
+    "fiber": 3
+  },
+  {
+    "name": "شیرینی زبان",
+    "calories": 500,
+    "protein": 5,
+    "carbs": 60,
+    "fat": 28,
+    "fiber": 1
+  },
+  {
+    "name": "شیرینی دانمارکی",
+    "calories": 420,
+    "protein": 5,
+    "carbs": 50,
+    "fat": 22,
+    "fiber": 1
+  },
+  {
+    "name": "کیک شکلاتی",
+    "calories": 410,
+    "protein": 6,
+    "carbs": 55,
+    "fat": 18,
+    "fiber": 1.5
+  },
+  {
+    "name": "دونات",
+    "calories": 452,
+    "protein": 4.9,
+    "carbs": 51,
+    "fat": 25,
+    "fiber": 1
+  },
+  {
+    "name": "پنکیک",
+    "calories": 227,
+    "protein": 6,
+    "carbs": 28,
+    "fat": 10,
+    "fiber": 1
+  },
+  {
+    "name": "کرپ",
+    "calories": 220,
+    "protein": 5.5,
+    "carbs": 26,
+    "fat": 10,
+    "fiber": 0.8
+  },
+  {
+    "name": "املت گوجه‌فرنگی",
+    "calories": 140,
+    "protein": 7,
+    "carbs": 5,
+    "fat": 10,
+    "fiber": 1.2
+  },
+  {
+    "name": "املت قارچ",
+    "calories": 150,
+    "protein": 8,
+    "carbs": 4,
+    "fat": 11,
+    "fiber": 1.5
+  },
+  {
+    "name": "نرگسی اسفناج",
+    "calories": 160,
+    "protein": 9,
+    "carbs": 4,
+    "fat": 11,
+    "fiber": 2
+  },
+  {
+    "name": "خاگینه",
+    "calories": 220,
+    "protein": 6,
+    "carbs": 25,
+    "fat": 11,
+    "fiber": 1
+  },
+  {
+    "name": "شیر برنج",
+    "calories": 110,
+    "protein": 2,
+    "carbs": 23,
+    "fat": 1.5,
+    "fiber": 0.3
+  },
+  {
+    "name": "سمنو",
+    "calories": 250,
+    "protein": 4,
+    "carbs": 55,
+    "fat": 2,
+    "fiber": 2
+  },
+  {
+    "name": "کوکوی سیب‌زمینی",
+    "calories": 180,
+    "protein": 6,
+    "carbs": 20,
+    "fat": 9,
+    "fiber": 1.5
+  },
+  {
+    "name": "شامی کباب",
+    "calories": 270,
+    "protein": 15,
+    "carbs": 12,
+    "fat": 18,
+    "fiber": 1
+  },
+  {
+    "name": "هویج پخته",
+    "calories": 35,
+    "protein": 0.8,
+    "carbs": 8,
+    "fat": 0.2,
+    "fiber": 3
+  },
+  {
+    "name": "نخود فرنگی",
+    "calories": 81,
+    "protein": 5,
+    "carbs": 14,
+    "fat": 0.4,
+    "fiber": 5.7
+  },
+  {
+    "name": "لوبیا سبز با گوشت",
+    "calories": 130,
+    "protein": 10,
+    "carbs": 8,
+    "fat": 7,
+    "fiber": 3
+  },
+  {
+    "name": "خورش کرفس",
+    "calories": 170,
+    "protein": 8,
+    "carbs": 6,
+    "fat": 12,
+    "fiber": 2.5
+  },
+  {
+    "name": "خورش آلو اسفناج",
+    "calories": 160,
+    "protein": 7,
+    "carbs": 10,
+    "fat": 9,
+    "fiber": 2.8
+  },
+  {
+    "name": "خورش خلال بادام",
+    "calories": 180,
+    "protein": 10,
+    "carbs": 6,
+    "fat": 13,
+    "fiber": 1.8
+  },
+  {
+    "name": "خوراک هویج",
+    "calories": 120,
+    "protein": 5,
+    "carbs": 10,
+    "fat": 7,
+    "fiber": 2
+  },
+  {
+    "name": "دلمه برگ مو",
+    "calories": 160,
+    "protein": 5,
+    "carbs": 22,
+    "fat": 7,
+    "fiber": 2
+  },
+  {
+    "name": "دلمه فلفل دلمه‌ای",
+    "calories": 180,
+    "protein": 6,
+    "carbs": 20,
+    "fat": 9,
+    "fiber": 3
+  },
+  {
+    "name": "کلم پلو",
+    "calories": 270,
+    "protein": 10,
+    "carbs": 35,
+    "fat": 10,
+    "fiber": 3
+  },
+  {
+    "name": "باقالی پلو",
+    "calories": 290,
+    "protein": 9,
+    "carbs": 38,
+    "fat": 12,
+    "fiber": 4
+  },
+  {
+    "name": "سبزی پلو",
+    "calories": 250,
+    "protein": 8,
+    "carbs": 35,
+    "fat": 9,
+    "fiber": 3
+  },
+  {
+    "name": "ته‌دیگ سیب‌زمینی",
+    "calories": 360,
+    "protein": 4,
+    "carbs": 40,
+    "fat": 20,
+    "fiber": 2.5
+  },
+  {
+    "name": "ته‌دیگ نان",
+    "calories": 400,
+    "protein": 5,
+    "carbs": 42,
+    "fat": 22,
+    "fiber": 2
+  },
+  {
+    "name": "چلو کره",
+    "calories": 350,
+    "protein": 4,
+    "carbs": 42,
+    "fat": 18,
+    "fiber": 0.8
+  },
+  {
+    "name": "قیمه بادمجان",
+    "calories": 300,
+    "protein": 10,
+    "carbs": 12,
+    "fat": 20,
+    "fiber": 3
+  },
+  {
+    "name": "کشک بادمجان",
+    "calories": 220,
+    "protein": 6,
+    "carbs": 8,
+    "fat": 15,
+    "fiber": 2
+  },
+  {
+    "name": "قورمه سبزی با لوبیا قرمز",
+    "calories": 180,
+    "protein": 10,
+    "carbs": 6,
+    "fat": 12,
+    "fiber": 3
+  },
+  {
+    "name": "فسنجان",
+    "calories": 400,
+    "protein": 10,
+    "carbs": 10,
+    "fat": 35,
+    "fiber": 2
+  },
+  {
+    "name": "فسنجان با مرغ",
+    "calories": 370,
+    "protein": 18,
+    "carbs": 8,
+    "fat": 28,
+    "fiber": 1.8
+  },
+  {
+    "name": "خورش بامیه",
+    "calories": 140,
+    "protein": 8,
+    "carbs": 7,
+    "fat": 9,
+    "fiber": 2
+  },
+  {
+    "name": "اشکنه",
+    "calories": 180,
+    "protein": 5,
+    "carbs": 10,
+    "fat": 13,
+    "fiber": 1
+  },
+  {
+    "name": "آش ماش",
+    "calories": 130,
+    "protein": 6,
+    "carbs": 18,
+    "fat": 3,
+    "fiber": 4
+  },
+  {
+    "name": "آش جو",
+    "calories": 140,
+    "protein": 5,
+    "carbs": 22,
+    "fat": 4,
+    "fiber": 3
+  },
+  {
+    "name": "کله جوش",
+    "calories": 220,
+    "protein": 8,
+    "carbs": 5,
+    "fat": 18,
+    "fiber": 1
+  },
+  {
+    "name": "دیزی سنگی",
+    "calories": 320,
+    "protein": 15,
+    "carbs": 25,
+    "fat": 20,
+    "fiber": 4
+  },
+  {
+    "name": "آبگوشت بزباش",
+    "calories": 300,
+    "protein": 14,
+    "carbs": 18,
+    "fat": 18,
+    "fiber": 3
+  },
+  {
+    "name": "کشک و بادمجان با نعنا داغ",
+    "calories": 230,
+    "protein": 7,
+    "carbs": 9,
+    "fat": 16,
+    "fiber": 2
+  },
+  {
+    "name": "دمپختک",
+    "calories": 270,
+    "protein": 7,
+    "carbs": 38,
+    "fat": 10,
+    "fiber": 3
+  },
+  {
+    "name": "گوجه‌پلو",
+    "calories": 260,
+    "protein": 6,
+    "carbs": 36,
+    "fat": 9,
+    "fiber": 2
+  },
+  {
+    "name": "شیرینی برنجی",
+    "calories": 520,
+    "protein": 6,
+    "carbs": 60,
+    "fat": 28,
+    "fiber": 1
+  },
+  {
+    "name": "شیرینی کره‌ای",
+    "calories": 530,
+    "protein": 5,
+    "carbs": 58,
+    "fat": 30,
+    "fiber": 1
+  },
+  {
+    "name": "نان خامه‌ای",
+    "calories": 340,
+    "protein": 4,
+    "carbs": 35,
+    "fat": 20,
+    "fiber": 0.5
+  },
+  {
+    "name": "نان قندی",
+    "calories": 460,
+    "protein": 5,
+    "carbs": 60,
+    "fat": 22,
+    "fiber": 1
+  },
+  {
+    "name": "باقلوا",
+    "calories": 510,
+    "protein": 6,
+    "carbs": 60,
+    "fat": 28,
+    "fiber": 1.5
+  },
+  {
+    "name": "قطاب",
+    "calories": 530,
+    "protein": 6,
+    "carbs": 55,
+    "fat": 32,
+    "fiber": 1.2
+  },
+  {
+    "name": "سوهان",
+    "calories": 550,
+    "protein": 7,
+    "carbs": 50,
+    "fat": 35,
+    "fiber": 1
+  },
+  {
+    "name": "گز اصفهان",
+    "calories": 480,
+    "protein": 4,
+    "carbs": 78,
+    "fat": 16,
+    "fiber": 0.5
+  },
+  {
+    "name": "نبات",
+    "calories": 400,
+    "protein": 0,
+    "carbs": 100,
+    "fat": 0,
+    "fiber": 0
+  },
+  {
+    "name": "قند",
+    "calories": 398,
+    "protein": 0,
+    "carbs": 99.5,
+    "fat": 0,
+    "fiber": 0
+  },
+  {
+    "name": "شکر",
+    "calories": 387,
+    "protein": 0,
+    "carbs": 100,
+    "fat": 0,
+    "fiber": 0
+  },
+  {
+    "name": "خرمای مضافتی",
+    "calories": 282,
+    "protein": 2.5,
+    "carbs": 75,
+    "fat": 0.4,
+    "fiber": 8
+  },
+  {
+    "name": "حلوا آردی",
+    "calories": 450,
+    "protein": 6,
+    "carbs": 60,
+    "fat": 20,
+    "fiber": 1
+  },
+  {
+    "name": "رشته خشکار",
+    "calories": 330,
+    "protein": 5,
+    "carbs": 65,
+    "fat": 8,
+    "fiber": 1.5
+  },
+  {
+    "name": "شیرینی لطیفه",
+    "calories": 340,
+    "protein": 4,
+    "carbs": 45,
+    "fat": 18,
+    "fiber": 0.5
+  },
+  {
+    "name": "فالوده شیرازی",
+    "calories": 180,
+    "protein": 0.5,
+    "carbs": 45,
+    "fat": 0.2,
+    "fiber": 0.2
+  },
+  {
+    "name": "بستنی زعفرانی",
+    "calories": 210,
+    "protein": 3.5,
+    "carbs": 25,
+    "fat": 10,
+    "fiber": 0.5
+  },
+  {
+    "name": "یخ در بهشت",
+    "calories": 140,
+    "protein": 0,
+    "carbs": 36,
+    "fat": 0,
+    "fiber": 0
+  },
+  {
+    "name": "شربت خاکشیر",
+    "calories": 80,
+    "protein": 0.2,
+    "carbs": 20,
+    "fat": 0,
+    "fiber": 0.5
+  },
+  {
+    "name": "آب‌هویج",
+    "calories": 40,
+    "protein": 1,
+    "carbs": 9,
+    "fat": 0.2,
+    "fiber": 0.8
+  },
+  {
+    "name": "آب‌طالبی",
+    "calories": 35,
+    "protein": 0.6,
+    "carbs": 8,
+    "fat": 0.1,
+    "fiber": 0.5
+  },
+  {
+    "name": "دوغ بدون گاز",
+    "calories": 28,
+    "protein": 2,
+    "carbs": 3,
+    "fat": 1,
+    "fiber": 0
+  },
+  {
+    "name": "دوغ گازدار",
+    "calories": 32,
+    "protein": 2,
+    "carbs": 3.5,
+    "fat": 1.5,
+    "fiber": 0
+  },
+  {
+    "name": "شیر کاکائو",
+    "calories": 72,
+    "protein": 3,
+    "carbs": 10,
+    "fat": 2,
+    "fiber": 0.5
+  },
+  {
+    "name": "نوشیدنی انرژی‌زا",
+    "calories": 45,
+    "protein": 0,
+    "carbs": 11,
+    "fat": 0,
+    "fiber": 0
+  },
+  {
+    "name": "ماءالشعیر طعم‌دار",
+    "calories": 50,
+    "protein": 0.5,
+    "carbs": 12,
+    "fat": 0,
+    "fiber": 0
+  },
+  {
+    "name": "قهوه با شکر",
+    "calories": 35,
+    "protein": 0.3,
+    "carbs": 8,
+    "fat": 0,
+    "fiber": 0
+  },
+  {
+    "name": "نسکافه",
+    "calories": 10,
+    "protein": 0.2,
+    "carbs": 1.7,
+    "fat": 0.1,
+    "fiber": 0
+  },
+  {
+    "name": "قهوه فوری",
+    "calories": 4,
+    "protein": 0.5,
+    "carbs": 1,
+    "fat": 0,
+    "fiber": 0
+  },
+  {
+    "name": "بیف‌استراگانف",
+    "calories": 250,
+    "protein": 20,
+    "carbs": 7,
+    "fat": 16,
+    "fiber": 1
+  },
+  {
+    "name": "چیکن آلفردو",
+    "calories": 280,
+    "protein": 22,
+    "carbs": 8,
+    "fat": 18,
+    "fiber": 1.2
+  },
+  {
+    "name": "لازانیا",
+    "calories": 310,
+    "protein": 15,
+    "carbs": 30,
+    "fat": 15,
+    "fiber": 2
+  },
+  {
+    "name": "پاستا پستو",
+    "calories": 350,
+    "protein": 10,
+    "carbs": 35,
+    "fat": 20,
+    "fiber": 1.5
+  },
+  {
+    "name": "اسپاگتی با گوشت",
+    "calories": 280,
+    "protein": 14,
+    "carbs": 30,
+    "fat": 12,
+    "fiber": 2
+  },
+  {
+    "name": "ریزوتو قارچ",
+    "calories": 190,
+    "protein": 5,
+    "carbs": 28,
+    "fat": 7,
+    "fiber": 1.8
+  },
+  {
+    "name": "نودل فوری",
+    "calories": 450,
+    "protein": 8,
+    "carbs": 60,
+    "fat": 18,
+    "fiber": 2
+  },
+  {
+    "name": "پیتزا سبزیجات",
+    "calories": 240,
+    "protein": 8,
+    "carbs": 28,
+    "fat": 10,
+    "fiber": 3
+  },
+  {
+    "name": "پیتزا مارگاریتا",
+    "calories": 250,
+    "protein": 9,
+    "carbs": 30,
+    "fat": 11,
+    "fiber": 2
+  },
+  {
+    "name": "چیکن برگر",
+    "calories": 270,
+    "protein": 14,
+    "carbs": 24,
+    "fat": 13,
+    "fiber": 1.5
+  },
+  {
+    "name": "مرغ سوخاری",
+    "calories": 290,
+    "protein": 17,
+    "carbs": 10,
+    "fat": 18,
+    "fiber": 1
+  },
+  {
+    "name": "کباب ترکی",
+    "calories": 260,
+    "protein": 16,
+    "carbs": 10,
+    "fat": 15,
+    "fiber": 1
+  },
+  {
+    "name": "فاهیتای مرغ",
+    "calories": 230,
+    "protein": 20,
+    "carbs": 6,
+    "fat": 14,
+    "fiber": 2
+  },
+  {
+    "name": "برگر گیاهی",
+    "calories": 190,
+    "protein": 10,
+    "carbs": 20,
+    "fat": 7,
+    "fiber": 4
+  },
+  {
+    "name": "سیب‌زمینی پخته با کره",
+    "calories": 140,
+    "protein": 2,
+    "carbs": 18,
+    "fat": 6,
+    "fiber": 2
+  },
+  {
+    "name": "مرغ کنتاکی",
+    "calories": 310,
+    "protein": 19,
+    "carbs": 12,
+    "fat": 20,
+    "fiber": 1
+  },
+  {
+    "name": "قارچ سوخاری",
+    "calories": 270,
+    "protein": 6,
+    "carbs": 25,
+    "fat": 16,
+    "fiber": 2
+  },
+  {
+    "name": "ناگت سبزیجات",
+    "calories": 220,
+    "protein": 7,
+    "carbs": 22,
+    "fat": 12,
+    "fiber": 3
+  },
+  {
+    "name": "دسر پاناکوتا",
+    "calories": 200,
+    "protein": 3,
+    "carbs": 20,
+    "fat": 12,
+    "fiber": 0
+  },
+  {
+    "name": "کرم‌کارامل",
+    "calories": 150,
+    "protein": 3,
+    "carbs": 25,
+    "fat": 4,
+    "fiber": 0
+  },
+  {
+    "name": "تیرامیسو",
+    "calories": 290,
+    "protein": 5,
+    "carbs": 30,
+    "fat": 18,
+    "fiber": 1
+  },
+  {
+    "name": "چیزکیک",
+    "calories": 321,
+    "protein": 6,
+    "carbs": 30,
+    "fat": 20,
+    "fiber": 1
+  },
+  {
+    "name": "موس شکلات",
+    "calories": 240,
+    "protein": 4,
+    "carbs": 25,
+    "fat": 14,
+    "fiber": 1
+  },
+  {
+    "name": "ژله میوه‌ای",
+    "calories": 75,
+    "protein": 0.5,
+    "carbs": 18,
+    "fat": 0,
+    "fiber": 0
+  },
+  {
+    "name": "بستنی میوه‌ای",
+    "calories": 160,
+    "protein": 2.5,
+    "carbs": 24,
+    "fat": 6,
+    "fiber": 0.8
+  },
+  {
+    "name": "گرانولا",
+    "calories": 471,
+    "protein": 10,
+    "carbs": 64,
+    "fat": 20,
+    "fiber": 7
+  },
+  {
+    "name": "کورن‌فلکس",
+    "calories": 370,
+    "protein": 7,
+    "carbs": 84,
+    "fat": 1,
+    "fiber": 2
+  },
+  {
+    "name": "جو دوسر پرک",
+    "calories": 389,
+    "protein": 17,
+    "carbs": 66,
+    "fat": 6.9,
+    "fiber": 10
+  }
+]
