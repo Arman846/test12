@@ -1,0 +1,1840 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معدل نهایی</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#5D5CDE',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        }
+                    },
+                    borderRadius: {
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                    },
+                }
+            },
+            darkMode: 'class'
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir-Bold.woff2') format('woff2');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Vazir', system-ui, -apple-system, sans-serif;
+        }
+
+        /* سفارشی‌سازی ورودی‌های عددی */
+        input[type="number"]::-webkit-inner-spin-button, 
+        input[type="number"]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        /* انیمیشن‌ها */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .animate-slideInUp {
+            animation: slideInUp 0.5s ease-out forwards;
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 2s infinite;
+        }
+        
+        /* انیمیشن‌های عناصر خاص */
+        .grade-input:focus {
+            box-shadow: 0 0 0 3px rgba(93, 92, 222, 0.3);
+        }
+        
+        .tab-content {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* استایل نوار پیشرفت نمره */
+        .grade-progress-container {
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: rgba(209, 213, 219, 0.5);
+            position: relative;
+        }
+
+        .grade-progress-bar {
+            height: 100%;
+            transition: width 0.8s ease;
+        }
+        
+        /* رنگ‌های وضعیت نمره */
+        .status-excellent { color: #10b981; }
+        .status-good { color: #3b82f6; }
+        .status-average { color: #f59e0b; }
+        .status-poor { color: #ef4444; }
+        
+        .shimmer {
+            background: linear-gradient(
+                to right,
+                rgba(93, 92, 222, 0.1) 0%,
+                rgba(93, 92, 222, 0.3) 50%,
+                rgba(93, 92, 222, 0.1) 100%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* انیمیشن تب‌های رشته */
+        .stream-tab {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stream-tab::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #5D5CDE;
+            transform: scaleX(0);
+            transform-origin: bottom left;
+            transition: transform 0.3s ease;
+        }
+
+        .stream-tab.active::after {
+            transform: scaleX(1);
+        }
+
+        /* انیمیشن تغییر رشته */
+        .stream-container {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .stream-container.hidden {
+            opacity: 0;
+            transform: translateY(10px);
+            display: none;
+        }
+    </style>
+</head>
+<body class="transition-colors duration-300 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
+    <div class="container mx-auto px-4 py-6 max-w-4xl">
+        <header class="text-center mb-6">
+            <h1 class="text-4xl font-bold text-primary-600 mb-2 relative inline-block">
+                معدل نهایی
+                <span class="absolute -bottom-1 left-0 right-0 h-1 bg-primary-600 rounded-full transform scale-x-0 transition-transform origin-left group-hover:scale-x-100"></span>
+            </h1>
+            <p class="text-gray-600 dark:text-gray-400 mt-2">سامانه محاسبه و تحلیل معدل امتحانات نهایی</p>
+        </header>
+
+        <!-- انتخاب رشته -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-2 mb-8 border border-gray-100 dark:border-gray-700">
+            <div class="grid grid-cols-3 gap-2">
+                <button id="math-stream-btn" class="stream-tab active py-3 px-2 md:px-4 rounded-xl text-center transition-all hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium focus:outline-none">
+                    <span class="hidden md:inline">رشته</span> ریاضی
+                </button>
+                <button id="human-stream-btn" class="stream-tab py-3 px-2 md:px-4 rounded-xl text-center transition-all hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium focus:outline-none">
+                    <span class="hidden md:inline">رشته</span> انسانی
+                </button>
+                <button id="exp-stream-btn" class="stream-tab py-3 px-2 md:px-4 rounded-xl text-center transition-all hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium focus:outline-none">
+                    <span class="hidden md:inline">رشته</span> تجربی
+                </button>
+            </div>
+        </div>
+
+        <!-- بخش ریاضی -->
+        <div id="math-stream" class="stream-container">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mb-8 border border-gray-100 dark:border-gray-700">
+                <!-- پیام خطا -->
+                <div id="errorMessage-math" class="hidden mb-4 p-3 bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-200 rounded-lg">
+                    <p class="text-center">لطفاً نمرات را به درستی وارد کنید (بین 0 تا 20)</p>
+                </div>
+                
+                <form id="gpaForm-math" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- دروس ستون اول -->
+                        <div class="space-y-4">
+                            <!-- فارسی -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <label for="farsi-math" class="block font-medium">فارسی</label>
+                                    <span class="text-sm text-primary-600 font-medium">ضریب: ۵.۹۵</span>
+                                </div>
+                                <div class="relative">
+                                    <input type="number" id="farsi-math" name="farsi" min="0" max="20" step="0.01" class="grade-input w-full rounded-lg border border-gray-300 dark:border-gray-600 
+                                                bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent
+                                                transition-all duration-200 dark:text-white" placeholder="نمره فارسی" required="">
+                                    <div class="absolute bottom-0 left-0 right-0 grade-progress-container">
+                                        <div id="farsi-math-progress" class="grade-progress-bar bg-primary-600" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- عربی -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <label for="arabic-math" class="block font-medium">عربی</label>
+                                    <span class="text-sm text-primary-600 font-medium">ضریب: ۲.۶۲</span>
+                                </div>
+                                <div class="relative">
+                                    <input type="number" id="arabic-math" name="arabic" min="0" max="20" step="0.01" class="grade-input w-full rounded-lg border border-gray-300 dark:border-gray-600 
+                                                bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent
+                                                transition-all duration-200 dark:text-white" placeholder="نمره عربی" required="">
+                                    <div class="absolute bottom-0 left-0 right-0 grade-progress-container">
+                                        <div id="arabic-math-progress" class="grade-progress-bar bg-primary-600" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- دینی -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <label for="religion-math" class="block font-medium">دینی</label>
+                                    <span class="text-sm text-primary-600 font-medium">ضریب: ۴.۷۸</span>
+                                </div>
+                                <div class="relative">
+                                    <input type="number" id="religion-math" name="religion" min="0" max="20" step="0.01" class="grade-input w-full rounded-lg border border-gray-300 dark:border-gray-600 
+                                                bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent
+                                                transition-all duration-200 dark:text-white" placeholder="نمره دینی" required="">
+                                    <div class="absolute bottom-0 left-0 right-0 grade-progress-container">
+                                        <div id="religion-math-progress" class="grade-progress-bar bg-primary-600" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- دروس ستون دوم -->
+                        <div class="space-y-4">
+                            <!-- زبان -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <label for="language-math" class="block font-medium">زبان</label>
+                                    <span class="text-sm text-primary-600 font-medium">ضریب: ۳.۳۲</span>
+                                </div>
+                                <div class="relative">
+                                    <input type="number" id="language-math" name="language" min="0" max="20" step="0.01" class="grade-input w-full rounded-lg border border-gray-300 dark:border-gray-600 
+                                                bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent
+                                                transition-all duration-200 dark:text-white" placeholder="نمره زبان" required="">
+                                    <div class="absolute bottom-0 left-0 right-0 grade-progress-container">
+                                        <div id="language-math-progress" class="grade-progress-bar bg-primary-600" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- هندسه -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <label for="geometry-math" class="block font-medium">هندسه</label>
+                                    <span class="text-sm text-primary-600 font-medium">ضریب: ۵.۱۰</span>
+                                </div>
+                                <div class="relative">
+                                    <input type="number" id="geometry-math" name="geometry" min="0" max="20" step="0.01" class="grade-input w-full rounded-lg border border-gray-300 dark:border-gray-600 
+                                                bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent
+                                                transition-all duration-200 dark:text-white" placeholder="نمره هندسه" required="">
+                                    <div class="absolute bottom-0 left-0 right-0 grade-progress-container">
+                                        <div id="geometry-math-progress" class="grade-progress-bar bg-primary-600" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- فیزیک -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <label for="physics-math" class="block font-medium">فیزیک</label>
+                                    <span class="text-sm text-primary-600 font-medium">ضریب: ۶.۵۷</span>
+                                </div>
+                                <div class="relative">
+                                    <input type="number" id="physics-math" name="physics" min="0" max="20" step="0.01" class="grade-input w-full rounded-lg border border-gray-300 dark:border-gray-600 
+                                                bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent
+                                                transition-all duration-200 dark:text-white" placeholder="نمره فیزیک" required="">
+                                    <div class="absolute bottom-0 left-0 right-0 grade-progress-container">
+                                        <div id="physics-math-progress" class="grade-progress-bar bg-primary-600" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-2">
+                        <button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-3.5 px-4 rounded-xl 
+                                             transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 transform">
+                            محاسبه و تحلیل معدل
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- بخش نتایج -->
+            <div id="resultContainer-math" class="hidden animate-slideInUp">
+                <!-- خلاصه بالایی -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mb-6 border border-gray-100 dark:border-gray-700">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="text-center md:text-right mb-4 md:mb-0">
+                            <h2 class="text-2xl font-bold mb-1">معدل نهایی شما</h2>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">با احتساب ضرایب</p>
+                        </div>
+                        <div id="gpaDisplay-math" class="flex items-center justify-center bg-primary-100 dark:bg-primary-900/30 p-4 rounded-xl">
+                            <span id="gpaResult-math" class="text-5xl font-bold text-primary-600 dark:text-primary-400 animate-pulse-slow"></span>
+                        </div>
+                    </div>
+                    <div id="gpaStatus-math" class="mt-4 text-center bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg">
+                        <span id="statusText-math" class="font-medium"></span>
+                    </div>
+                </div>
+                
+                <!-- تب‌های تحلیل -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden">
+                    <div class="flex border-b border-gray-200 dark:border-gray-700">
+                        <button id="tab-chart-math" class="tab-btn active flex-1 py-3 px-4 font-medium focus:outline-none border-b-2 border-primary-600">
+                            نمودار نمرات
+                        </button>
+                        <button id="tab-analysis-math" class="tab-btn flex-1 py-3 px-4 font-medium focus:outline-none border-b-2 border-transparent">
+                            تحلیل معدل
+                        </button>
+                        <button id="tab-improvement-math" class="tab-btn flex-1 py-3 px-4 font-medium focus:outline-none border-b-2 border-transparent">
+                            بهبود معدل
+                        </button>
+                    </div>
+                    
+                    <!-- محتوای تب‌ها -->
+                    <div class="p-6">
+                        <!-- تب نمودار -->
+                        <div id="content-chart-math" class="tab-content">
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <div class="md:w-7/12">
+                                    <div class="chart-container" style="position: relative; height: 300px;">
+                                        <canvas id="gradeChart-math"></canvas>
+                                    </div>
+                                </div>
+                                <div class="md:w-5/12">
+                                    <div class="chart-container" style="position: relative; height: 300px;">
+                                        <canvas id="weightedChart-math"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- تب تحلیل -->
+                        <div id="content-analysis-math" class="tab-content hidden">
+                            <div class="space-y-4">
+                                <div class="bg-gray-50 dark:bg-gray-700/30 p-4 rounded-lg">
+                                    <h3 class="font-bold text-lg mb-2">تأثیر هر درس در معدل نهایی</h3>
+                                    <div id="subjectImpacts-math" class="space-y-3">
+                                        <!-- تأثیر هر درس اینجا قرار می‌گیرد -->
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-50 dark:bg-gray-700/30 p-4 rounded-lg">
+                                    <h3 class="font-bold text-lg mb-2">نمرات شما</h3>
+                                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                        <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                                            <p class="text-sm text-gray-600 dark:text-gray-400">بالاترین نمره</p>
+                                            <div id="highestGrade-math" class="font-bold text-xl text-green-600"></div>
+                                        </div>
+                                        <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                                            <p class="text-sm text-gray-600 dark:text-gray-400">پایین‌ترین نمره</p>
+                                            <div id="lowestGrade-math" class="font-bold text-xl text-red-600"></div>
+                                        </div>
+                                        <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                                            <p class="text-sm text-gray-600 dark:text-gray-400">میانگین ساده</p>
+                                            <div id="averageGrade-math" class="font-bold text-xl text-blue-600"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- تب بهبود -->
+                        <div id="content-improvement-math" class="tab-content hidden">
+                            <div class="space-y-4">
+                                <div class="bg-gray-50 dark:bg-gray-700/30 p-4 rounded-lg">
+                                    <h3 class="font-bold text-lg mb-2">راه‌های بهبود معدل</h3>
+                                    <div id="improvementSuggestions-math" class="space-y-2 text-sm">
+                                        <!-- پیشنهادات بهبود اینجا قرار می‌گیرد -->
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-50 dark:bg-gray-700/30 p-4 rounded-lg">
+                                    <h3 class="font-bold text-lg mb-2">معدل هدف</h3>
+                                    <div class="flex flex-col md:flex-row gap-4">
+                                        <div class="flex-1">
+                                            <input type="number" id="targetGPA-math" min="0" max="20" step="0.01" class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                        focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent dark:text-white" placeholder="معدل هدف شما (بین 0 تا 20)">
+                                        </div>
+                                        <button id="calculateTarget-math" class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors">
+                                            محاسبه راه‌های رسیدن
+                                        </button>
+                                    </div>
+                                    <div id="targetResults-math" class="mt-4 hidden">
+                                        <div class="p-3 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+                                            <h4 class="font-bold mb-2">برای رسیدن به معدل هدف:</h4>
+                                            <ul id="targetSuggestions-math" class="list-disc list-inside space-y-1 text-sm">
+                                                <!-- پیشنهادات هدف اینجا قرار می‌گیرد -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <button id="resetButton-math" class="px-6 py-2.5 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 
+                                                rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+                        محاسبه جدید
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- بخش انسانی -->
+        <div id="human-stream" class="stream-container hidden">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mb-8 border border-gray-100 dark:border-gray-700">
+                <!-- پیام خطا -->
+                <div id="errorMessage-human" class="hidden mb-4 p-3 bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-200 rounded-lg">
+                    <p class="text-center">لطفاً نمرات را به درستی وارد کنید (بین 0 تا 20)</p>
+                </div>
+                
+                <form id="gpaForm-human" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- دروس ستون اول -->
+                        <div class="space-y-4">
+                            <!-- فارسی -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <label for="farsi-human" class="block font-medium">فارسی</label>
+                                    <span class="text-sm text-primary-600 font-medium">ضریب: ۵.۹۵</span>
+                                </div>
+                                <div class="relative">
+                                    <input type="number" id="farsi-human" name="farsi" min="0" max="20" step="0.01" class="grade-input w-full rounded-lg border border-gray-300 dark:border-gray-600 
+                                                bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent
+                                                transition-all duration-200 dark:text-white" placeholder="نمره فارسی" required="">
+                                    <div class="absolute bottom-0 left-0 right-0 grade-progress-container">
+                                        <div id="farsi-human-progress" class="grade-progress-bar bg-primary-600" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- عربی -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <label for="arabic-human" class="block font-medium">عربی</label>
+                                    <span class="text-sm text-primary-600 font-medium">ضریب: ۴.۲۳</span>
+                                </div>
+                                <div class="relative">
+                                    <input type="number" id="arabic-human" name="arabic" min="0" max="20" step="0.01" class="grade-input w-full rounded-lg border border-gray-300 dark:border-gray-600 
+                                                bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent
+                                                transition-all duration-200 dark:text-white" placeholder="نمره عربی" required="">
+                                    <div class="absolute bottom-0 left-0 right-0 grade-progress-container">
+                                        <div id="arabic-human-progress" class="grade-progress-bar bg-primary-600" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- دینی -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <label for="religion-human" class="block font-medium">دینی</label>
+                                    <span class="text-sm text-primary-600 font-medium">ضریب: ۴.۷۸</span>
+                                </div>
+                                <div class="relative">
+                                    <input type="number" id="religion-human" name="religion" min="0" max="20" step="0.01" class="grade-input w-full rounded-lg border border-gray-300 dark:border-gray-600 
+                                                bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent
+                                                transition-all duration-200 dark:text-white" placeholder="نمره دینی" required="">
+                                    <div class="absolute bottom-0 left-0 right-0 grade-progress-container">
+                                        <div id="religion-human-progress" class="grade-progress-bar bg-primary-600" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- دروس ستون دوم -->
+                        <div class="space-y-4">
+                            <!-- زبان -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <label for="language-human" class="block font-medium">زبان</label>
+                                    <span class="text-sm text-primary-600 font-medium">ضریب: ۳.۳۲</span>
+                                </div>
+                                <div class="relative">
+                                    <input type="number" id="language-human" name="language" min="0" max="20" step="0.01" class="grade-input w-full rounded-lg border border-gray-300 dark:border-gray-600 
+                                                bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent
+                                                transition-all duration-200 dark:text-white" placeholder="نمره زبان" required="">
+                                    <div class="absolute bottom-0 left-0 right-0 grade-progress-container">
+                                        <div id="language-human-progress" class="grade-progress-bar bg-primary-600" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- تاریخ -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <label for="history-human" class="block font-medium">تاریخ</label>
+                                    <span class="text-sm text-primary-600 font-medium">ضریب: ۵.۲۴</span>
+                                </div>
+                                <div class="relative">
+                                    <input type="number" id="history-human" name="history" min="0" max="20" step="0.01" class="grade-input w-full rounded-lg border border-gray-300 dark:border-gray-600 
+                                                bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent
+                                                transition-all duration-200 dark:text-white" placeholder="نمره تاریخ" required="">
+                                    <div class="absolute bottom-0 left-0 right-0 grade-progress-container">
+                                        <div id="history-human-progress" class="grade-progress-bar bg-primary-600" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- جامعه شناسی -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <label for="sociology-human" class="block font-medium">جامعه شناسی</label>
+                                    <span class="text-sm text-primary-600 font-medium">ضریب: ۴.۸۲</span>
+                                </div>
+                                <div class="relative">
+                                    <input type="number" id="sociology-human" name="sociology" min="0" max="20" step="0.01" class="grade-input w-full rounded-lg border border-gray-300 dark:border-gray-600 
+                                                bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent
+                                                transition-all duration-200 dark:text-white" placeholder="نمره جامعه شناسی" required="">
+                                    <div class="absolute bottom-0 left-0 right-0 grade-progress-container">
+                                        <div id="sociology-human-progress" class="grade-progress-bar bg-primary-600" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-2">
+                        <button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-3.5 px-4 rounded-xl 
+                                             transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 transform">
+                            محاسبه و تحلیل معدل
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- بخش نتایج -->
+            <div id="resultContainer-human" class="hidden animate-slideInUp">
+                <!-- خلاصه بالایی -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mb-6 border border-gray-100 dark:border-gray-700">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="text-center md:text-right mb-4 md:mb-0">
+                            <h2 class="text-2xl font-bold mb-1">معدل نهایی شما</h2>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">با احتساب ضرایب</p>
+                        </div>
+                        <div id="gpaDisplay-human" class="flex items-center justify-center bg-primary-100 dark:bg-primary-900/30 p-4 rounded-xl">
+                            <span id="gpaResult-human" class="text-5xl font-bold text-primary-600 dark:text-primary-400 animate-pulse-slow"></span>
+                        </div>
+                    </div>
+                    <div id="gpaStatus-human" class="mt-4 text-center bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg">
+                        <span id="statusText-human" class="font-medium"></span>
+                    </div>
+                </div>
+                
+                <!-- تب‌های تحلیل -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden">
+                    <div class="flex border-b border-gray-200 dark:border-gray-700">
+                        <button id="tab-chart-human" class="tab-btn active flex-1 py-3 px-4 font-medium focus:outline-none border-b-2 border-primary-600">
+                            نمودار نمرات
+                        </button>
+                        <button id="tab-analysis-human" class="tab-btn flex-1 py-3 px-4 font-medium focus:outline-none border-b-2 border-transparent">
+                            تحلیل معدل
+                        </button>
+                        <button id="tab-improvement-human" class="tab-btn flex-1 py-3 px-4 font-medium focus:outline-none border-b-2 border-transparent">
+                            بهبود معدل
+                        </button>
+                    </div>
+                    
+                    <!-- محتوای تب‌ها -->
+                    <div class="p-6">
+                        <!-- تب نمودار -->
+                        <div id="content-chart-human" class="tab-content">
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <div class="md:w-7/12">
+                                    <div class="chart-container" style="position: relative; height: 300px;">
+                                        <canvas id="gradeChart-human"></canvas>
+                                    </div>
+                                </div>
+                                <div class="md:w-5/12">
+                                    <div class="chart-container" style="position: relative; height: 300px;">
+                                        <canvas id="weightedChart-human"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- تب تحلیل -->
+                        <div id="content-analysis-human" class="tab-content hidden">
+                            <div class="space-y-4">
+                                <div class="bg-gray-50 dark:bg-gray-700/30 p-4 rounded-lg">
+                                    <h3 class="font-bold text-lg mb-2">تأثیر هر درس در معدل نهایی</h3>
+                                    <div id="subjectImpacts-human" class="space-y-3">
+                                        <!-- تأثیر هر درس اینجا قرار می‌گیرد -->
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-50 dark:bg-gray-700/30 p-4 rounded-lg">
+                                    <h3 class="font-bold text-lg mb-2">نمرات شما</h3>
+                                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                        <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                                            <p class="text-sm text-gray-600 dark:text-gray-400">بالاترین نمره</p>
+                                            <div id="highestGrade-human" class="font-bold text-xl text-green-600"></div>
+                                        </div>
+                                        <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                                            <p class="text-sm text-gray-600 dark:text-gray-400">پایین‌ترین نمره</p>
+                                            <div id="lowestGrade-human" class="font-bold text-xl text-red-600"></div>
+                                        </div>
+                                        <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                                            <p class="text-sm text-gray-600 dark:text-gray-400">میانگین ساده</p>
+                                            <div id="averageGrade-human" class="font-bold text-xl text-blue-600"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- تب بهبود -->
+                        <div id="content-improvement-human" class="tab-content hidden">
+                            <div class="space-y-4">
+                                <div class="bg-gray-50 dark:bg-gray-700/30 p-4 rounded-lg">
+                                    <h3 class="font-bold text-lg mb-2">راه‌های بهبود معدل</h3>
+                                    <div id="improvementSuggestions-human" class="space-y-2 text-sm">
+                                        <!-- پیشنهادات بهبود اینجا قرار می‌گیرد -->
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-50 dark:bg-gray-700/30 p-4 rounded-lg">
+                                    <h3 class="font-bold text-lg mb-2">معدل هدف</h3>
+                                    <div class="flex flex-col md:flex-row gap-4">
+                                        <div class="flex-1">
+                                            <input type="number" id="targetGPA-human" min="0" max="20" step="0.01" class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                        focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent dark:text-white" placeholder="معدل هدف شما (بین 0 تا 20)">
+                                        </div>
+                                        <button id="calculateTarget-human" class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors">
+                                            محاسبه راه‌های رسیدن
+                                        </button>
+                                    </div>
+                                    <div id="targetResults-human" class="mt-4 hidden">
+                                        <div class="p-3 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+                                            <h4 class="font-bold mb-2">برای رسیدن به معدل هدف:</h4>
+                                            <ul id="targetSuggestions-human" class="list-disc list-inside space-y-1 text-sm">
+                                                <!-- پیشنهادات هدف اینجا قرار می‌گیرد -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <button id="resetButton-human" class="px-6 py-2.5 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 
+                                                rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+                        محاسبه جدید
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- بخش تجربی -->
+        <div id="exp-stream" class="stream-container hidden">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mb-8 border border-gray-100 dark:border-gray-700">
+                <!-- پیام خطا -->
+                <div id="errorMessage-exp" class="hidden mb-4 p-3 bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-200 rounded-lg">
+                    <p class="text-center">لطفاً نمرات را به درستی وارد کنید (بین 0 تا 20)</p>
+                </div>
+                
+                <form id="gpaForm-exp" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- دروس ستون اول -->
+                        <div class="space-y-4">
+                            <!-- فارسی -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <label for="farsi-exp" class="block font-medium">فارسی</label>
+                                    <span class="text-sm text-primary-600 font-medium">ضریب: ۵.۹۵</span>
+                                </div>
+                                <div class="relative">
+                                    <input type="number" id="farsi-exp" name="farsi" min="0" max="20" step="0.01" class="grade-input w-full rounded-lg border border-gray-300 dark:border-gray-600 
+                                                bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent
+                                                transition-all duration-200 dark:text-white" placeholder="نمره فارسی" required="">
+                                    <div class="absolute bottom-0 left-0 right-0 grade-progress-container">
+                                        <div id="farsi-exp-progress" class="grade-progress-bar bg-primary-600" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- عربی -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <label for="arabic-exp" class="block font-medium">عربی</label>
+                                    <span class="text-sm text-primary-600 font-medium">ضریب: ۲.۶۲</span>
+                                </div>
+                                <div class="relative">
+                                    <input type="number" id="arabic-exp" name="arabic" min="0" max="20" step="0.01" class="grade-input w-full rounded-lg border border-gray-300 dark:border-gray-600 
+                                                bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent
+                                                transition-all duration-200 dark:text-white" placeholder="نمره عربی" required="">
+                                    <div class="absolute bottom-0 left-0 right-0 grade-progress-container">
+                                        <div id="arabic-exp-progress" class="grade-progress-bar bg-primary-600" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- دینی -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <label for="religion-exp" class="block font-medium">دینی</label>
+                                    <span class="text-sm text-primary-600 font-medium">ضریب: ۴.۷۸</span>
+                                </div>
+                                <div class="relative">
+                                    <input type="number" id="religion-exp" name="religion" min="0" max="20" step="0.01" class="grade-input w-full rounded-lg border border-gray-300 dark:border-gray-600 
+                                                bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent
+                                                transition-all duration-200 dark:text-white" placeholder="نمره دینی" required="">
+                                    <div class="absolute bottom-0 left-0 right-0 grade-progress-container">
+                                        <div id="religion-exp-progress" class="grade-progress-bar bg-primary-600" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- دروس ستون دوم -->
+                        <div class="space-y-4">
+                            <!-- زبان -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <label for="language-exp" class="block font-medium">زبان</label>
+                                    <span class="text-sm text-primary-600 font-medium">ضریب: ۳.۳۲</span>
+                                </div>
+                                <div class="relative">
+                                    <input type="number" id="language-exp" name="language" min="0" max="20" step="0.01" class="grade-input w-full rounded-lg border border-gray-300 dark:border-gray-600 
+                                                bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent
+                                                transition-all duration-200 dark:text-white" placeholder="نمره زبان" required="">
+                                    <div class="absolute bottom-0 left-0 right-0 grade-progress-container">
+                                        <div id="language-exp-progress" class="grade-progress-bar bg-primary-600" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- زیست -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <label for="biology-exp" class="block font-medium">زیست</label>
+                                    <span class="text-sm text-primary-600 font-medium">ضریب: ۶.۳۹</span>
+                                </div>
+                                <div class="relative">
+                                    <input type="number" id="biology-exp" name="biology" min="0" max="20" step="0.01" class="grade-input w-full rounded-lg border border-gray-300 dark:border-gray-600 
+                                                bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent
+                                                transition-all duration-200 dark:text-white" placeholder="نمره زیست" required="">
+                                    <div class="absolute bottom-0 left-0 right-0 grade-progress-container">
+                                        <div id="biology-exp-progress" class="grade-progress-bar bg-primary-600" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- شیمی -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <label for="chemistry-exp" class="block font-medium">شیمی</label>
+                                    <span class="text-sm text-primary-600 font-medium">ضریب: ۵.۲۷</span>
+                                </div>
+                                <div class="relative">
+                                    <input type="number" id="chemistry-exp" name="chemistry" min="0" max="20" step="0.01" class="grade-input w-full rounded-lg border border-gray-300 dark:border-gray-600 
+                                                bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent
+                                                transition-all duration-200 dark:text-white" placeholder="نمره شیمی" required="">
+                                    <div class="absolute bottom-0 left-0 right-0 grade-progress-container">
+                                        <div id="chemistry-exp-progress" class="grade-progress-bar bg-primary-600" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-2">
+                        <button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-3.5 px-4 rounded-xl 
+                                             transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 transform">
+                            محاسبه و تحلیل معدل
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- بخش نتایج -->
+            <div id="resultContainer-exp" class="hidden animate-slideInUp">
+                <!-- خلاصه بالایی -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mb-6 border border-gray-100 dark:border-gray-700">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="text-center md:text-right mb-4 md:mb-0">
+                            <h2 class="text-2xl font-bold mb-1">معدل نهایی شما</h2>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">با احتساب ضرایب</p>
+                        </div>
+                        <div id="gpaDisplay-exp" class="flex items-center justify-center bg-primary-100 dark:bg-primary-900/30 p-4 rounded-xl">
+                            <span id="gpaResult-exp" class="text-5xl font-bold text-primary-600 dark:text-primary-400 animate-pulse-slow"></span>
+                        </div>
+                    </div>
+                    <div id="gpaStatus-exp" class="mt-4 text-center bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg">
+                        <span id="statusText-exp" class="font-medium"></span>
+                    </div>
+                </div>
+                
+                <!-- تب‌های تحلیل -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden">
+                    <div class="flex border-b border-gray-200 dark:border-gray-700">
+                        <button id="tab-chart-exp" class="tab-btn active flex-1 py-3 px-4 font-medium focus:outline-none border-b-2 border-primary-600">
+                            نمودار نمرات
+                        </button>
+                        <button id="tab-analysis-exp" class="tab-btn flex-1 py-3 px-4 font-medium focus:outline-none border-b-2 border-transparent">
+                            تحلیل معدل
+                        </button>
+                        <button id="tab-improvement-exp" class="tab-btn flex-1 py-3 px-4 font-medium focus:outline-none border-b-2 border-transparent">
+                            بهبود معدل
+                        </button>
+                    </div>
+                    
+                    <!-- محتوای تب‌ها -->
+                    <div class="p-6">
+                        <!-- تب نمودار -->
+                        <div id="content-chart-exp" class="tab-content">
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <div class="md:w-7/12">
+                                    <div class="chart-container" style="position: relative; height: 300px;">
+                                        <canvas id="gradeChart-exp"></canvas>
+                                    </div>
+                                </div>
+                                <div class="md:w-5/12">
+                                    <div class="chart-container" style="position: relative; height: 300px;">
+                                        <canvas id="weightedChart-exp"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- تب تحلیل -->
+                        <div id="content-analysis-exp" class="tab-content hidden">
+                            <div class="space-y-4">
+                                <div class="bg-gray-50 dark:bg-gray-700/30 p-4 rounded-lg">
+                                    <h3 class="font-bold text-lg mb-2">تأثیر هر درس در معدل نهایی</h3>
+                                    <div id="subjectImpacts-exp" class="space-y-3">
+                                        <!-- تأثیر هر درس اینجا قرار می‌گیرد -->
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-50 dark:bg-gray-700/30 p-4 rounded-lg">
+                                    <h3 class="font-bold text-lg mb-2">نمرات شما</h3>
+                                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                        <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                                            <p class="text-sm text-gray-600 dark:text-gray-400">بالاترین نمره</p>
+                                            <div id="highestGrade-exp" class="font-bold text-xl text-green-600"></div>
+                                        </div>
+                                        <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                                            <p class="text-sm text-gray-600 dark:text-gray-400">پایین‌ترین نمره</p>
+                                            <div id="lowestGrade-exp" class="font-bold text-xl text-red-600"></div>
+                                        </div>
+                                        <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                                            <p class="text-sm text-gray-600 dark:text-gray-400">میانگین ساده</p>
+                                            <div id="averageGrade-exp" class="font-bold text-xl text-blue-600"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- تب بهبود -->
+                        <div id="content-improvement-exp" class="tab-content hidden">
+                            <div class="space-y-4">
+                                <div class="bg-gray-50 dark:bg-gray-700/30 p-4 rounded-lg">
+                                    <h3 class="font-bold text-lg mb-2">راه‌های بهبود معدل</h3>
+                                    <div id="improvementSuggestions-exp" class="space-y-2 text-sm">
+                                        <!-- پیشنهادات بهبود اینجا قرار می‌گیرد -->
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-50 dark:bg-gray-700/30 p-4 rounded-lg">
+                                    <h3 class="font-bold text-lg mb-2">معدل هدف</h3>
+                                    <div class="flex flex-col md:flex-row gap-4">
+                                        <div class="flex-1">
+                                            <input type="number" id="targetGPA-exp" min="0" max="20" step="0.01" class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-3 text-base 
+                                                        focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent dark:text-white" placeholder="معدل هدف شما (بین 0 تا 20)">
+                                        </div>
+                                        <button id="calculateTarget-exp" class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors">
+                                            محاسبه راه‌های رسیدن
+                                        </button>
+                                    </div>
+                                    <div id="targetResults-exp" class="mt-4 hidden">
+                                        <div class="p-3 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+                                            <h4 class="font-bold mb-2">برای رسیدن به معدل هدف:</h4>
+                                            <ul id="targetSuggestions-exp" class="list-disc list-inside space-y-1 text-sm">
+                                                <!-- پیشنهادات هدف اینجا قرار می‌گیرد -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <button id="resetButton-exp" class="px-6 py-2.5 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 
+                                                rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+                        محاسبه جدید
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
+            <p>سامانه محاسبه و تحلیل معدل نهایی</p>
+        </footer>
+    </div>
+
+    <script>
+        // تنظیم حالت روشن/تاریک
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+        
+        // تعریف ضرایب برای هر رشته
+        const streamCoefficients = {
+            // رشته ریاضی
+            math: {
+                farsi: 5.95,
+                arabic: 2.62,
+                religion: 4.78,
+                language: 3.32,
+                geometry: 5.10,
+                physics: 6.57
+            },
+            // رشته انسانی
+            human: {
+                farsi: 5.95,
+                arabic: 4.23,
+                religion: 4.78,
+                language: 3.32,
+                history: 5.24,
+                sociology: 4.82
+            },
+            // رشته تجربی
+            exp: {
+                farsi: 5.95,
+                arabic: 2.62,
+                religion: 4.78,
+                language: 3.32,
+                biology: 6.39,
+                chemistry: 5.27
+            }
+        };
+
+        // نام فارسی دروس برای نمایش
+        const subjectNames = {
+            // رشته ریاضی
+            math: {
+                farsi: 'فارسی',
+                arabic: 'عربی',
+                religion: 'دینی',
+                language: 'زبان',
+                geometry: 'هندسه',
+                physics: 'فیزیک'
+            },
+            // رشته انسانی
+            human: {
+                farsi: 'فارسی',
+                arabic: 'عربی',
+                religion: 'دینی',
+                language: 'زبان',
+                history: 'تاریخ',
+                sociology: 'جامعه شناسی'
+            },
+            // رشته تجربی
+            exp: {
+                farsi: 'فارسی',
+                arabic: 'عربی',
+                religion: 'دینی',
+                language: 'زبان',
+                biology: 'زیست',
+                chemistry: 'شیمی'
+            }
+        };
+        
+        // محاسبه مجموع ضرایب برای هر رشته
+        const totalCoefficients = {};
+        for (const stream in streamCoefficients) {
+            totalCoefficients[stream] = Object.values(streamCoefficients[stream]).reduce((sum, coef) => sum + coef, 0);
+        }
+        
+        // رنگ‌های نمودار
+        const chartColors = [
+            'rgba(99, 102, 241, 0.8)',
+            'rgba(236, 72, 153, 0.8)',
+            'rgba(234, 179, 8, 0.8)',
+            'rgba(14, 165, 233, 0.8)',
+            'rgba(34, 197, 94, 0.8)',
+            'rgba(249, 115, 22, 0.8)'
+        ];
+        
+        // نمودارها
+        const charts = {
+            gradeCharts: {},
+            weightedCharts: {}
+        };
+        
+        // تنظیم تب‌های رشته
+        function setupStreamTabs() {
+            const streamButtons = [
+                document.getElementById('math-stream-btn'),
+                document.getElementById('human-stream-btn'),
+                document.getElementById('exp-stream-btn')
+            ];
+            
+            const streamContainers = [
+                document.getElementById('math-stream'),
+                document.getElementById('human-stream'),
+                document.getElementById('exp-stream')
+            ];
+            
+            streamButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    // فعال/غیرفعال کردن دکمه‌ها
+                    streamButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    button.classList.add('active');
+                    
+                    // نمایش/پنهان کردن محتوا
+                    streamContainers.forEach(container => {
+                        container.classList.add('hidden');
+                    });
+                    streamContainers[index].classList.remove('hidden');
+                });
+            });
+        }
+        
+        // برای آپدیت نوار پیشرفت نمرات
+        function setupGradeInputs() {
+            const streams = ['math', 'human', 'exp'];
+            
+            streams.forEach(stream => {
+                // تمام ورودی‌های آن رشته
+                const inputs = document.querySelectorAll(`#${stream}-stream input[type="number"]`);
+                
+                inputs.forEach(input => {
+                    input.addEventListener('input', function() {
+                        const id = this.id;
+                        updateGradeProgress(id, this.value);
+                    });
+                });
+            });
+        }
+        
+        function updateGradeProgress(id, value) {
+            const progressId = `${id}-progress`;
+            const progressElement = document.getElementById(progressId);
+            if (!progressElement) return;
+            
+            let percent = 0;
+            if (value !== '' && !isNaN(value)) {
+                value = parseFloat(value);
+                if (value > 20) value = 20;
+                if (value < 0) value = 0;
+                percent = (value / 20) * 100;
+            }
+            
+            progressElement.style.width = `${percent}%`;
+            
+            // تغییر رنگ بر اساس نمره
+            progressElement.className = 'grade-progress-bar';
+            
+            if (percent >= 90) {
+                progressElement.classList.add('bg-green-500');
+            } else if (percent >= 75) {
+                progressElement.classList.add('bg-blue-500');
+            } else if (percent >= 50) {
+                progressElement.classList.add('bg-yellow-500');
+            } else {
+                progressElement.classList.add('bg-red-500');
+            }
+        }
+        
+        // نمایش خطا
+        function showError(stream, message) {
+            const errorElement = document.getElementById(`errorMessage-${stream}`);
+            errorElement.textContent = message;
+            errorElement.classList.remove('hidden');
+            
+            // انیمیشن خطا
+            errorElement.classList.remove('animate-shake');
+            void errorElement.offsetWidth; // Trigger reflow
+            errorElement.classList.add('animate-shake');
+            
+            setTimeout(() => {
+                errorElement.classList.add('hidden');
+            }, 4000);
+        }
+        
+        // تابع برای تنظیم تب‌های تحلیل
+        function setupAnalysisTabs(stream) {
+            const tabButtons = document.querySelectorAll(`#${stream}-stream .tab-btn`);
+            const tabContents = document.querySelectorAll(`#${stream}-stream .tab-content`);
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // حذف کلاس active از همه دکمه‌های تب
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.classList.remove('border-primary-600');
+                        btn.classList.add('border-transparent');
+                    });
+                    
+                    // اضافه کردن کلاس active به دکمه تب فعلی
+                    button.classList.add('active');
+                    button.classList.add('border-primary-600');
+                    button.classList.remove('border-transparent');
+                    
+                    // پنهان کردن همه محتواهای تب
+                    tabContents.forEach(content => {
+                        content.classList.add('hidden');
+                    });
+                    
+                    // نمایش محتوای تب متناظر
+                    const contentId = button.id.replace('tab-', 'content-');
+                    document.getElementById(contentId).classList.remove('hidden');
+                });
+            });
+        }
+        
+        // ایجاد نمودار نمرات
+        function createGradeChart(stream, grades) {
+            const ctx = document.getElementById(`gradeChart-${stream}`).getContext('2d');
+            
+            if (charts.gradeCharts[stream]) {
+                charts.gradeCharts[stream].destroy();
+            }
+            
+            const labels = Object.keys(grades).map(subject => subjectNames[stream][subject]);
+            const data = Object.values(grades);
+            
+            charts.gradeCharts[stream] = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'نمرات',
+                        data: data,
+                        backgroundColor: chartColors,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'نمرات دروس',
+                            font: {
+                                size: 16,
+                                family: 'Vazir'
+                            },
+                            color: document.documentElement.classList.contains('dark') ? '#f3f4f6' : '#1f2937',
+                            padding: {
+                                bottom: 15
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `نمره: ${context.parsed.y}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 20,
+                            ticks: {
+                                font: {
+                                    family: 'Vazir'
+                                },
+                                color: document.documentElement.classList.contains('dark') ? '#d1d5db' : '#4b5563'
+                            },
+                            grid: {
+                                color: document.documentElement.classList.contains('dark') ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                font: {
+                                    family: 'Vazir'
+                                },
+                                color: document.documentElement.classList.contains('dark') ? '#d1d5db' : '#4b5563'
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // ایجاد نمودار تأثیر دروس
+        function createWeightedChart(stream, grades) {
+            const ctx = document.getElementById(`weightedChart-${stream}`).getContext('2d');
+            
+            if (charts.weightedCharts[stream]) {
+                charts.weightedCharts[stream].destroy();
+            }
+            
+            const coeffs = streamCoefficients[stream];
+            const weightedGrades = {};
+            let total = 0;
+            
+            for (const subject in grades) {
+                const weightedGrade = grades[subject] * coeffs[subject];
+                weightedGrades[subject] = weightedGrade;
+                total += weightedGrade;
+            }
+            
+            // درصد تأثیر هر درس در معدل نهایی
+            const percentages = {};
+            for (const subject in weightedGrades) {
+                percentages[subject] = (weightedGrades[subject] / total) * 100;
+            }
+            
+            const labels = Object.keys(percentages).map(subject => subjectNames[stream][subject]);
+            const data = Object.values(percentages);
+            
+            charts.weightedCharts[stream] = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: chartColors,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '50%',
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                font: {
+                                    family: 'Vazir'
+                                },
+                                color: document.documentElement.classList.contains('dark') ? '#f3f4f6' : '#1f2937'
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'تأثیر دروس در معدل',
+                            font: {
+                                size: 16,
+                                family: 'Vazir'
+                            },
+                            color: document.documentElement.classList.contains('dark') ? '#f3f4f6' : '#1f2937',
+                            padding: {
+                                bottom: 15
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const subject = Object.keys(percentages)[context.dataIndex];
+                                    const percent = context.parsed.toFixed(1);
+                                    const grade = grades[subject];
+                                    const coef = coeffs[subject];
+                                    return `${subjectNames[stream][subject]}: ${percent}% (نمره: ${grade} × ضریب: ${coef})`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // ایجاد تحلیل تأثیر دروس
+        function createSubjectImpacts(stream, grades, gpa) {
+            const container = document.getElementById(`subjectImpacts-${stream}`);
+            container.innerHTML = '';
+            
+            const coeffs = streamCoefficients[stream];
+            
+            // محاسبه تأثیر هر درس
+            const impacts = {};
+            for (const subject in grades) {
+                const weightedGrade = grades[subject] * coeffs[subject];
+                impacts[subject] = weightedGrade / totalCoefficients[stream];
+            }
+            
+            // مرتب کردن بر اساس تأثیر (از بیشترین به کمترین)
+            const sortedSubjects = Object.keys(impacts).sort((a, b) => impacts[b] - impacts[a]);
+            
+            for (const subject of sortedSubjects) {
+                const impactPercent = (impacts[subject] / gpa) * 100;
+                
+                const impactDiv = document.createElement('div');
+                impactDiv.innerHTML = `
+                    <div class="flex items-center justify-between mb-1">
+                        <div class="flex-1">
+                            <span class="font-medium">${subjectNames[stream][subject]}</span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400 mr-1">
+                                (نمره: ${grades[subject]} × ضریب: ${coeffs[subject]})
+                            </span>
+                        </div>
+                        <div class="text-sm font-medium">
+                            تأثیر: ${impacts[subject].toFixed(2)} از ${gpa.toFixed(2)}
+                            <span class="text-primary-600">(${impactPercent.toFixed(1)}%)</span>
+                        </div>
+                    </div>
+                    <div class="relative w-full h-2 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
+                        <div class="absolute top-0 left-0 h-full bg-primary-600" style="width: ${impactPercent}%"></div>
+                    </div>
+                `;
+                container.appendChild(impactDiv);
+            }
+        }
+        
+        // ایجاد پیشنهادهای بهبود
+        function createImprovementSuggestions(stream, grades, gpa) {
+            const container = document.getElementById(`improvementSuggestions-${stream}`);
+            container.innerHTML = '';
+            
+            const coeffs = streamCoefficients[stream];
+            
+            // پیدا کردن کمترین نمره
+            let lowestGrade = 21;
+            let lowestSubject = '';
+            for (const subject in grades) {
+                if (grades[subject] < lowestGrade) {
+                    lowestGrade = grades[subject];
+                    lowestSubject = subject;
+                }
+            }
+            
+            // پیدا کردن درس با بیشترین ضریب که نمره کمتر از 20 دارد
+            let highestCoefSubject = '';
+            let highestCoef = 0;
+            for (const subject in grades) {
+                if (grades[subject] < 20 && coeffs[subject] > highestCoef) {
+                    highestCoef = coeffs[subject];
+                    highestCoefSubject = subject;
+                }
+            }
+            
+            // پیشنهادها
+            const suggestions = [];
+            
+            // پیشنهاد 1: بهبود کمترین نمره
+            if (lowestGrade < 18) {
+                const newGrades = {...grades};
+                const improvedGrade = Math.min(lowestGrade + 2, 20);
+                newGrades[lowestSubject] = improvedGrade;
+                
+                const newGPA = calculateGPA(stream, newGrades);
+                const improvement = newGPA - gpa;
+                
+                suggestions.push(`
+                    <p class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                        اگر نمره <span class="font-bold text-primary-600">${subjectNames[stream][lowestSubject]}</span> را از
+                        <span class="font-bold text-red-500">${lowestGrade}</span> به
+                        <span class="font-bold text-green-500">${improvedGrade}</span> افزایش دهید،
+                        معدل شما <span class="font-bold text-primary-600">${improvement.toFixed(2)}</span> نمره بهبود می‌یابد
+                        (${gpa.toFixed(2)} → ${newGPA.toFixed(2)}).
+                    </p>
+                `);
+            }
+            
+            // پیشنهاد 2: بهبود درس با بیشترین ضریب
+            if (highestCoefSubject && highestCoefSubject !== lowestSubject) {
+                const newGrades = {...grades};
+                const currentGrade = grades[highestCoefSubject];
+                const improvedGrade = Math.min(currentGrade + 2, 20);
+                newGrades[highestCoefSubject] = improvedGrade;
+                
+                const newGPA = calculateGPA(stream, newGrades);
+                const improvement = newGPA - gpa;
+                
+                suggestions.push(`
+                    <p class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                        بهتر است روی درس <span class="font-bold text-primary-600">${subjectNames[stream][highestCoefSubject]}</span> تمرکز کنید
+                        زیرا ضریب بالایی دارد (${coeffs[highestCoefSubject]}). با افزایش نمره از
+                        <span class="font-bold text-yellow-500">${currentGrade}</span> به
+                        <span class="font-bold text-green-500">${improvedGrade}</span>،
+                        معدل شما <span class="font-bold text-primary-600">${improvement.toFixed(2)}</span> نمره بهبود می‌یابد
+                        (${gpa.toFixed(2)} → ${newGPA.toFixed(2)}).
+                    </p>
+                `);
+            }
+            
+            // پیشنهاد 3: رساندن همه نمرات به حداقل 15
+            const lowGrades = [];
+            for (const subject in grades) {
+                if (grades[subject] < 15) {
+                    lowGrades.push(subject);
+                }
+            }
+            
+            if (lowGrades.length > 0) {
+                const newGrades = {...grades};
+                
+                for (const subject of lowGrades) {
+                    newGrades[subject] = 15;
+                }
+                
+                const newGPA = calculateGPA(stream, newGrades);
+                const improvement = newGPA - gpa;
+                
+                suggestions.push(`
+                    <p class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                        رساندن نمرات دروس 
+                        <span class="font-bold text-primary-600">${lowGrades.map(s => subjectNames[stream][s]).join('، ')}</span>
+                        به حداقل 15، معدل شما را <span class="font-bold text-primary-600">${improvement.toFixed(2)}</span> نمره افزایش می‌دهد
+                        (${gpa.toFixed(2)} → ${newGPA.toFixed(2)}).
+                    </p>
+                `);
+            }
+            
+            // اگر پیشنهادی نبود
+            if (suggestions.length === 0) {
+                suggestions.push(`
+                    <p class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                        تبریک! نمرات شما عالی است. معدل فعلی: ${gpa.toFixed(2)}
+                    </p>
+                `);
+            }
+            
+            container.innerHTML = suggestions.join('');
+        }
+        
+        // محاسبه راه‌های رسیدن به معدل هدف
+        function calculateTargetGPA(stream, currentGrades, currentGPA, targetGPA) {
+            const container = document.getElementById(`targetSuggestions-${stream}`);
+            container.innerHTML = '';
+            
+            const coeffs = streamCoefficients[stream];
+            
+            if (targetGPA <= currentGPA) {
+                container.innerHTML = `
+                    <li class="text-green-600 dark:text-green-400">
+                        شما در حال حاضر به معدل هدف (${targetGPA}) رسیده‌اید یا از آن بالاتر هستید!
+                    </li>
+                `;
+                return;
+            }
+            
+            const diff = targetGPA - currentGPA;
+            const suggestions = [];
+            
+            // پیدا کردن درس‌های زیر 20
+            const improvableSubjects = [];
+            for (const subject in currentGrades) {
+                if (currentGrades[subject] < 20) {
+                    improvableSubjects.push({
+                        subject,
+                        grade: currentGrades[subject],
+                        coefficient: coeffs[subject],
+                        improvement: 20 - currentGrades[subject],
+                        effect: ((20 - currentGrades[subject]) * coeffs[subject]) / totalCoefficients[stream]
+                    });
+                }
+            }
+            
+            // مرتب‌سازی بر اساس تأثیر
+            improvableSubjects.sort((a, b) => b.effect - a.effect);
+            
+            // پیشنهاد 1: بهبود درس با بیشترین تأثیر تا حد امکان
+            if (improvableSubjects.length > 0) {
+                const subject = improvableSubjects[0];
+                const requiredImprovement = (diff * totalCoefficients[stream]) / subject.coefficient;
+                
+                if (requiredImprovement <= subject.improvement) {
+                    const newGrade = subject.grade + requiredImprovement;
+                    suggestions.push(`
+                        <li>
+                            افزایش نمره <span class="font-bold text-primary-600">${subjectNames[stream][subject.subject]}</span> از 
+                            ${subject.grade.toFixed(2)} به ${newGrade.toFixed(2)} کافی است.
+                        </li>
+                    `);
+                }
+            }
+            
+            // پیشنهاد 2: رساندن 2 درس با بیشترین تأثیر به 20
+            if (improvableSubjects.length >= 2) {
+                const subject1 = improvableSubjects[0];
+                const subject2 = improvableSubjects[1];
+                
+                const newGrades = {...currentGrades};
+                newGrades[subject1.subject] = 20;
+                newGrades[subject2.subject] = 20;
+                
+                const newGPA = calculateGPA(stream, newGrades);
+                if (newGPA >= targetGPA) {
+                    suggestions.push(`
+                        <li>
+                            رساندن نمرات <span class="font-bold text-primary-600">${subjectNames[stream][subject1.subject]}</span> و 
+                            <span class="font-bold text-primary-600">${subjectNames[stream][subject2.subject]}</span> به 20، 
+                            معدل شما را به ${newGPA.toFixed(2)} می‌رساند که بالاتر از هدف ${targetGPA} است.
+                        </li>
+                    `);
+                }
+            }
+            
+            // پیشنهاد 3: بهبود همه دروس به یک اندازه
+            const newGrades = {...currentGrades};
+            const requiredPerSubject = (diff * totalCoefficients[stream]) / improvableSubjects.reduce((sum, s) => sum + s.coefficient, 0);
+            
+            let possible = true;
+            for (const subject of improvableSubjects) {
+                const newGrade = subject.grade + requiredPerSubject;
+                if (newGrade > 20) {
+                    possible = false;
+                    break;
+                }
+                newGrades[subject.subject] = newGrade;
+            }
+            
+            if (possible) {
+                suggestions.push(`
+                    <li>
+                        افزایش نمره همه دروس به میزان ${requiredPerSubject.toFixed(2)} نمره، شما را به معدل هدف می‌رساند.
+                    </li>
+                `);
+            }
+            
+            // اگر هیچ پیشنهادی ممکن نبود
+            if (suggestions.length === 0) {
+                suggestions.push(`
+                    <li class="text-yellow-600 dark:text-yellow-400">
+                        رسیدن به معدل هدف ${targetGPA} با بهبود نمرات فعلی دشوار است. 
+                        حتی با رساندن همه نمرات به 20، حداکثر معدل ممکن: ${calculateMaxPossibleGPA(stream, currentGrades).toFixed(2)}
+                    </li>
+                `);
+            }
+            
+            container.innerHTML = suggestions.join('');
+        }
+        
+        // تنظیم وضعیت معدل
+        function setGPAStatus(stream, gpa) {
+            const statusText = document.getElementById(`statusText-${stream}`);
+            const statusClasses = ['status-excellent', 'status-good', 'status-average', 'status-poor'];
+            
+            statusText.classList.remove(...statusClasses);
+            
+            if (gpa >= 18) {
+                statusText.classList.add('status-excellent');
+                statusText.textContent = 'عالی (A)';
+            } else if (gpa >= 15) {
+                statusText.classList.add('status-good');
+                statusText.textContent = 'خوب (B)';
+            } else if (gpa >= 12) {
+                statusText.classList.add('status-average');
+                statusText.textContent = 'متوسط (C)';
+            } else {
+                statusText.classList.add('status-poor');
+                statusText.textContent = 'نیازمند تلاش بیشتر (D)';
+            }
+        }
+        
+        // محاسبه حداکثر معدل ممکن
+        function calculateMaxPossibleGPA(stream, currentGrades) {
+            const maxGrades = {...currentGrades};
+            
+            for (const subject in maxGrades) {
+                maxGrades[subject] = 20;
+            }
+            
+            return calculateGPA(stream, maxGrades);
+        }
+        
+        // محاسبه معدل
+        function calculateGPA(stream, grades) {
+            let totalWeightedGrade = 0;
+            const coeffs = streamCoefficients[stream];
+            
+            for (const subject in grades) {
+                totalWeightedGrade += grades[subject] * coeffs[subject];
+            }
+            
+            return totalWeightedGrade / totalCoefficients[stream];
+        }
+        
+        // گرفتن نمرات از فرم
+        function getGradesFromForm(stream) {
+            const grades = {};
+            const subjects = Object.keys(streamCoefficients[stream]);
+            
+            for (const subject of subjects) {
+                const inputId = `${subject}-${stream}`;
+                const value = parseFloat(document.getElementById(inputId).value);
+                grades[subject] = value;
+            }
+            
+            return grades;
+        }
+        
+        // تنظیم فرم‌های هر رشته
+        function setupForms() {
+            const streams = ['math', 'human', 'exp'];
+            
+            streams.forEach(stream => {
+                // تنظیم فرم
+                document.getElementById(`gpaForm-${stream}`).addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // گرفتن نمرات
+                    const subjects = Object.keys(streamCoefficients[stream]);
+                    const grades = {};
+                    
+                    // بررسی اعتبار نمرات
+                    let isValid = true;
+                    let invalidFields = [];
+                    
+                    for (const subject of subjects) {
+                        const inputId = `${subject}-${stream}`;
+                        const inputValue = document.getElementById(inputId).value;
+                        const grade = parseFloat(inputValue);
+                        
+                        if (isNaN(grade) || grade < 0 || grade > 20) {
+                            isValid = false;
+                            invalidFields.push(inputId);
+                            
+                            // نمایش خطا در فیلد
+                            const inputElement = document.getElementById(inputId);
+                            inputElement.classList.add('border-red-500', 'dark:border-red-400');
+                            inputElement.classList.remove('border-gray-300', 'dark:border-gray-600');
+                        } else {
+                            // حذف وضعیت خطا
+                            const inputElement = document.getElementById(inputId);
+                            inputElement.classList.remove('border-red-500', 'dark:border-red-400');
+                            inputElement.classList.add('border-gray-300', 'dark:border-gray-600');
+                            
+                            grades[subject] = grade;
+                        }
+                    }
+                    
+                    if (!isValid) {
+                        showError(stream, 'لطفاً نمرات را به درستی وارد کنید (بین 0 تا 20)');
+                        return;
+                    }
+                    
+                    // پنهان کردن پیام خطا
+                    document.getElementById(`errorMessage-${stream}`).classList.add('hidden');
+                    
+                    // محاسبه معدل
+                    const gpa = calculateGPA(stream, grades);
+                    
+                    // نمایش معدل
+                    const gpaResult = document.getElementById(`gpaResult-${stream}`);
+                    gpaResult.textContent = '';
+                    
+                    // انیمیشن معدل
+                    const targetGPA = parseFloat(gpa.toFixed(2));
+                    const duration = 1000; // 1 second
+                    const frameDuration = 1000 / 60; // 60 fps
+                    const totalFrames = Math.round(duration / frameDuration);
+                    const incrementPerFrame = targetGPA / totalFrames;
+                    
+                    let currentFrame = 0;
+                    let currentGPA = 0;
+                    
+                    function animateGPA() {
+                        currentFrame++;
+                        currentGPA += incrementPerFrame;
+                        
+                        if (currentFrame === totalFrames) {
+                            gpaResult.textContent = targetGPA.toFixed(2);
+                            // گرفتن فوکس انیمیشن پس از پایان
+                            gpaResult.classList.remove('animate-pulse-slow');
+                        } else {
+                            gpaResult.textContent = Math.min(currentGPA, targetGPA).toFixed(2);
+                            requestAnimationFrame(animateGPA);
+                        }
+                    }
+                    
+                    // شروع انیمیشن
+                    requestAnimationFrame(animateGPA);
+                    
+                    // نمایش نتایج
+                    document.getElementById(`resultContainer-${stream}`).classList.remove('hidden');
+                    
+                    // تنظیم وضعیت معدل
+                    setGPAStatus(stream, gpa);
+                    
+                    // ایجاد نمودارها
+                    createGradeChart(stream, grades);
+                    createWeightedChart(stream, grades);
+                    
+                    // ایجاد تحلیل‌ها
+                    createSubjectImpacts(stream, grades, gpa);
+                    
+                    // آمار نمرات
+                    const gradeValues = Object.values(grades);
+                    document.getElementById(`highestGrade-${stream}`).textContent = Math.max(...gradeValues).toFixed(2);
+                    document.getElementById(`lowestGrade-${stream}`).textContent = Math.min(...gradeValues).toFixed(2);
+                    
+                    // میانگین ساده
+                    const averageGrade = gradeValues.reduce((sum, grade) => sum + grade, 0) / gradeValues.length;
+                    document.getElementById(`averageGrade-${stream}`).textContent = averageGrade.toFixed(2);
+                    
+                    // ایجاد پیشنهادهای بهبود
+                    createImprovementSuggestions(stream, grades, gpa);
+                    
+                    // پنهان کردن نتایج معدل هدف
+                    document.getElementById(`targetResults-${stream}`).classList.add('hidden');
+                    
+                    // اسکرول به نتایج
+                    document.getElementById(`resultContainer-${stream}`).scrollIntoView({ behavior: 'smooth' });
+                });
+                
+                // محاسبه معدل هدف
+                document.getElementById(`calculateTarget-${stream}`).addEventListener('click', function() {
+                    const targetInput = document.getElementById(`targetGPA-${stream}`);
+                    const targetGPA = parseFloat(targetInput.value);
+                    
+                    if (isNaN(targetGPA) || targetGPA < 0 || targetGPA > 20) {
+                        targetInput.classList.add('border-red-500', 'dark:border-red-400');
+                        return;
+                    } else {
+                        targetInput.classList.remove('border-red-500', 'dark:border-red-400');
+                    }
+                    
+                    // جمع‌آوری نمرات فعلی
+                    const currentGrades = getGradesFromForm(stream);
+                    
+                    // محاسبه معدل فعلی
+                    const currentGPA = calculateGPA(stream, currentGrades);
+                    
+                    // محاسبه و نمایش راه‌های رسیدن به معدل هدف
+                    calculateTargetGPA(stream, currentGrades, currentGPA, targetGPA);
+                    
+                    // نمایش نتایج
+                    document.getElementById(`targetResults-${stream}`).classList.remove('hidden');
+                });
+                
+                // دکمه شروع مجدد
+                document.getElementById(`resetButton-${stream}`).addEventListener('click', function() {
+                    // پاک کردن فرم
+                    document.getElementById(`gpaForm-${stream}`).reset();
+                    
+                    // پاک کردن نوارهای پیشرفت
+                    document.querySelectorAll(`#${stream}-stream .grade-progress-bar`).forEach(bar => {
+                        bar.style.width = '0%';
+                        bar.className = 'grade-progress-bar bg-primary-600';
+                    });
+                    
+                    // پنهان کردن نتایج
+                    document.getElementById(`resultContainer-${stream}`).classList.add('hidden');
+                    
+                    // اسکرول به بالا
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+                
+                // تنظیم تب‌های تحلیل
+                setupAnalysisTabs(stream);
+            });
+        }
+        
+        // راه‌اندازی برنامه
+        document.addEventListener('DOMContentLoaded', function() {
+            setupStreamTabs();
+            setupGradeInputs();
+            setupForms();
+        });
+    </script>
+
+
+</body></html>
